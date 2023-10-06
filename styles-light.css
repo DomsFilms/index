@@ -13,3 +13,7 @@
     color: #000000F7;
     transition: background-color 0.5s, color 0.5s;
 }
+
+.class-theme-light .class-film-summary {
+    color: #0000007e;
+}

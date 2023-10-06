@@ -26,15 +26,16 @@ body {
     padding: 1rem;
 }
 
+/* Some mobile specific bodges. */
 @media (max-width: 1400px) {
     html {
-        font-size: 3vw;
+        font-size: 3vw !important;
     }
     .class-film-summary {
-        font-size: 0.4vw;
+        font-size: 0.4vw !important;
     }
     .class-film-card {
-        width: 100%;
+        width: 100% !important;
     }
 }
 
@@ -121,6 +122,5 @@ body {
 
 .class-film-summary {
     font-size: 0.7rem;
-    color: #0000007e;
     margin-bottom: 0.5rem;
 }

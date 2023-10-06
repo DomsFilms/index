@@ -17,3 +17,7 @@
 .class-theme-dark .class-rating {
     color: #000000F7 !important; /* Important because I do not have theme colours on ratings yet, and need to use the light font here. */
 }
+
+.class-theme-dark .class-film-summary {
+    color: #ffffff7e;
+}
