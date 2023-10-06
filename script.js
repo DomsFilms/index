@@ -84,11 +84,16 @@ $(document).ready(() => {
         xhr.open('GET', `films/2023-october/${filmId}.json`, true);
         xhr.responseType = 'json';
         xhr.onload = () => {
-            let status = xhr.status;
-            if (status === 200) {
+            if (xhr.status === 200 && !!xhr.response.review) {
+
                 // Hydrate element.
                 $(`#id-film-${filmId}`)
-                .removeClass("class-film-unwatched");
+                .removeClass("class-film-unwatched")
+                .append(
+                    $("<div>")
+                    .addClass("class-film-word")
+                    .html(`In one word: ${xhr.response.word}`)
+                );
                 
                 $(`#id-film-${filmId} .class-film-title`)
                 .html(xhr.response.title);
@@ -99,6 +104,33 @@ $(document).ready(() => {
 
                 $(`#id-film-${filmId} .class-film-review`)
                 .html(xhr.response.review);
+
+                if (xhr.response.suspense !== null) {
+                    $(`#id-film-${filmId}`)
+                    .append(
+                        $("<div>")
+                        .addClass("class-rating class-rating-small")
+                        .html(`suspense: ${xhr.response.suspense}`)
+                    )
+                }
+
+                if (xhr.response.shock !== null) {
+                    $(`#id-film-${filmId}`)
+                    .append(
+                        $("<div>")
+                        .addClass("class-rating class-rating-small")
+                        .html(`shock: ${xhr.response.shock}`)
+                    )
+                }
+
+                if (xhr.response.grotesque !== null) {
+                    $(`#id-film-${filmId}`)
+                    .append(
+                        $("<div>")
+                        .addClass("class-rating class-rating-small")
+                        .html(`grotesque: ${xhr.response.grotesque}`)
+                    )
+                }
             }
         };
         xhr.send();
