@@ -1,26 +1,15 @@
-.class-theme-dark {
-    background-color: #202020;
-    color: #FFFFFFB0;
-    transition: background-color 0.5s, color 0.5s;
-}
-
+.class-theme-dark .class-film-card,
 .class-theme-dark #id-theme-toggle {
     background-color: #020202;
     color: #FFFFFFB0;
     transition: background-color 0.5s, color 0.5s;
 }
 
-.class-theme-dark .class-film-card {
-    background-color: #020202;
-    transition: background-color 0.5s;
-}
-
-.class-theme-dark .class-film-unwatched .class-film-title {
+.class-theme-dark,
+.class-theme-dark .class-film-unwatched .class-film-title,
+.class-theme-dark .class-film-unwatched .class-rating,
+.class-theme-dark .class-film-unwatched .class-film-review {
     background-color: #202020;
-    transition: background-color 0.5s;
-}
-
-.class-theme-dark .class-film-unwatched .class-rating {
-    background-color: #202020;
-    transition: background-color 0.5s;
+    color: #FFFFFFB0;
+    transition: background-color 0.5s, color 0.5s;
 }
