@@ -38,7 +38,7 @@ body {
     color: #00000000;
 }
 
-.class-film-rating {
+.class-rating {
     font-size: 2em;
     float: right;
     border-radius: 0.2rem;
@@ -47,37 +47,37 @@ body {
     text-align: center;
 }
 
-.class-film-rating-0 {
+.class-rating-0 {
     background-color: #F4C7C3;
 }
-.class-film-rating-1 {
+.class-rating-1 {
     background-color: #F5CDC0;
 }
-.class-film-rating-2 {
+.class-rating-2 {
     background-color: #F7D4BD;
 }
-.class-film-rating-3 {
+.class-rating-3 {
     background-color: #F8DAB9;
 }
-.class-film-rating-4 {
+.class-rating-4 {
     background-color: #FAE1B6;
 }
-.class-film-rating-5 {
+.class-rating-5 {
     background-color: #FCE8B2;
 }
-.class-film-rating-6 {
+.class-rating-6 {
     background-color: #EFE7B7;
 }
-.class-film-rating-7 {
+.class-rating-7 {
     background-color: #E1E6BC;
 }
-.class-film-rating-8 {
+.class-rating-8 {
     background-color: #D3E4C2;
 }
-.class-film-rating-9 {
+.class-rating-9 {
     background-color: #C5E3C7;
 }
-.class-film-rating-10 {
+.class-rating-10 {
     background-color: #B7E1CD;
 }
 

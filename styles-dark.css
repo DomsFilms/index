@@ -20,7 +20,7 @@
     transition: background-color 0.5s;
 }
 
-.class-theme-dark .class-film-unwatched .class-film-rating {
+.class-theme-dark .class-film-unwatched .class-rating {
     background-color: #202020;
     transition: background-color 0.5s;
 }
