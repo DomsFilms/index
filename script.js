@@ -65,14 +65,17 @@ $(document).ready(() => {
             .addClass("class-film-card")
             .addClass("class-film-unwatched")
             .attr("id", `id-film-${filmId}`)
-            .append(
-                $("<div>")
-                .addClass("class-film-title")
-                .html(filmId)
-            )
-            .append(
-                $("<div>")
-                .addClass("class-rating")
+            .append($("<div>")
+                .addClass("class-film-bar")
+                .append(
+                    $("<div>")
+                    .addClass("class-film-title")
+                    .html(filmId)
+                )
+                .append(
+                    $("<div>")
+                    .addClass("class-rating")
+                )
             )
             .append(
                 $("<div>")
@@ -95,10 +98,13 @@ $(document).ready(() => {
                     .addClass("class-film-summary")
                     .html(`Released in ${xhr.response.year}. Watched ${xhr.response.seen ? "" : "for the first time "}on ${xhr.response.date}`)
                 )
-                .append(
-                    $("<div>")
-                    .addClass("class-film-word")
-                    .html(xhr.response.word)
+                .append($("<div>")
+                    .addClass("class-film-bar")
+                    .append(
+                        $("<div>")
+                        .addClass("class-film-word")
+                        .html(xhr.response.word)
+                    )
                 );
                 
                 $(`#id-film-${filmId} .class-film-title`)
@@ -111,19 +117,19 @@ $(document).ready(() => {
                 $(`#id-film-${filmId} .class-film-review`)
                 .html(xhr.response.review);
 
-                if (xhr.response.suspense !== null) {
-                    $(`#id-film-${filmId}`)
-                    .append(
+                if (xhr.response.grotesque !== null) {
+                    $(`#id-film-${filmId} .class-film-word`)
+                    .after(
                         $("<div>")
                         .addClass("class-rating class-rating-small")
-                        .addClass(`class-rating-${xhr.response.suspense}`)
-                        .html(`suspense: ${xhr.response.suspense}`)
+                        .addClass(`class-rating-${xhr.response.grotesque}`)
+                        .html(`grotesque: ${xhr.response.grotesque}`)
                     )
                 }
 
                 if (xhr.response.shock !== null) {
-                    $(`#id-film-${filmId}`)
-                    .append(
+                    $(`#id-film-${filmId} .class-film-word`)
+                    .after(
                         $("<div>")
                         .addClass("class-rating class-rating-small")
                         .addClass(`class-rating-${xhr.response.shock}`)
@@ -131,13 +137,13 @@ $(document).ready(() => {
                     )
                 }
 
-                if (xhr.response.grotesque !== null) {
-                    $(`#id-film-${filmId}`)
-                    .append(
+                if (xhr.response.suspense !== null) {
+                    $(`#id-film-${filmId} .class-film-word`)
+                    .after(
                         $("<div>")
                         .addClass("class-rating class-rating-small")
-                        .addClass(`class-rating-${xhr.response.grotesque}`)
-                        .html(`grotesque: ${xhr.response.grotesque}`)
+                        .addClass(`class-rating-${xhr.response.suspense}`)
+                        .html(`suspense: ${xhr.response.suspense}`)
                     )
                 }
             }

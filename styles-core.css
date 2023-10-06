@@ -32,9 +32,15 @@ body {
     }
 }
 
+.class-film-bar {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5em;
+}
+
 .class-film-title {
     font-size: 2em;
-    display: inline;
+    flex-grow: 2;
 }
 
 .class-film-unwatched .class-film-title {
@@ -93,7 +99,6 @@ body {
 }
 
 .class-film-review {
-    clear: both;
     margin: 0.5em 0 0.5em 0;
 }
 
@@ -103,7 +108,7 @@ body {
 }
 
 .class-film-word {
-    float: left;
+    flex-grow: 2;
     font-style: italic;
 }
 
