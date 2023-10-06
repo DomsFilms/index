@@ -34,6 +34,7 @@ body {
     width: 15rem;
     display: flex;
     flex-direction: column;
+    box-shadow: 1vw 1vw 1vw black;
 }
 
 .class-film-card {

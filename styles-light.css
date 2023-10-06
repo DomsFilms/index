@@ -1,5 +1,5 @@
 .class-theme-light .class-film-card,
-.class-theme-light #id-theme-toggle {
+.class-theme-light #id-controls button {
     background-color: #e5e5e5;
     color: #000000F7;
     transition: background-color 0.5s, color 0.5s;
