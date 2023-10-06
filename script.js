@@ -63,11 +63,10 @@ $(document).ready(() => {
             x.open('GET', `films/${list.id}/${film}.json`, true);
             x.responseType = 'json';
             x.onload = () => {
+                let card = $(`#id-film-${film}`);
                 if (x.status === 200 && !!x.response.review) {
 
                     // Hydrate element.
-                    let card = $(`#id-film-${film}`);
-
                     card.removeClass("class-film-unwatched")
                         .append(
                             $("<div>")
@@ -119,6 +118,9 @@ $(document).ready(() => {
                                     .html(`suspense: ${x.response.suspense}`)
                             )
                     }
+                } else {
+                    // If there is no review, move it to the end of the list.
+                    $(body).append(card);
                 }
             };
             x.send();
