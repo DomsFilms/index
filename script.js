@@ -94,7 +94,8 @@ $(document).ready(() => {
                 .html(xhr.response.title);
 
                 $(`#id-film-${filmId} .class-film-rating`)
-                .html(xhr.response.rating);
+                .html(xhr.response.rating)
+                .addClass(`class-rating-${xhr.response.rating}`);
 
                 $(`#id-film-${filmId} .class-film-review`)
                 .html(xhr.response.review);
