@@ -51,6 +51,7 @@ body {
     font-size: 1em;
     width: auto;
     margin-left: 0.4em;
+    padding: 0 0.3em 0 0.3em;
 }
 
 .class-rating-0 {
@@ -95,4 +96,8 @@ body {
 .class-film-unwatched .class-film-review {
     width: 100%;
     height: 7em;
+}
+
+.class-film-word {
+    float: left;
 }

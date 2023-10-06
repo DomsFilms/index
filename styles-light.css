@@ -1,14 +1,14 @@
-.class-theme-dark .class-film-card,
-.class-theme-dark #id-theme-toggle {
+.class-theme-light .class-film-card,
+.class-theme-light #id-theme-toggle {
     background-color: #e5e5e5;
     color: #000000F7;
     transition: background-color 0.5s, color 0.5s;
 }
 
-.class-theme-dark,
-.class-theme-dark .class-film-unwatched .class-film-title,
-.class-theme-dark .class-film-unwatched .class-rating,
-.class-theme-dark .class-film-unwatched .class-film-review {
+.class-theme-light,
+.class-theme-light .class-film-unwatched .class-film-title,
+.class-theme-light .class-film-unwatched .class-rating,
+.class-theme-light .class-film-unwatched .class-film-review {
     background-color: #d0d0d0;
     color: #000000F7;
     transition: background-color 0.5s, color 0.5s;
