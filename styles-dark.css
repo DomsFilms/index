@@ -13,3 +13,7 @@
     color: #FFFFFFB0;
     transition: background-color 0.5s, color 0.5s;
 }
+
+.class-theme-dark .class-rating {
+    color: #000000F7 !important; /* Important because I do not have theme colours on ratings yet, and need to use the light font here. */
+}
