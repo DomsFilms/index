@@ -23,6 +23,7 @@ $(document).ready(() => {
         "nope2022",
         "halloween1978",
         "thestrangers2008",
+        "theemptyman2020",
         "thebabysitter2017",
         "crimesofthefuture2022",
         "deepred1975",
@@ -92,7 +93,7 @@ $(document).ready(() => {
                 .append(
                     $("<div>")
                     .addClass("class-film-summary")
-                    .html(`Watched ${xhr.response.seen ? "" : "for the first time "}on ${xhr.response.date}`)
+                    .html(`Released in ${xhr.response.year}. Watched ${xhr.response.seen ? "" : "for the first time "}on ${xhr.response.date}`)
                 )
                 .append(
                     $("<div>")

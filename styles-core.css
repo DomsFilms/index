@@ -22,7 +22,6 @@ body {
 .class-film-card {
     width: 30em;
     height: auto;
-    min-height: 10em;
     border-radius: 0.8rem;
     padding: 1em;
 }
