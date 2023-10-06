@@ -13,9 +13,46 @@ $(document).ready(() => {
     });
 
     const films = [
-        "film1",
-        "film2",
-        "film3"
+        "Relic 2020",
+        "The Dark and the Wicked 2020",
+        "Altered States 1980",
+        "Salem's Lot Part 1 1979",
+        "Salem's Lot Part 2 1979",
+        "The Texas Chain Saw Massacre 1974",
+        "The Cabinet of Dr. Caligari 1920",
+        "Nope 2022",
+        "Halloween 1978",
+        "The Strangers 2008",
+        "The Babysitter 2017",
+        "Crimes of the Future 2022",
+        "Deep Red 1975",
+        "Devil Fetus 1983",
+        "Eraserhead 1977",
+        "Evolution 2016",
+        "A Field in England 2013",
+        "Gonjiam:Haunted Asylum 2018",
+        "Green Room 2015",
+        "Grindhouse: Planet Terror 2007",
+        "Bram Stoker's Dracula 1992",
+        "It Follows 2014",
+        "Kwaidan 1964",
+        "Lights Out 2016",
+        "Below 2002",
+        "Oxygen 2021",
+        "The Phantom Carriage 1921",
+        "Pieces 1982",
+        "[REC] 2007",
+        "Run 2020",
+        "Session 9 2001",
+        "Shocker 1989",
+        "The Strangers: Prey at Night 2018",
+        "An American Werewolf in London 1981",
+        "Berberian Sound Studio 2012",
+        "Brain Damage 1988",
+        "Bliss 2019",
+        "The Love Witch 2016",
+        "Pearl 2022",
+        "Troll Hunter 2010"
     ];
 
     const filmDatas = [
@@ -44,7 +81,7 @@ $(document).ready(() => {
         xhr.onload = () => {
             let status = xhr.status;
             if (status === 200) {
-                fn(filmDatas.filter(f => f.title == title)[0]);
+                fn(xhr.response);
             } else {
                 fn(film);
             }
