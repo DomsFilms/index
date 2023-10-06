@@ -120,7 +120,7 @@ $(document).ready(() => {
                     }
                 } else {
                     // If there is no review, move it to the end of the list.
-                    $(body).append(card);
+                    $("body").append(card);
                 }
             };
             x.send();
