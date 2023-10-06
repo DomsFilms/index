@@ -50,6 +50,7 @@ body {
 .class-rating.class-rating-small {
     font-size: 1em;
     width: auto;
+    margin-left: 0.4em;
 }
 
 .class-rating-0 {
@@ -86,10 +87,9 @@ body {
     background-color: #B7E1CD;
 }
 
-.class-film-review,
-.class-film-word {
+.class-film-review {
     display: inline-block;
-    margin-top: 0.5em;
+    margin: 0.5em 0 0.5em 0;
 }
 
 .class-film-unwatched .class-film-review {
