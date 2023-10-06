@@ -92,32 +92,26 @@ $(document).ready(() => {
                     card.find(".class-film-review")
                         .html(x.response.review);
 
-                    if (x.response.grotesque !== null) {
-                        card.find(".class-film-word")
-                            .after(
-                                $("<div>")
-                                    .addClass(`class-rating class-rating-small class-rating-${x.response.grotesque}`)
-                                    .html(`grotesque: ${x.response.grotesque}`)
-                            )
-                    }
+                    // Add sub-ratings.
+                    let properties = [
+                        "grotesque",
+                        "shock",
+                        "suspense",
+                        "believable",
+                        "breathless",
+                        "bombast"
+                    ];
 
-                    if (x.response.shock !== null) {
-                        card.find(".class-film-word")
-                            .after(
-                                $("<div>")
-                                    .addClass(`class-rating class-rating-small class-rating-${x.response.shock}`)
-                                    .html(`shock: ${x.response.shock}`)
-                            )
-                    }
-
-                    if (x.response.suspense !== null) {
-                        card.find(".class-film-word")
-                            .after(
-                                $("<div>")
-                                    .addClass(`class-rating class-rating-small class-rating-${x.response.suspense}`)
-                                    .html(`suspense: ${x.response.suspense}`)
-                            )
-                    }
+                    properties.forEach((property, index) => {
+                        if (x.response[property] !== undefined) {
+                            card.find(".class-film-word")
+                                .after(
+                                    $("<div>")
+                                        .addClass(`class-rating class-rating-small class-rating-${x.response[property]}`)
+                                        .html(`${property}: ${x.response[property]}`)
+                                )
+                        }
+                    });
                 } else {
                     // If there is no review, move it to the end of the list.
                     $("body").append(card);
