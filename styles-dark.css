@@ -5,9 +5,9 @@
 }
 
 .class-theme-dark #id-theme-toggle {
-    border-color: #FFFFFFB0;
+    background-color: #020202;
     color: #FFFFFFB0;
-    transition: border-color 0.5s, color 0.5s;
+    transition: background-color 0.5s, color 0.5s;
 }
 
 .class-theme-dark .class-film-card {
