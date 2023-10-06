@@ -47,6 +47,11 @@ body {
     text-align: center;
 }
 
+.class-rating.class-rating-small {
+    font-size: 1em;
+    width: auto;
+}
+
 .class-rating-0 {
     background-color: #F4C7C3;
 }
@@ -81,7 +86,8 @@ body {
     background-color: #B7E1CD;
 }
 
-.class-film-review {
+.class-film-review,
+.class-film-word {
     display: inline-block;
     margin-top: 0.5em;
 }

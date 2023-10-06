@@ -110,6 +110,7 @@ $(document).ready(() => {
                     .append(
                         $("<div>")
                         .addClass("class-rating class-rating-small")
+                        .addClass(`class-rating-${xhr.response.suspense}`)
                         .html(`suspense: ${xhr.response.suspense}`)
                     )
                 }
@@ -119,6 +120,7 @@ $(document).ready(() => {
                     .append(
                         $("<div>")
                         .addClass("class-rating class-rating-small")
+                        .addClass(`class-rating-${xhr.response.shock}`)
                         .html(`shock: ${xhr.response.shock}`)
                     )
                 }
@@ -128,6 +130,7 @@ $(document).ready(() => {
                     .append(
                         $("<div>")
                         .addClass("class-rating class-rating-small")
+                        .addClass(`class-rating-${xhr.response.grotesque}`)
                         .html(`grotesque: ${xhr.response.grotesque}`)
                     )
                 }
