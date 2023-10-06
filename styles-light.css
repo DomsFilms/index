@@ -1,0 +1,24 @@
+.class-theme-light {
+    background-color: #d0d0d0;
+    color: #000000F7;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.class-theme-light #id-theme-toggle {
+    border-color: #000000F7;
+    color: #000000F7;
+    transition: border-color 0.5s, color 0.5s;
+}
+
+.class-theme-light .class-film-card {
+    background-color: #e5e5e5;
+    transition: background-color 0.5s;
+}
+
+.class-theme-light .class-film-unwatched .class-film-title {
+    background-color: #d0d0d0;
+}
+
+.class-theme-light .class-film-unwatched .class-film-rating {
+    background-color: #d0d0d0;
+}

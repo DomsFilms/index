@@ -1,0 +1,55 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    padding-top: 2em;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1em 1em;
+}
+
+#id-theme-toggle {
+    border: 0.3em solid;
+    border-radius: 0.5rem;
+    background-color: #00000000;
+    font-family: 'Roboto', sans-serif;
+    padding: 0.1em 0.4em 0.1em 0.4em;
+    position: absolute;
+    top: 0.5em;
+    right: 1em;
+}
+
+.class-film-card {
+    width: 30em;
+    height: auto;
+    min-height: 10em;
+    border-radius: 0.8rem;
+    padding: 1em;
+}
+
+.class-film-title {
+    font-size: 2em;
+    float: left;
+    height: 1.2em;
+}
+
+.class-film-unwatched .class-film-title {
+    border-radius: 0.2rem;
+    color: #00000000;
+}
+
+.class-film-rating {
+    font-size: 2em;
+    float: right;
+    background-color: lightgreen;
+    border-radius: 0.2rem;
+    width: 1.2em;
+    height: 1.2em;
+    text-align: center;
+}
+
+.class-film-review {
+    display: inline-block;
+    margin-top: 0.5em;
+}

@@ -66,7 +66,7 @@ $(document).ready(() => {
 
         // Hydrate with loaded data.
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', `films/2023october/${filmId}.json`, true);
+        xhr.open('GET', `films/2023-october/${filmId}.json`, true);
         xhr.responseType = 'json';
         xhr.onload = () => {
             let status = xhr.status;
