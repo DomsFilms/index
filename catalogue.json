@@ -47,6 +47,29 @@
     },
     "2023 action romp": {
         "id": "2023-07-action",
-        "films": []
+        "films": [
+            "missionimpossible",
+            "oldboy",
+            "missionimpossible2",
+            "thefugitive",
+            "missionimpossibleiii",
+            "terminator2judgmentday",
+            "aliens",
+            "missionimpossible-ghostprotocol",
+            "raidersofthelostark",
+            "missionimpossible-roguenation",
+            "thebourneidentity",
+            "thebournesupremacy",
+            "thebourneultimatum",
+            "faceoff",
+            "missionimpossible-fallout",
+            "rushhour",
+            "blade",
+            "bladeii",
+            "madmax",
+            "rushhour2",
+            "madmax2theroadwarrior",
+            "thequickandthedead"
+        ]
     }
 }
