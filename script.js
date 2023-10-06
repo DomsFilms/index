@@ -56,15 +56,30 @@ $(document).ready(() => {
     ];
 
     films.forEach((filmId, index) => {
-        // Create empty film data.
-        let film = {
-            "id": filmId,
-            "title": filmId,
-            "rating": "",
-            "review": ""
-        };
 
-        // Hydrate with loaded data.
+        // Add empty content.
+        $("body")
+        .append(
+            $("<div>")
+            .addClass("class-film-card")
+            .addClass("class-film-unwatched")
+            .attr("id", `id-film-${filmId}`)
+            .append(
+                $("<div>")
+                .addClass("class-film-title")
+                .html(filmId)
+            )
+            .append(
+                $("<div>")
+                .addClass("class-film-rating")
+            )
+            .append(
+                $("<div>")
+                .addClass("class-film-review")
+            )
+        );
+
+        // Load film data.
         let xhr = new XMLHttpRequest();
         xhr.open('GET', `films/2023-october/${filmId}.json`, true);
         xhr.responseType = 'json';
@@ -73,40 +88,23 @@ $(document).ready(() => {
             if (status === 200) {
                 xhr.response["id"] = filmId;
                 fn(xhr.response);
-            } else {
-                fn(film);
             }
         };
         xhr.send();
 
         let fn = (film) => {
-            // Add film card content.
-            $("body")
-            .append(
-                $("<div>")
-                .addClass("class-film-card")
-                .attr("id", `id-film-${film.id}`)
-                .append(
-                    $("<div>")
-                    .addClass("class-film-title")
-                    .html(film.title)
-                )
-                .append(
-                    $("<div>")
-                    .addClass("class-film-rating")
-                    .html(film.rating)
-                )
-                .append(
-                    $("<div>")
-                    .addClass("class-film-review")
-                    .html(film.review)
-                )
-            );
-
-            // Apply unwatched class.
-            if (!film.review)
+            // Hydrate element.
             $(`#id-film-${film.id}`)
-                .addClass("class-film-unwatched");
+            .removeClass("class-film-unwatched");
+            
+            $(`#id-film-${film.id} .class-film-title`)
+            .html(film.title);
+
+            $(`#id-film-${film.id} .class-film-rating`)
+            .html(film.rating);
+
+            $(`#id-film-${film.id} .class-film-review`)
+            .html(film.review);
         };
 
         return;
