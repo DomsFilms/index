@@ -64,6 +64,19 @@ body {
 .class-film-title {
     font-size: 2em;
     float: left;
+    height: 1.2em;
+}
+
+.class-film-unwatched .class-film-title {
+    border-radius: 0.2rem;
+}
+
+.class-theme-light .class-film-unwatched .class-film-title {
+    background-color: #d0d0d0;
+}
+
+.class-theme-dark .class-film-unwatched .class-film-title {
+    background-color: #202020;
 }
 
 .class-film-rating {
@@ -76,9 +89,16 @@ body {
     text-align: center;
 }
 
+.class-theme-light .class-film-unwatched .class-film-rating {
+    background-color: #d0d0d0;
+}
+
+.class-theme-dark .class-film-unwatched .class-film-rating {
+    background-color: #202020;
+}
+
 .class-film-review {
     display: inline-block;
-    margin-top: 0.5em;
 }
 
 .class-film-unwatched .class-film-title {
