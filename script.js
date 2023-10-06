@@ -86,26 +86,21 @@ $(document).ready(() => {
         xhr.onload = () => {
             let status = xhr.status;
             if (status === 200) {
-                xhr.response["id"] = filmId;
-                fn(xhr.response);
+                // Hydrate element.
+                $(`#id-film-${filmId}`)
+                .removeClass("class-film-unwatched");
+                
+                $(`#id-film-${filmId} .class-film-title`)
+                .html(xhr.response.title);
+
+                $(`#id-film-${filmId} .class-film-rating`)
+                .html(xhr.response.rating);
+
+                $(`#id-film-${filmId} .class-film-review`)
+                .html(xhr.response.review);
             }
         };
         xhr.send();
-
-        let fn = (film) => {
-            // Hydrate element.
-            $(`#id-film-${film.id}`)
-            .removeClass("class-film-unwatched");
-            
-            $(`#id-film-${film.id} .class-film-title`)
-            .html(film.title);
-
-            $(`#id-film-${film.id} .class-film-rating`)
-            .html(film.rating);
-
-            $(`#id-film-${film.id} .class-film-review`)
-            .html(film.review);
-        };
 
         return;
     });
