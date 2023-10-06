@@ -9,6 +9,14 @@ body {
     gap: 1rem 1rem;
 }
 
+.class-shadow-small {
+    box-shadow: 0.1vw 0.1vw 1vw #00000020;
+}
+
+.class-shadow-large {
+    box-shadow: 0.5vw 0.5vw 5vw #000000aa;
+}
+
 #id-controls {
     position: absolute;
     top: 0.5rem;
@@ -36,7 +44,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1rem 1rem;
-    box-shadow: 0.5vw 0.5vw 5vw #000000aa;
 }
 
 .class-film-card {

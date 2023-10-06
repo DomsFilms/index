@@ -24,8 +24,7 @@ $(document).ready(() => {
             $("body")
             .append(
                 $("<div>")
-                .addClass("class-film-card")
-                .addClass("class-film-unwatched")
+                .addClass("class-film-card class-film-unwatched class-shadow-small")
                 .attr("id", `id-film-${film}`)
                 .append($("<div>")
                     .addClass("class-film-bar")
@@ -84,8 +83,7 @@ $(document).ready(() => {
                         card.find(".class-film-word")
                         .after(
                             $("<div>")
-                            .addClass("class-rating class-rating-small")
-                            .addClass(`class-rating-${x.response.grotesque}`)
+                            .addClass(`class-rating class-rating-small class-rating-${x.response.grotesque}`)
                             .html(`grotesque: ${x.response.grotesque}`)
                         )
                     }
@@ -94,8 +92,7 @@ $(document).ready(() => {
                         card.find(".class-film-word")
                         .after(
                             $("<div>")
-                            .addClass("class-rating class-rating-small")
-                            .addClass(`class-rating-${x.response.shock}`)
+                            .addClass(`class-rating class-rating-small class-rating-${x.response.shock}`)
                             .html(`shock: ${x.response.shock}`)
                         )
                     }
@@ -104,8 +101,7 @@ $(document).ready(() => {
                         card.find(".class-film-word")
                         .after(
                             $("<div>")
-                            .addClass("class-rating class-rating-small")
-                            .addClass(`class-rating-${x.response.suspense}`)
+                            .addClass(`class-rating class-rating-small class-rating-${x.response.suspense}`)
                             .html(`suspense: ${x.response.suspense}`)
                         )
                     }
@@ -132,13 +128,14 @@ $(document).ready(() => {
                     $("body").append(
                         $("<div>")
                         .attr("id", "id-lists-popup")
-                        .addClass("class-popup")
+                        .addClass("class-popup class-shadow-large")
                     );
 
                     Object.keys(c.response).forEach((list, index) => {
                         $("#id-lists-popup")
                         .append(
                             $("<button>")
+                            .addclass("class-shadow-small")
                             .on("click", () => {
                                 populate(c.response[list]);
                             })
