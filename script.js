@@ -71,7 +71,7 @@ $(document).ready(() => {
             )
             .append(
                 $("<div>")
-                .addClass("class-film-rating")
+                .addClass("class-rating")
             )
             .append(
                 $("<div>")
@@ -93,7 +93,7 @@ $(document).ready(() => {
                 $(`#id-film-${filmId} .class-film-title`)
                 .html(xhr.response.title);
 
-                $(`#id-film-${filmId} .class-film-rating`)
+                $(`#id-film-${filmId} .class-rating`)
                 .html(xhr.response.rating)
                 .addClass(`class-rating-${xhr.response.rating}`);
 
