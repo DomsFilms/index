@@ -17,8 +17,10 @@
 
 .class-theme-dark .class-film-unwatched .class-film-title {
     background-color: #202020;
+    transition: background-color 0.5s;
 }
 
 .class-theme-dark .class-film-unwatched .class-film-rating {
     background-color: #202020;
+    transition: background-color 0.5s;
 }
