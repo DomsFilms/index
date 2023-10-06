@@ -9,7 +9,8 @@
 .class-theme-light,
 .class-theme-light .class-film-unwatched .class-film-title,
 .class-theme-light .class-film-unwatched .class-rating,
-.class-theme-light .class-film-unwatched .class-film-review {
+.class-theme-light .class-film-unwatched .class-film-review,
+.class-theme-light .class-popup button {
     background-color: #d0d0d0;
     color: #000000f7;
     transition: background-color 0.5s, color 0.5s;
