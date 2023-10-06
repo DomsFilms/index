@@ -55,21 +55,22 @@ $(document).ready(() => {
         "trollhunter2010"
     ];
 
-    films.forEach((title, index) => {
+    films.forEach((filmId, index) => {
         // Create empty film data.
         let film = {
-            "title": title,
+            "id": filmId,
+            "title": filmId,
             "review": ""
         };
 
         // Hydrate with loaded data.
-        //film = filmDatas.filter(f => f.title == title)[0] || film;
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', `films/2023october/${title}.json`, true);
+        xhr.open('GET', `films/2023october/${filmId}.json`, true);
         xhr.responseType = 'json';
         xhr.onload = () => {
             let status = xhr.status;
             if (status === 200) {
+                xhr.response["id"] = filmId;
                 fn(xhr.response);
             } else {
                 fn(film);
@@ -78,14 +79,12 @@ $(document).ready(() => {
         xhr.send();
 
         let fn = (film) => {
-            let filmId = (film.title + film.year.toString()).replace(" ", "")
-
             // Add film card content.
             $("body")
             .append(
                 $("<div>")
                 .addClass("class-film-card")
-                .attr("id", `id-film-${filmId}`)
+                .attr("id", `id-film-${film.id}`)
                 .append(
                     $("<div>")
                     .addClass("class-film-title")
@@ -100,7 +99,7 @@ $(document).ready(() => {
 
             // Apply unwatched class.
             if (!film.review)
-            $(`#id-film-${filmId}`)
+            $(`#id-film-${film.id}`)
                 .addClass("class-film-unwatched");
         };
 
