@@ -16,10 +16,10 @@ $(document).ready(() => {
         "relic2020",
         "thedarkandthewicked2020",
         "alteredstates1980",
-        "salem'slotpart11979",
-        "salem'slotpart21979",
+        "salemslotpart11979",
+        "salemslotpart21979",
         "thetexaschainsawmassacre1974",
-        "thecabinetofdr.caligari1920",
+        "thecabinetofdrcaligari1920",
         "nope2022",
         "halloween1978",
         "thestrangers2008",
@@ -30,10 +30,10 @@ $(document).ready(() => {
         "eraserhead1977",
         "evolution2016",
         "afieldinengland2013",
-        "gonjiam:hauntedasylum2018",
+        "gonjiamhauntedasylum2018",
         "greenroom2015",
-        "grindhouse:planetterror2007",
-        "bramstoker'sdracula1992",
+        "grindhouseplanetterror2007",
+        "bramstokersdracula1992",
         "itfollows2014",
         "kwaidan1964",
         "lightsout2016",
@@ -41,11 +41,11 @@ $(document).ready(() => {
         "oxygen2021",
         "thephantomcarriage1921",
         "pieces1982",
-        "[rec]2007",
+        "rec2007",
         "run2020",
         "session92001",
         "shocker1989",
-        "thestrangers:preyatnight2018",
+        "thestrangerspreyatnight2018",
         "anamericanwerewolfinlondon1981",
         "berberiansoundstudio2012",
         "braindamage1988",
@@ -60,6 +60,7 @@ $(document).ready(() => {
         let film = {
             "id": filmId,
             "title": filmId,
+            "rating": "",
             "review": ""
         };
 
@@ -89,6 +90,11 @@ $(document).ready(() => {
                     $("<div>")
                     .addClass("class-film-title")
                     .html(film.title)
+                )
+                .append(
+                    $("<div>")
+                    .addClass("class-film-rating")
+                    .html(film.rating)
                 )
                 .append(
                     $("<div>")

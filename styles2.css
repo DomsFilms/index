@@ -23,7 +23,7 @@ body {
 
 #id-theme-toggle {
     border: 0.3em solid;
-    border-radius: 0.5em;
+    border-radius: 0.5rem;
     background-color: #00000000;
     font-family: 'Roboto', sans-serif;
     padding: 0.1em 0.4em 0.1em 0.4em;
@@ -47,7 +47,7 @@ body {
     width: 30em;
     height: auto;
     min-height: 10em;
-    border-radius: 0.8em;
+    border-radius: 0.8rem;
     padding: 1em;
 }
 
@@ -63,9 +63,21 @@ body {
 
 .class-film-title {
     font-size: 2em;
+    float: left;
+}
+
+.class-film-rating {
+    font-size: 2em;
+    float: right;
+    background-color: lightgreen;
+    border-radius: 0.2rem;
+    width: 1.2em;
+    height: 1.2em;
+    text-align: center;
 }
 
 .class-film-review {
+    display: inline-block;
     margin-top: 0.5em;
 }
 
