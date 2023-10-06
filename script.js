@@ -12,26 +12,26 @@ $(document).ready(() => {
         }
     });
 
-    // Set up the old lists button.
-    $("#id-lists-button").on("click", () => {
-        if ($(".class-popup").length > 0) {
-            $(".class-popup").remove();
-        } else {
-            $("body").append(
-                $("<div>")
-                .attr("id", "id-lists-popup")
-                .addClass("class-popup")
-                .html("test")
-            );
-        }
-    });
-
     // Load the catalogue of films.
     let c = new XMLHttpRequest();
     c.open('GET', "catalogue.json", true);
     c.responseType = 'json';
     c.onload = () => {
         if (c.status === 200) {
+
+            // Set up the old lists button.
+            $("#id-lists-button").on("click", () => {
+                if ($(".class-popup").length > 0) {
+                    $(".class-popup").remove();
+                } else {
+                    $("body").append(
+                        $("<div>")
+                        .attr("id", "id-lists-popup")
+                        .addClass("class-popup")
+                        .html("test")
+                    );
+                }
+            });
 
             c.response["2023 traditional spooky month"].forEach((filmId, index) => {
 

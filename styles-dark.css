@@ -1,7 +1,7 @@
 .class-theme-dark .class-film-card,
 .class-theme-dark #id-controls button {
     background-color: #020202;
-    color: #FFFFFFB0;
+    color: #ffffffB0;
     transition: background-color 0.5s, color 0.5s;
 }
 
@@ -10,12 +10,12 @@
 .class-theme-dark .class-film-unwatched .class-rating,
 .class-theme-dark .class-film-unwatched .class-film-review {
     background-color: #202020;
-    color: #FFFFFFB0;
+    color: #ffffffB0;
     transition: background-color 0.5s, color 0.5s;
 }
 
 .class-theme-dark .class-rating {
-    color: #000000F7 !important; /* Important because I do not have theme colours on ratings yet, and need to use the light font here. */
+    color: #000000f7 !important; /* Important because I do not have theme colours on ratings yet, and need to use the light font here. */
 }
 
 .class-theme-dark .class-film-summary {

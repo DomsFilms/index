@@ -1,7 +1,7 @@
 .class-theme-light .class-film-card,
 .class-theme-light #id-controls button {
     background-color: #e5e5e5;
-    color: #000000F7;
+    color: #000000f7;
     transition: background-color 0.5s, color 0.5s;
 }
 
@@ -10,7 +10,7 @@
 .class-theme-light .class-film-unwatched .class-rating,
 .class-theme-light .class-film-unwatched .class-film-review {
     background-color: #d0d0d0;
-    color: #000000F7;
+    color: #000000f7;
     transition: background-color 0.5s, color 0.5s;
 }
 
