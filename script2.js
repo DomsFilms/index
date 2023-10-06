@@ -13,57 +13,46 @@ $(document).ready(() => {
     });
 
     const films = [
-        "Relic 2020",
-        "The Dark and the Wicked 2020",
-        "Altered States 1980",
-        "Salem's Lot Part 1 1979",
-        "Salem's Lot Part 2 1979",
-        "The Texas Chain Saw Massacre 1974",
-        "The Cabinet of Dr. Caligari 1920",
-        "Nope 2022",
-        "Halloween 1978",
-        "The Strangers 2008",
-        "The Babysitter 2017",
-        "Crimes of the Future 2022",
-        "Deep Red 1975",
-        "Devil Fetus 1983",
-        "Eraserhead 1977",
-        "Evolution 2016",
-        "A Field in England 2013",
-        "Gonjiam:Haunted Asylum 2018",
-        "Green Room 2015",
-        "Grindhouse: Planet Terror 2007",
-        "Bram Stoker's Dracula 1992",
-        "It Follows 2014",
-        "Kwaidan 1964",
-        "Lights Out 2016",
-        "Below 2002",
-        "Oxygen 2021",
-        "The Phantom Carriage 1921",
-        "Pieces 1982",
-        "[REC] 2007",
-        "Run 2020",
-        "Session 9 2001",
-        "Shocker 1989",
-        "The Strangers: Prey at Night 2018",
-        "An American Werewolf in London 1981",
-        "Berberian Sound Studio 2012",
-        "Brain Damage 1988",
-        "Bliss 2019",
-        "The Love Witch 2016",
-        "Pearl 2022",
-        "Troll Hunter 2010"
-    ];
-
-    const filmDatas = [
-        {
-            "title": "film1",
-            "review": "a film"
-        },
-        {
-            "title": "film2",
-            "review": "a film 2"
-        }
+        "relic2020",
+        "thedarkandthewicked2020",
+        "alteredstates1980",
+        "salem'slotpart11979",
+        "salem'slotpart21979",
+        "thetexaschainsawmassacre1974",
+        "thecabinetofdr.caligari1920",
+        "nope2022",
+        "halloween1978",
+        "thestrangers2008",
+        "thebabysitter2017",
+        "crimesofthefuture2022",
+        "deepred1975",
+        "devilfetus1983",
+        "eraserhead1977",
+        "evolution2016",
+        "afieldinengland2013",
+        "gonjiam:hauntedasylum2018",
+        "greenroom2015",
+        "grindhouse:planetterror2007",
+        "bramstoker'sdracula1992",
+        "itfollows2014",
+        "kwaidan1964",
+        "lightsout2016",
+        "below2002",
+        "oxygen2021",
+        "thephantomcarriage1921",
+        "pieces1982",
+        "[rec]2007",
+        "run2020",
+        "session92001",
+        "shocker1989",
+        "thestrangers:preyatnight2018",
+        "anamericanwerewolfinlondon1981",
+        "berberiansoundstudio2012",
+        "braindamage1988",
+        "bliss2019",
+        "thelovewitch2016",
+        "pearl2022",
+        "trollhunter2010"
     ];
 
     films.forEach((title, index) => {
@@ -89,12 +78,14 @@ $(document).ready(() => {
         xhr.send();
 
         let fn = (film) => {
+            let filmId = (film.title + film.year.toString()).replace(" ", "")
+
             // Add film card content.
             $("body")
             .append(
                 $("<div>")
                 .addClass("class-film-card")
-                .attr("id", `id-film-${film.title}`)
+                .attr("id", `id-film-${filmId}`)
                 .append(
                     $("<div>")
                     .addClass("class-film-title")
@@ -109,7 +100,7 @@ $(document).ready(() => {
 
             // Apply unwatched class.
             if (!film.review)
-            $(`#id-film-${film.title}`)
+            $(`#id-film-${filmId}`)
                 .addClass("class-film-unwatched");
         };
 
