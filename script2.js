@@ -44,35 +44,38 @@ $(document).ready(() => {
         xhr.onload = () => {
             let status = xhr.status;
             if (status === 200) {
-                film = filmDatas.filter(f => f.title == title)[0] || film;
+                fn(filmDatas.filter(f => f.title == title)[0]);
             } else {
-                film = film;
+                fn(film);
             }
         };
         xhr.send();
 
-        // Add film card content.
-        $("body")
-        .append(
-            $("<div>")
-            .addClass("class-film-card")
-            .attr("id", `id-film-${title}`)
+        let fn = (film) => {
+            // Add film card content.
+            $("body")
             .append(
                 $("<div>")
-                .addClass("class-film-title")
-                .html(film.title)
-            )
-            .append(
-                $("<div>")
-                .addClass("class-film-review")
-                .html(film.review)
-            )
-        );
+                .addClass("class-film-card")
+                .attr("id", `id-film-${film.title}`)
+                .append(
+                    $("<div>")
+                    .addClass("class-film-title")
+                    .html(film.title)
+                )
+                .append(
+                    $("<div>")
+                    .addClass("class-film-review")
+                    .html(film.review)
+                )
+            );
 
-        // Apply unwatched class.
-        if (!film.review)
-        $(`#id-film-${title}`)
-            .addClass("class-film-unwatched");
+            // Apply unwatched class.
+            if (!film.review)
+            $(`#id-film-${film.title}`)
+                .addClass("class-film-unwatched");
+        };
+
         return;
     });
 });
