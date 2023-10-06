@@ -60,7 +60,7 @@ $(document).ready(() => {
 
             // Load film data.
             let x = new XMLHttpRequest();
-            x.open('GET', `films/${list.id}/${film}.json`, true);
+            x.open('GET', `films/${list.id}/${film}.json?v=${Math.round(Math.random()*10000)}`, true);
             x.responseType = 'json';
             x.onload = () => {
                 let card = $(`#id-film-${film}`);
@@ -131,7 +131,7 @@ $(document).ready(() => {
 
     // Load the catalogue of films.
     let c = new XMLHttpRequest();
-    c.open('GET', "catalogue.json", true);
+    c.open('GET', `catalogue.json?v=${Math.round(Math.random()*10000)}`, true);
     c.responseType = 'json';
     c.onload = () => {
         if (c.status === 200) {
