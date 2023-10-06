@@ -134,7 +134,7 @@ $(document).ready(() => {
                         .addClass("class-popup")
                     );
 
-                    Object.keys(c.respose).forEach((list, index) => {
+                    Object.keys(c.response).forEach((list, index) => {
                         $("#id-lists-popup")
                         .append(
                             $("<button>")
