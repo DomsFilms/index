@@ -9,14 +9,31 @@ body {
     gap: 1rem 1rem;
 }
 
-#id-theme-toggle {
+#id-controls {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+#id-controls button {
     border: none;
     border-radius: 0.5rem;
     font-family: 'Roboto', sans-serif;
     padding: 0.3rem 0.4rem 0.3rem 0.4rem;
-    position: absolute;
-    top: 0.5rem;
-    right: 1rem;
+}
+
+.class-popup {
+    border-radius: 0.8rem;
+    padding: 1rem;
+    position: fixed;
+    z-index: 999;
+    background-color: white;
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .class-film-card {

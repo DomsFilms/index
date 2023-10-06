@@ -12,49 +12,65 @@ $(document).ready(() => {
         }
     });
 
-    const films = [
-        "relic2020",
-        "thedarkandthewicked2020",
-        "alteredstates1980",
-        "salemslotpart11979",
-        "salemslotpart21979",
-        "thetexaschainsawmassacre1974",
-        "thecabinetofdrcaligari1920",
-        "nope2022",
-        "halloween1978",
-        "thestrangers2008",
-        "theemptyman2020",
-        "thebabysitter2017",
-        "crimesofthefuture2022",
-        "deepred1975",
-        "devilfetus1983",
-        "eraserhead1977",
-        "evolution2016",
-        "afieldinengland2013",
-        "gonjiamhauntedasylum2018",
-        "greenroom2015",
-        "grindhouseplanetterror2007",
-        "bramstokersdracula1992",
-        "itfollows2014",
-        "kwaidan1964",
-        "lightsout2016",
-        "below2002",
-        "oxygen2021",
-        "thephantomcarriage1921",
-        "pieces1982",
-        "rec2007",
-        "run2020",
-        "session92001",
-        "shocker1989",
-        "thestrangerspreyatnight2018",
-        "anamericanwerewolfinlondon1981",
-        "berberiansoundstudio2012",
-        "braindamage1988",
-        "bliss2019",
-        "thelovewitch2016",
-        "pearl2022",
-        "trollhunter2010"
-    ];
+    // Set up the old lists button.
+    $("#id-lists-button").on("click", () => {
+        if ($(".class-popup").length > 0) {
+            $(".class-popup").remove();
+        }
+        $("body").append(
+            $("<div>")
+            .attr("id", "id-lists-popup")
+            .addClass("class-popup")
+            .html("test")
+        );
+    });
+
+    const films = {
+        "2023 traditional spooky month": [
+            "relic2020",
+            "thedarkandthewicked2020",
+            "alteredstates1980",
+            "salemslotpart11979",
+            "salemslotpart21979",
+            "thetexaschainsawmassacre1974",
+            "thecabinetofdrcaligari1920",
+            "nope2022",
+            "halloween1978",
+            "thestrangers2008",
+            "theemptyman2020",
+            "thebabysitter2017",
+            "crimesofthefuture2022",
+            "deepred1975",
+            "devilfetus1983",
+            "eraserhead1977",
+            "evolution2016",
+            "afieldinengland2013",
+            "gonjiamhauntedasylum2018",
+            "greenroom2015",
+            "grindhouseplanetterror2007",
+            "bramstokersdracula1992",
+            "itfollows2014",
+            "kwaidan1964",
+            "lightsout2016",
+            "below2002",
+            "oxygen2021",
+            "thephantomcarriage1921",
+            "pieces1982",
+            "rec2007",
+            "run2020",
+            "session92001",
+            "shocker1989",
+            "thestrangerspreyatnight2018",
+            "anamericanwerewolfinlondon1981",
+            "berberiansoundstudio2012",
+            "braindamage1988",
+            "bliss2019",
+            "thelovewitch2016",
+            "pearl2022",
+            "trollhunter2010"
+        ],
+        "2023 action romp": []
+    };
 
     films.forEach((filmId, index) => {
 
@@ -96,14 +112,14 @@ $(document).ready(() => {
                 .append(
                     $("<div>")
                     .addClass("class-film-summary")
-                    .html(`Released in ${xhr.response.year}. Watched ${xhr.response.seen ? "" : "for the first time "}on ${xhr.response.date}`)
+                    .html(`released: ${xhr.response.year}, watched: ${xhr.response.date} ${xhr.response.seen ? "(seen before)" : "(first time)"}`)
                 )
                 .append($("<div>")
                     .addClass("class-film-bar")
                     .append(
                         $("<div>")
                         .addClass("class-film-word")
-                        .html(xhr.response.word)
+                        .html(xhr.response.word.toLowerCase())
                     )
                 );
                 
