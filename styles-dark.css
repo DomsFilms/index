@@ -1,5 +1,6 @@
 .class-theme-dark .class-film-card,
-.class-theme-dark #id-controls button {
+.class-theme-dark #id-controls button,
+.class-theme-dark .class-popup {
     background-color: #020202;
     color: #ffffffB0;
     transition: background-color 0.5s, color 0.5s;
@@ -20,4 +21,5 @@
 
 .class-theme-dark .class-film-summary {
     color: #ffffff7e;
+    transition: color 0.5s;
 }

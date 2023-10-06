@@ -15,6 +15,7 @@ $(document).ready(() => {
     });
 
     let populate = (list) => {
+        $(".class-popup").remove();
         $(".class-film-card").remove();
 
         list.films.forEach((film, index) => {

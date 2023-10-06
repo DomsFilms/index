@@ -1,5 +1,6 @@
 .class-theme-light .class-film-card,
-.class-theme-light #id-controls button {
+.class-theme-light #id-controls button,
+.class-theme-light .class-popup {
     background-color: #e5e5e5;
     color: #000000f7;
     transition: background-color 0.5s, color 0.5s;
@@ -16,4 +17,5 @@
 
 .class-theme-light .class-film-summary {
     color: #0000007e;
+    transition: color 0.5s;
 }

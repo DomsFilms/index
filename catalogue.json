@@ -1,6 +1,6 @@
 {
     "2023 spooky month": {
-        "id": "2023-october",
+        "id": "2023-10-horror",
         "films": [
             "relic2020",
             "thedarkandthewicked2020",
@@ -45,5 +45,8 @@
             "trollhunter2010"
         ]
     },
-    "2023 action romp": []
+    "2023 action romp": {
+        "id": "2023-07-action",
+        "films": []
+    }
 }
