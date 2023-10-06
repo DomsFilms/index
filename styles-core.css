@@ -102,3 +102,8 @@ body {
     float: left;
     font-style: italic;
 }
+
+.class-film-summary {
+    font-size: 0.7em;
+    color: #0000007e;
+}

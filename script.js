@@ -91,8 +91,13 @@ $(document).ready(() => {
                 .removeClass("class-film-unwatched")
                 .append(
                     $("<div>")
+                    .addClass("class-film-summary")
+                    .html(`Watched ${xhr.response.seen ? "" : "for the first time "}on ${xhr.response.date}`)
+                )
+                .append(
+                    $("<div>")
                     .addClass("class-film-word")
-                    .html(`In one word: ${xhr.response.word}`)
+                    .html(xhr.response.word)
                 );
                 
                 $(`#id-film-${filmId} .class-film-title`)
