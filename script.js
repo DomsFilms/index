@@ -72,7 +72,7 @@ $(document).ready(() => {
         "2023 action romp": []
     };
 
-    films.forEach((filmId, index) => {
+    films["2023 traditional spooky month"].forEach((filmId, index) => {
 
         // Add empty content.
         $("body")
