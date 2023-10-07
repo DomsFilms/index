@@ -78,7 +78,7 @@ $(document).ready(() => {
                             .append(
                                 $("<div>")
                                     .addClass("class-film-word")
-                                    .html(x.response.word.toLowerCase())
+                                    .html((x.response.word || "").toLowerCase())
                             )
                         );
 
