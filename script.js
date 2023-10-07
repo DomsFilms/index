@@ -99,7 +99,11 @@ $(document).ready(() => {
                         "suspense",
                         "believable",
                         "breathless",
-                        "bombast"
+                        "bombast",
+                        "hardness",
+                        "intrigue",
+                        "worldbuilding",
+                        "expected"
                     ];
 
                     properties.forEach((property, index) => {
