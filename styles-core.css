@@ -61,18 +61,15 @@ body {
 }
 
 /* Some mobile specific bodges. */
-@media (max-width: 1400px) {
+@media (max-width: 600px) {
     html {
         font-size: 22pt !important;
     }
-    .class-film-card {
-        width: 100% !important;
-    }
-}
-
-@media (max-width: 600px) {
     .class-film-title {
         font-weight: bold !important;
+    }
+    .class-film-card {
+        width: 100% !important;
     }
 }
 
