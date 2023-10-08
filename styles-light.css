@@ -21,3 +21,7 @@
     color: #0000007e;
     transition: color 0.5s;
 }
+
+.class-theme-dark .class-popup-hr {
+    border-bottom: #d0d0d0 1px solid;
+}

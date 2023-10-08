@@ -146,6 +146,14 @@ $(document).ready(() => {
                     );
 
                     Object.keys(c.response).forEach((list, index) => {
+                        if (list.indexOf("spooky") < 0 && $(".class-popup-hr").length == 0) {
+                            $("#id-lists-popup")
+                            .append(
+                                $("<div>")
+                                .addClass("class-popup-hr")
+                            );
+                        }
+
                         $("#id-lists-popup")
                             .append(
                                 $("<button>")

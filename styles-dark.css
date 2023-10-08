@@ -26,3 +26,7 @@
     color: #ffffff7e;
     transition: color 0.5s;
 }
+
+.class-theme-dark .class-popup-hr {
+    border-bottom: #202020 1px solid;
+}
