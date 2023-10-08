@@ -28,5 +28,6 @@
 }
 
 .class-theme-dark .class-popup-hr {
-    border-bottom: #202020 1px solid;
+    border-bottom: #202020 0.1rem solid;
+    transition: border-bottom 0.5s;
 }
