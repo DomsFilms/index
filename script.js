@@ -149,7 +149,7 @@ $(document).ready(() => {
                         $("#id-lists-popup")
                             .append(
                                 $("<button>")
-                                    .addClass("class-shadow-small")
+                                    .addClass("class-shadow-small class-font-small")
                                     .on("click", () => {
                                         populate(c.response[list]);
                                     })

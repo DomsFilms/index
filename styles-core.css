@@ -69,7 +69,7 @@ body {
         font-weight: bold !important;
     }
     .class-font-small {
-        font-size: 2vw;
+        font-size: 2vw !important;
     }
     .class-film-card {
         width: 100% !important;
