@@ -45,7 +45,8 @@ body {
     border-radius: 0.8rem;
     padding: 1rem;
     position: fixed;
-    top: 10vh;
+    top: 4rem;
+    right: 3em;
     z-index: 999;
     width: 15rem;
     display: flex;
