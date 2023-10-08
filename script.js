@@ -44,12 +44,12 @@ $(document).ready(() => {
                             .addClass("class-film-bar")
                             .append(
                                 $("<div>")
-                                    .addClass("class-film-title")
+                                    .addClass("class-film-title class-font-large")
                                     .html(film)
                             )
                             .append(
                                 $("<div>")
-                                    .addClass("class-rating")
+                                    .addClass("class-rating class-font-large")
                             )
                         )
                         .append(
