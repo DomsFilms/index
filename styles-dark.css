@@ -8,7 +8,8 @@
 
 .class-theme-dark,
 .class-theme-dark .class-film-unwatched .class-film-title,
-.class-theme-dark .class-film-unwatched .class-rating,
+.class-theme-dark .class-film-unwatched .class-rating-large,
+.class-theme-dark .class-film-unwatched .class-rating-small,
 .class-theme-dark .class-film-unwatched .class-film-review,
 .class-theme-dark .class-popup button {
     background-color: #202020;
@@ -16,7 +17,8 @@
     transition: background-color 0.5s, color 0.5s;
 }
 
-.class-theme-dark .class-rating {
+.class-theme-dark .class-rating-large,
+.class-theme-dark .class-rating-small {
     color: #000000f7 !important; /* Important because I do not have theme colours on ratings yet, and need to use the light font here. */
 }
 

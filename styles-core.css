@@ -25,6 +25,10 @@ body {
     font-size: 2rem;
 }
 
+.class-font-small {
+    font-size: 1.5vw;
+}
+
 #id-controls {
     width: 100%;
     display: flex;
@@ -88,16 +92,19 @@ body {
     color: #00000000 !important; /* Important so that the theme colours don't override it. */
 }
 
-.class-rating {
+.class-rating-large {
     border-radius: 0.2rem;
     width: 1.2em;
     height: 1.2em;
     text-align: center;
 }
 
-.class-rating.class-rating-small {
+.class-rating-small {
+    border-radius: 0.2rem;
     width: auto;
+    height: 1.2em;
     padding: 0 0.3rem 0 0.3rem;
+    text-align: center;
 }
 
 .class-rating-0 {

@@ -49,7 +49,7 @@ $(document).ready(() => {
                             )
                             .append(
                                 $("<div>")
-                                    .addClass("class-rating class-font-large")
+                                    .addClass("class-rating-large class-font-large")
                             )
                         )
                         .append(
@@ -70,14 +70,14 @@ $(document).ready(() => {
                     card.removeClass("class-film-unwatched")
                         .append(
                             $("<div>")
-                                .addClass("class-film-summary")
+                                .addClass("class-film-summary class-font-small")
                                 .html(`released: ${x.response.year}, watched: ${x.response.date} ${x.response.seen ? "(seen before)" : "(first time)"}`)
                         )
                         .append($("<div>")
                             .addClass("class-film-bar")
                             .append(
                                 $("<div>")
-                                    .addClass("class-film-word")
+                                    .addClass("class-film-word class-font-small")
                                     .html((x.response.word || "").toLowerCase())
                             )
                         );
@@ -85,7 +85,7 @@ $(document).ready(() => {
                     card.find(".class-film-title")
                         .html(x.response.title);
 
-                    card.find(".class-rating")
+                    card.find(".class-rating-large")
                         .html(x.response.rating)
                         .addClass(`class-rating-${x.response.rating}`);
 
@@ -111,7 +111,7 @@ $(document).ready(() => {
                             card.find(".class-film-word")
                                 .after(
                                     $("<div>")
-                                        .addClass(`class-rating class-rating-small class-rating-${x.response[property]}`)
+                                        .addClass(`class-rating-small class-rating-${x.response[property]} class-font-small`)
                                         .html(`${property}: ${x.response[property]}`)
                                 )
                         }
