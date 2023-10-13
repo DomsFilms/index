@@ -36,10 +36,12 @@ $(document).ready(() => {
         $("body")
             .append(
                 $("<div>")
-                    .attr("id", "id-description")
                     .addClass("class-body-text")
-                    .html(list.description)
-            );
+                    .append(
+                        $("<div>")
+                            .attr("id", "id-description")
+                            .html(list.description)
+                    ));
 
         list.films.forEach((film, index) => {
 
@@ -140,10 +142,12 @@ $(document).ready(() => {
                     $("body")
                         .append(
                             $("<div>")
-                                .attr("id", "id-average")
                                 .addClass("class-body-text")
-                                .html(`average: ${(ratingTotal / ratings.length).toFixed(1)}`)
-                        );
+                                .append(
+                                    $("<div>")
+                                        .attr("id", "id-average")
+                                        .html(`average: ${(ratingTotal / ratings.length).toFixed(1)}`)
+                                ));
                 }
             };
             x.send();

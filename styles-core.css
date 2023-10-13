@@ -56,6 +56,12 @@ body {
 
 .class-body-text {
     width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#id-description {
+    max-width: 1200px;
 }
 
 .class-film-card {
