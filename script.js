@@ -37,6 +37,7 @@ $(document).ready(() => {
                 .append(
                     $("<div>")
                     .attr("id", "id-description")
+                    .addClass("class-font-small")
                     .html(list.description)
                 );
 
