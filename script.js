@@ -136,16 +136,16 @@ $(document).ready(() => {
         });
 
         let ratingTotal = 0;
-        let ratings = $(":not(.class-film-unwatched) .class-film-bar > .class-rating-large");
-        ratings.forEach((rating, index) => {
-            ratingTotal += rating.html();
+        let ratings = $(":not(.class-film-unwatched) > .class-film-bar > .class-rating-large");
+        ratings.each((index, rating) => {
+            ratingTotal += Number(rating.innerHTML);
         });
 
         $("body")
                 .append(
                     $("<div>")
                     .attr("id", "id-average")
-                    .html(`average: ${ratingTotal / ratings.length}`)
+                    .html(`average: ${(ratingTotal / ratings.length).toFixed(1)}`)
                 );
     };
 
