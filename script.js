@@ -31,13 +31,13 @@ $(document).ready(() => {
     let populate = (list) => {
         $(".class-popup").remove();
         $("#id-description").remove();
+        $("#id-average").remove();
         $(".class-film-card").remove();
 
         $("body")
                 .append(
                     $("<div>")
                     .attr("id", "id-description")
-                    .addClass("class-font-small")
                     .html(list.description)
                 );
 
@@ -134,6 +134,19 @@ $(document).ready(() => {
 
             return;
         });
+
+        let ratingTotal = 0;
+        let ratings = $(":not(.class-film-unwatched) .class-film-bar > .class-rating-large");
+        ratings.forEach((rating, index) => {
+            ratingTotal += rating.html();
+        });
+
+        $("body")
+                .append(
+                    $("<div>")
+                    .attr("id", "id-average")
+                    .html(`average: ${ratingTotal / ratings.length}`)
+                );
     };
 
     // Load the catalogue of films.

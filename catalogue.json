@@ -1,7 +1,7 @@
 {
     "2023 spooky month": {
         "id": "2023-10-horror",
-        "description": "It's October again so I'm watching as many horror movies as possible and giving them ratings from 0 to 10 for how much I like them, and how much I enjoy their three fundamental traits of horror: suspense, shock and grotesque. I watch at least one horror movie per day for all of October, but this year I started a few days early because I was excited.",
+        "description": "It's October again so I'm watching as many horror movies as possible and giving them ratings from 0 to 10, I also rate their three fundamental traits of horror: suspense, shock and grotesque.",
         "films": [
             "relic2020",
             "thedarkandthewicked2020",
@@ -52,7 +52,7 @@
     },
     "2022 spooky month": {
         "id": "2022-07-horror",
-        "description": "I had to do it in July instead of October this year, but the same rules apply. Suspense means a film instills dread or is grimly mysterious. Shock means the film has fun and effective jump scares. Grotesque means the film disgusts with striking imagery. I ended up with an average rating 6.6.",
+        "description": "<s>October</s> July spooky challenge. Suspense means a film instills dread or is grimly mysterious. Shock means the film has fun and effective jump scares. Grotesque means the film disgusts with striking imagery.",
         "films": [
             "theneondemon2016",
             "traintobusan2016",
@@ -90,7 +90,7 @@
     },
     "2021 spooky month": {
         "id": "2021-10-horror",
-        "description": "While recovering from an injury I had to spend a lot of time lying down, so I decided to challenge myself to watch as many horror films as possible in October. I subjectively rated them from 1 to 10 (later allowing 0), and also rated their suspense, shock and grotesuqe traits; the fundamental elements of horror. I ended up with an average rating 6.9.",
+        "description": "I decided to challenge myself to watch as many horror films as possible in October, rating them from 0 to 10, and also rating them in terms of suspense, shock and grotesuqe; the fundamental traits of horror.",
         "films": [
             "dragmetohell2009",
             "alien1979",
@@ -147,7 +147,7 @@
     },
     "2023 action romp": {
         "id": "2023-07-action",
-        "description": "Binging action movies, mainly because I heard the Mission: Impossible series would get better if I saw it all. I ended up with an average rating 6.7, which is decent. Action movies are hard to make with a low budget so there aren't that many completely amateurish ones.",
+        "description": "Binging action movies, mainly because I heard the Mission: Impossible series would get better if I saw it all. It's not a genre I am too familiar with.",
         "films": [
             "missionimpossible1996",
             "oldboy2003",
