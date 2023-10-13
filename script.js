@@ -35,11 +35,11 @@ $(document).ready(() => {
         $(".class-film-card").remove();
 
         $("body")
-                .append(
-                    $("<div>")
+            .append(
+                $("<div>")
                     .attr("id", "id-description")
                     .html(list.description)
-                );
+            );
 
         list.films.forEach((film, index) => {
 
@@ -69,7 +69,7 @@ $(document).ready(() => {
 
             // Load film data.
             let x = new XMLHttpRequest();
-            x.open('GET', `films/${list.id}/${film}.json?v=${Math.round(Math.random()*10000)}`, true);
+            x.open('GET', `films/${list.id}/${film}.json?v=${Math.round(Math.random() * 10000)}`, true);
             x.responseType = 'json';
             x.onload = () => {
                 let card = $(`#id-film-${film}`);
@@ -129,29 +129,31 @@ $(document).ready(() => {
                     // If there is no review, move it to the end of the list.
                     $("body").append(card);
                 }
+
+                // If the list is now complete, show the average.
+                if (list.films.length == $(".class-film-card:not(.class-film-unwatched)").length) {
+                    let ratingTotal = 0;
+                    let ratings = $(":not(.class-film-unwatched) > .class-film-bar > .class-rating-large");
+                    ratings.each((index, rating) => {
+                        ratingTotal += Number(rating.innerHTML);
+                    });
+                    $("body")
+                        .append(
+                            $("<div>")
+                                .attr("id", "id-average")
+                                .html(`average: ${(ratingTotal / ratings.length).toFixed(1)}`)
+                        );
+                }
             };
             x.send();
 
             return;
         });
-
-        let ratingTotal = 0;
-        let ratings = $(":not(.class-film-unwatched) > .class-film-bar > .class-rating-large");
-        ratings.each((index, rating) => {
-            ratingTotal += Number(rating.innerHTML);
-        });
-
-        $("body")
-                .append(
-                    $("<div>")
-                    .attr("id", "id-average")
-                    .html(`average: ${(ratingTotal / ratings.length).toFixed(1)}`)
-                );
     };
 
     // Load the catalogue of films.
     let c = new XMLHttpRequest();
-    c.open('GET', `catalogue.json?v=${Math.round(Math.random()*10000)}`, true);
+    c.open('GET', `catalogue.json?v=${Math.round(Math.random() * 10000)}`, true);
     c.responseType = 'json';
     c.onload = () => {
         if (c.status === 200) {
@@ -170,10 +172,10 @@ $(document).ready(() => {
                     Object.keys(c.response).forEach((list, index) => {
                         if (list.indexOf("spooky") < 0 && $(".class-popup-hr").length == 0) {
                             $("#id-lists-popup")
-                            .append(
-                                $("<div>")
-                                .addClass("class-popup-hr")
-                            );
+                                .append(
+                                    $("<div>")
+                                        .addClass("class-popup-hr")
+                                );
                         }
 
                         $("#id-lists-popup")
