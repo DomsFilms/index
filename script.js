@@ -37,7 +37,7 @@ $(document).ready(() => {
             .append(
                 $("<div>")
                     .attr("id", "id-description")
-                    .addClass("class-body=text")
+                    .addClass("class-body-text")
                     .html(list.description)
             );
 
@@ -141,7 +141,7 @@ $(document).ready(() => {
                         .append(
                             $("<div>")
                                 .attr("id", "id-average")
-                                .addClass("class-body=text")
+                                .addClass("class-body-text")
                                 .html(`average: ${(ratingTotal / ratings.length).toFixed(1)}`)
                         );
                 }
