@@ -30,14 +30,14 @@ $(document).ready(() => {
 
     let populate = (list) => {
         $(".class-popup").remove();
-        $("#id-description").remove();
-        $("#id-average").remove();
+        $(".class-body-text").remove();
         $(".class-film-card").remove();
 
         $("body")
             .append(
                 $("<div>")
                     .attr("id", "id-description")
+                    .addClass("class-body=text")
                     .html(list.description)
             );
 
@@ -141,6 +141,7 @@ $(document).ready(() => {
                         .append(
                             $("<div>")
                                 .attr("id", "id-average")
+                                .addClass("class-body=text")
                                 .html(`average: ${(ratingTotal / ratings.length).toFixed(1)}`)
                         );
                 }

@@ -54,6 +54,10 @@ body {
     gap: 1rem 1rem;
 }
 
+.class-body-text {
+    width: 100%;
+}
+
 .class-film-card {
     width: 30rem;
     height: auto;
