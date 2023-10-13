@@ -30,11 +30,13 @@ $(document).ready(() => {
 
     let populate = (list) => {
         $(".class-popup").remove();
+        $("#id-description").remove();
         $(".class-film-card").remove();
 
         $("body")
                 .append(
                     $("<div>")
+                    .attr("id", "id-description")
                     .html(list.description)
                 );
 
