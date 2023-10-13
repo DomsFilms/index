@@ -32,6 +32,12 @@ $(document).ready(() => {
         $(".class-popup").remove();
         $(".class-film-card").remove();
 
+        $("body")
+                .append(
+                    $("<div>")
+                    .html(list.description)
+                );
+
         list.films.forEach((film, index) => {
 
             // Add empty content.
