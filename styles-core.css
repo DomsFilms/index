@@ -104,7 +104,7 @@ body {
 
 .class-rating-large {
     border-radius: 0.2rem;
-    width: 1.2em;
+    min-width: 1.2em;
     height: 1.2em;
     text-align: center;
 }
@@ -149,6 +149,7 @@ body {
 }
 .class-rating-10 {
     background-color: #B7E1CD;
+    min-width: 1.4em;
 }
 
 .class-film-review {
