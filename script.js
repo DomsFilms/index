@@ -18,6 +18,8 @@ $(document).ready(() => {
 
     setTheme(localStorage.getItem("theme") || "light");
 
+    let random = () => "2023";//Math.round(Math.random() * 10000).toString();
+
     // Set up the theme toggle button.
     $("#id-theme-toggle").on("click", () => {
         let body = $("body");
@@ -71,7 +73,7 @@ $(document).ready(() => {
 
             // Load film data.
             let x = new XMLHttpRequest();
-            x.open('GET', `films/${list.id}/${film}.json?v=${Math.round(Math.random() * 10000)}`, true);
+            x.open('GET', `films/${list.id}/${film}.json?v=${random()}`, true);
             x.responseType = 'json';
             x.onload = () => {
                 let card = $(`#id-film-${film}`);
@@ -158,7 +160,7 @@ $(document).ready(() => {
 
     // Load the catalogue of films.
     let c = new XMLHttpRequest();
-    c.open('GET', `catalogue.json?v=${Math.round(Math.random() * 10000)}`, true);
+    c.open('GET', `catalogue.json?v=${random()}`, true);
     c.responseType = 'json';
     c.onload = () => {
         if (c.status === 200) {
