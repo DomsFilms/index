@@ -1,4 +1,13 @@
 {
+    "2024 ad hoc spooky stuff": {
+        "id": "2024-01-horror",
+        "description": "I feel an urge to review random films throughout the year, and slowly build this list. I may still do the usual October marathon.",
+        "films": [
+            "posessor2020",
+            "bloodpunch2014",
+            "thebeyond1981"
+        ]
+    },
     "2023 spooky month": {
         "id": "2023-10-horror",
         "description": "For the third year running I've watched at least one horror movie per day in October and given them ratings from 0 to 10. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
