@@ -1,6 +1,6 @@
 $(document).ready(() => {
 
-    let defaultList = "2023 spooky month";
+    let defaultList = "2024 ad hoc spooky stuff";
 
     setTheme = (theme) => {
         localStorage.setItem("theme", theme);
