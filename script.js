@@ -109,6 +109,10 @@ $(document).ready(() => {
         $(".class-body-text").remove();
         $(".class-film-card").remove();
 
+        const description = list != null
+            ? catalog[list].description
+            : "All films on this site in alphabetical order, in case you want to search for one.";
+
         $("body")
             .append(
                 $("<div>")
@@ -116,12 +120,8 @@ $(document).ready(() => {
                     .append(
                         $("<div>")
                             .attr("id", "id-description")
-                            .html(list.description)
+                            .html(description)
                     ));
-
-        const description = list != null
-            ? catalog[list].description
-            : "All films on this site in alphabetical order, in case you want to search for one.";
 
         let films = [];
         Object.keys(catalog).forEach((listName, index) => {
