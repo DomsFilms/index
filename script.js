@@ -87,7 +87,7 @@ $(document).ready(() => {
                                 $("<button>")
                                     .addClass("class-shadow-small class-font-small")
                                     .on("click", () => {
-                                        populate(request.response[list]);
+                                        populate(completeList);
                                     })
                                     .html("all films A-Z")
                             );
