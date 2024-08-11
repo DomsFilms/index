@@ -22,7 +22,8 @@
     color: #000000f7 !important; /* Important because I do not have theme colours on ratings yet, and need to use the light font here. */
 }
 
-.class-theme-dark .class-film-summary {
+.class-theme-dark .class-film-summary,
+.class-theme-dark summary {
     color: #ffffff7e;
     transition: color 0.5s;
 }

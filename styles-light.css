@@ -17,7 +17,8 @@
     transition: background-color 0.5s, color 0.5s;
 }
 
-.class-theme-light .class-film-summary {
+.class-theme-light .class-film-summary,
+.class-theme-light summary {
     color: #0000007e;
     transition: color 0.5s;
 }
