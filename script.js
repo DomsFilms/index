@@ -2,7 +2,8 @@ $(document).ready(() => {
 
     const defaultList = "2024 ad hoc spooky stuff";
     const date = new Date();
-    const cacheVersion = date.getFullYear().toString() + date.getMonth.toString();
+    const cacheVersion = date.getFullYear().toString() + date.getMonth().toString();
+    let catalog = null;
 
     const setTheme = (theme) => {
         localStorage.setItem("theme", theme);
@@ -37,6 +38,7 @@ $(document).ready(() => {
         request.responseType = 'json';
         request.onload = () => {
             if (request.status === 200) {
+                catalog = request.response;
 
                 // Set up the old lists button.
                 $("#id-lists-button").on("click", () => {
@@ -56,11 +58,11 @@ $(document).ready(() => {
                             "films": []
                         };
 
-                        Object.keys(request.response).forEach((list, index) => {
-                            completeList["properties"] = completeList["properties"].concat(request.response[list]["properties"]);
-                            completeList["films"] = completeList["films"].concat(request.response[list]["films"]);
+                        Object.keys(catalog).forEach((listName, index) => {
+                            //completeList["properties"] = completeList["properties"].concat(catalog[list]["properties"]);
+                            //completeList["films"] = completeList["films"].concat(catalog[list]["films"]);
 
-                            if (list.indexOf("spooky") < 0 && $(".class-popup-hr").length == 0) {
+                            if (listName.indexOf("spooky") < 0 && $(".class-popup-hr").length == 0) {
                                 $("#id-lists-popup")
                                     .append(
                                         $("<div>")
@@ -73,9 +75,9 @@ $(document).ready(() => {
                                     $("<button>")
                                         .addClass("class-shadow-small class-font-small")
                                         .on("click", () => {
-                                            populate(request.response[list]);
+                                            populate(listName);
                                         })
-                                        .html(list)
+                                        .html(listName)
                                 );
                         });
 
@@ -87,14 +89,14 @@ $(document).ready(() => {
                                 $("<button>")
                                     .addClass("class-shadow-small class-font-small")
                                     .on("click", () => {
-                                        populate(completeList);
+                                        populate(null);
                                     })
                                     .html("all films A-Z")
                             );
                     }
                 });
 
-                populate(request.response[defaultList]);
+                populate(defaultList);
             }
         };
 
@@ -117,20 +119,37 @@ $(document).ready(() => {
                             .html(list.description)
                     ));
 
-        list.films.forEach((film, index) => {
+        const description = list != null
+            ? catalog[list].description
+            : "All films on this site in alphabetical order, in case you want to search for one.";
+
+        let films = [];
+        Object.keys(catalog).forEach((listName, index) => {
+            if (list == null || list == listName) {
+                films = films.concat(catalog[listName].films.map(film => {
+                    return {
+                        "list": catalog[listName].id,
+                        "properties": catalog[listName].properties,
+                        "id": film
+                    };
+                }));
+            }
+        });
+
+        films.forEach((film, index) => {
 
             // Add empty content.
             $("body")
                 .append(
                     $("<div>")
                         .addClass("class-film-card class-film-unwatched class-shadow-small")
-                        .attr("id", `id-film-${film}`)
+                        .attr("id", `id-film-${film.id}`)
                         .append($("<div>")
                             .addClass("class-film-bar")
                             .append(
                                 $("<div>")
                                     .addClass("class-film-title class-font-large")
-                                    .html(film)
+                                    .html(film.id)
                             )
                             .append(
                                 $("<div>")
@@ -145,10 +164,10 @@ $(document).ready(() => {
 
             // Load film data.
             const request = new XMLHttpRequest();
-            request.open('GET', `films/${list.id}/${film}.json?v=${cacheVersion}`, true);
+            request.open('GET', `films/${film.list}/${film.id}.json?v=${cacheVersion}`, true);
             request.responseType = 'json';
             request.onload = () => {
-                const card = $(`#id-film-${film}`);
+                const card = $(`#id-film-${film.id}`);
                 if (request.status === 200 && !!request.response.review) {
 
                     // Hydrate element.
@@ -178,7 +197,7 @@ $(document).ready(() => {
                         .html(request.response.review);
 
                     // Add sub-ratings.
-                    list.properties.forEach((property, index) => {
+                    film.properties.forEach((property, index) => {
                         if (request.response[property] !== undefined) {
                             card.find(".class-film-word")
                                 .after(
@@ -194,7 +213,7 @@ $(document).ready(() => {
                 }
 
                 // If the list is now complete, show the average.
-                if (list.films.length == $(".class-film-card:not(.class-film-unwatched)").length) {
+                if (films.length == $(".class-film-card:not(.class-film-unwatched)").length) {
                     let ratingTotal = 0;
                     let ratings = $(":not(.class-film-unwatched) > .class-film-bar > .class-rating-large");
                     ratings.each((index, rating) => {
