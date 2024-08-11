@@ -138,7 +138,7 @@ $(document).ready(() => {
 
         if (list == "a-z") {
             films = films.sort((a, b) =>
-                a < b
+                a.id < b.id
                     ? -1
                     : 0);
         };
