@@ -89,7 +89,7 @@ $(document).ready(() => {
                                 $("<button>")
                                     .addClass("class-shadow-small class-font-small")
                                     .on("click", () => {
-                                        populate(null);
+                                        populate("a-z");
                                     })
                                     .html("all films A-Z")
                             );
@@ -109,9 +109,9 @@ $(document).ready(() => {
         $(".class-body-text").remove();
         $(".class-film-card").remove();
 
-        const description = list != null
-            ? catalog[list].description
-            : "All films on this site in alphabetical order, in case you want to search for one.";
+        const description = list == "a-z"
+            ? "All films on this site in alphabetical order, in case you want to search for one."
+            : catalog[list].description;
 
         $("body")
             .append(
@@ -125,7 +125,7 @@ $(document).ready(() => {
 
         let films = [];
         Object.keys(catalog).forEach((listName, index) => {
-            if (list == null || list == listName) {
+            if (list == "a-z" || list == listName) {
                 films = films.concat(catalog[listName].films.map(film => {
                     return {
                         "list": catalog[listName].id,
@@ -135,6 +135,13 @@ $(document).ready(() => {
                 }));
             }
         });
+
+        if (list == "a-z") {
+            films = films.sort((a, b) =>
+                a < b
+                    ? -1
+                    : 0);
+        };
 
         films.forEach((film, index) => {
 
