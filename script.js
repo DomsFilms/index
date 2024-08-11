@@ -1,8 +1,10 @@
 $(document).ready(() => {
 
-    let defaultList = "2024 ad hoc spooky stuff";
+    const defaultList = "2024 ad hoc spooky stuff";
+    const date = new Date();
+    const cacheVersion = date.getFullYear().toString() + date.getMonth.toString();
 
-    setTheme = (theme) => {
+    const setTheme = (theme) => {
         localStorage.setItem("theme", theme);
         switch (theme) {
             case "dark":
@@ -18,11 +20,9 @@ $(document).ready(() => {
 
     setTheme(localStorage.getItem("theme") || "light");
 
-    let random = () => "2023";//Math.round(Math.random() * 10000).toString();
-
     // Set up the theme toggle button.
     $("#id-theme-toggle").on("click", () => {
-        let body = $("body");
+        const body = $("body");
         if (body.hasClass("class-theme-light")) {
             setTheme("dark");
         } else {
@@ -30,7 +30,58 @@ $(document).ready(() => {
         }
     });
 
-    let populate = (list) => {
+    // Load the catalogue of films.
+    const getCatalog = () => {
+        const request = new XMLHttpRequest();
+        request.open('GET', `catalogue.json?v=${cacheVersion}`, true);
+        request.responseType = 'json';
+        request.onload = () => {
+            if (request.status === 200) {
+
+                // Set up the old lists button.
+                $("#id-lists-button").on("click", () => {
+                    if ($(".class-popup").length > 0) {
+                        $(".class-popup").remove();
+                    } else {
+                        $("body").append(
+                            $("<div>")
+                                .attr("id", "id-lists-popup")
+                                .addClass("class-popup class-shadow-large")
+                        );
+
+                        Object.keys(request.response).forEach((list, index) => {
+                            if (list.indexOf("spooky") < 0 && $(".class-popup-hr").length == 0) {
+                                $("#id-lists-popup")
+                                    .append(
+                                        $("<div>")
+                                            .addClass("class-popup-hr")
+                                    );
+                            }
+
+                            $("#id-lists-popup")
+                                .append(
+                                    $("<button>")
+                                        .addClass("class-shadow-small class-font-small")
+                                        .on("click", () => {
+                                            populate(request.response[list]);
+                                        })
+                                        .html(list)
+                                );
+                        });
+
+
+                    }
+                });
+
+                populate(request.response[defaultList]);
+            }
+        };
+
+        request.send();
+        return;
+    };
+
+    const populate = (list) => {
         $(".class-popup").remove();
         $(".class-body-text").remove();
         $(".class-film-card").remove();
@@ -72,60 +123,47 @@ $(document).ready(() => {
                 );
 
             // Load film data.
-            let x = new XMLHttpRequest();
-            x.open('GET', `films/${list.id}/${film}.json?v=${random()}`, true);
-            x.responseType = 'json';
-            x.onload = () => {
-                let card = $(`#id-film-${film}`);
-                if (x.status === 200 && !!x.response.review) {
+            const request = new XMLHttpRequest();
+            request.open('GET', `films/${list.id}/${film}.json?v=${cacheVersion}`, true);
+            request.responseType = 'json';
+            request.onload = () => {
+                const card = $(`#id-film-${film}`);
+                if (request.status === 200 && !!request.response.review) {
 
                     // Hydrate element.
                     card.removeClass("class-film-unwatched")
                         .append(
                             $("<div>")
                                 .addClass("class-film-summary class-font-small")
-                                .html(`released: ${x.response.year}, watched: ${x.response.date} ${x.response.seen ? "(seen before)" : "(first time)"}`)
+                                .html(`released: ${request.response.year}, watched: ${request.response.date} ${request.response.seen ? "(seen before)" : "(first time)"}`)
                         )
                         .append($("<div>")
                             .addClass("class-film-bar")
                             .append(
                                 $("<div>")
                                     .addClass("class-film-word class-font-small")
-                                    .html((x.response.word || "").toLowerCase())
+                                    .html((request.response.word || "").toLowerCase())
                             )
                         );
 
                     card.find(".class-film-title")
-                        .html(x.response.title);
+                        .html(request.response.title);
 
                     card.find(".class-rating-large")
-                        .html(x.response.rating)
-                        .addClass(`class-rating-${x.response.rating}`);
+                        .html(request.response.rating)
+                        .addClass(`class-rating-${request.response.rating}`);
 
                     card.find(".class-film-review")
-                        .html(x.response.review);
+                        .html(request.response.review);
 
                     // Add sub-ratings.
-                    let properties = [
-                        "grotesque",
-                        "shock",
-                        "suspense",
-                        "believable",
-                        "breathless",
-                        "bombast",
-                        "hardness",
-                        "intrigue",
-                        "worldbuilding",
-                        "expected"
-                    ];
-
-                    properties.forEach((property, index) => {
-                        if (x.response[property] !== undefined) {
+                    list.properties.forEach((property, index) => {
+                        if (request.response[property] !== undefined) {
                             card.find(".class-film-word")
                                 .after(
                                     $("<div>")
-                                        .addClass(`class-rating-small class-rating-${x.response[property]} class-font-small`)
-                                        .html(`${property}: ${x.response[property]}`)
+                                        .addClass(`class-rating-small class-rating-${request.response[property]} class-font-small`)
+                                        .html(`${property}: ${request.response[property]}`)
                                 )
                         }
                     });
@@ -152,55 +190,11 @@ $(document).ready(() => {
                                 ));
                 }
             };
-            x.send();
 
+            request.send();
             return;
         });
     };
 
-    // Load the catalogue of films.
-    let c = new XMLHttpRequest();
-    c.open('GET', `catalogue.json?v=${random()}`, true);
-    c.responseType = 'json';
-    c.onload = () => {
-        if (c.status === 200) {
-
-            // Set up the old lists button.
-            $("#id-lists-button").on("click", () => {
-                if ($(".class-popup").length > 0) {
-                    $(".class-popup").remove();
-                } else {
-                    $("body").append(
-                        $("<div>")
-                            .attr("id", "id-lists-popup")
-                            .addClass("class-popup class-shadow-large")
-                    );
-
-                    Object.keys(c.response).forEach((list, index) => {
-                        if (list.indexOf("spooky") < 0 && $(".class-popup-hr").length == 0) {
-                            $("#id-lists-popup")
-                                .append(
-                                    $("<div>")
-                                        .addClass("class-popup-hr")
-                                );
-                        }
-
-                        $("#id-lists-popup")
-                            .append(
-                                $("<button>")
-                                    .addClass("class-shadow-small class-font-small")
-                                    .on("click", () => {
-                                        populate(c.response[list]);
-                                    })
-                                    .html(list)
-                            );
-                    });
-                }
-            });
-
-            populate(c.response[defaultList]);
-        }
-    };
-
-    c.send();
+    getCatalog();
 });

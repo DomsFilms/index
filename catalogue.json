@@ -2,6 +2,11 @@
     "2024 ad hoc spooky stuff": {
         "id": "2024-01-horror",
         "description": "I feel an urge to review all horror films I see throughout the year, and slowly build this list. I may still do the usual October marathon.",
+        "properties": [
+            "grotesque",
+            "shock",
+            "suspense"
+        ],
         "films": [
             "posessor2020",
             "bloodpunch2014",
@@ -27,6 +32,11 @@
     "2023 spooky month": {
         "id": "2023-10-horror",
         "description": "For the third year running I've watched at least one horror movie per day in October and given them ratings from 0 to 10. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
+        "properties": [
+            "grotesque",
+            "shock",
+            "suspense"
+        ],
         "films": [
             "relic2020",
             "thedarkandthewicked2020",
@@ -81,6 +91,11 @@
     "2022 spooky month": {
         "id": "2022-07-horror",
         "description": "<s>October</s> July spooky challenge. Suspense means a film instils dread or is grimly mysterious. Shock means the film has fun and effective jump scares. Grotesque means the film disgusts with striking imagery.",
+        "properties": [
+            "grotesque",
+            "shock",
+            "suspense"
+        ],
         "films": [
             "theneondemon2016",
             "traintobusan2016",
@@ -119,6 +134,11 @@
     "2021 spooky month": {
         "id": "2021-10-horror",
         "description": "I decided to challenge myself to watch as many horror films as possible in October, rating them from 0 to 10, and also rating them in terms of suspense, shock and grotesuqe; the fundamental traits of horror.",
+        "properties": [
+            "grotesque",
+            "shock",
+            "suspense"
+        ],
         "films": [
             "dragmetohell2009",
             "alien1979",
@@ -176,6 +196,11 @@
     "2023 action romp": {
         "id": "2023-07-action",
         "description": "Binging action movies, mainly because I heard the Mission: Impossible series would get better if I saw it all. It's not a genre I am too familiar with.",
+        "properties": [
+            "believable",
+            "breathless",
+            "bombast"
+        ],
         "films": [
             "missionimpossible1996",
             "oldboy2003",
@@ -204,6 +229,11 @@
     "2022 sci-fi odyssey": {
         "id": "2022-03-scifi",
         "description": "Binging sci-fi movies, which is hard because they are all really long and heavy. I love the genre but I don't want to do this again. Horror is the best to binge.",
+        "properties": [
+            "hardness",
+            "intrigue",
+            "worldbuilding"
+        ],
         "films": [
             "flightofthenavigator1986",
             "aquietplacepartii2021",
@@ -243,6 +273,9 @@
     "2022 new to me": {
         "id": "2022-01-new",
         "description": "Using this review writing exercise as motivation to watch famous films I've never seen. I try to string together streaks of watching films daily.",
+        "properties": [
+            "expected"
+        ],
         "films": [
             "drno1963",
             "jaws1975",
