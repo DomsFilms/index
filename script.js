@@ -49,7 +49,17 @@ $(document).ready(() => {
                                 .addClass("class-popup class-shadow-large")
                         );
 
+                        let completeList = {
+                            "id": "all-films-a-z",
+                            "description": "All films on this site in alphabetical order, in case you want to search for one.",
+                            "properties": [],
+                            "films": []
+                        };
+
                         Object.keys(request.response).forEach((list, index) => {
+                            completeList["properties"] = completeList["properties"].concat(request.response[list]["properties"]);
+                            completeList["films"] = completeList["films"].concat(request.response[list]["films"]);
+
                             if (list.indexOf("spooky") < 0 && $(".class-popup-hr").length == 0) {
                                 $("#id-lists-popup")
                                     .append(
@@ -69,7 +79,18 @@ $(document).ready(() => {
                                 );
                         });
 
-
+                        $("#id-lists-popup")
+                            .append(
+                                $("<div>")
+                                    .addClass("class-popup-hr")
+                            ).append(
+                                $("<button>")
+                                    .addClass("class-shadow-small class-font-small")
+                                    .on("click", () => {
+                                        populate(request.response[list]);
+                                    })
+                                    .html("all films A-Z")
+                            );
                     }
                 });
 
