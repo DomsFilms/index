@@ -3,8 +3,10 @@ $(document).ready(() => {
     const defaultList = "2024 ad hoc spooky stuff";
     const date = new Date();
     const cacheVersion = date.getFullYear().toString() + date.getMonth().toString();
-    let catalog = null;
+    let catalogue = null;
 
+    // Set the theme, currently supports "dark" and "light";
+    // Save in local storage so it doesn't reset on refresh.
     const setTheme = (theme) => {
         localStorage.setItem("theme", theme);
         switch (theme) {
@@ -19,6 +21,7 @@ $(document).ready(() => {
         }
     };
 
+    // Set the default theme now, loading from storage if possible.
     setTheme(localStorage.getItem("theme") || "light");
 
     // Set up the theme toggle button.
@@ -31,16 +34,17 @@ $(document).ready(() => {
         }
     });
 
-    // Load the catalogue of films.
+    // Load the catalogue of films into the catalogue variable.
+    // Also set up the list changer button.
     const getCatalog = () => {
         const request = new XMLHttpRequest();
         request.open('GET', `catalogue.json?v=${cacheVersion}`, true);
         request.responseType = 'json';
         request.onload = () => {
             if (request.status === 200) {
-                catalog = request.response;
+                catalogue = request.response;
 
-                // Set up the old lists button.
+                // Set up the list changer button.
                 $("#id-lists-button").on("click", () => {
                     if ($(".class-popup").length > 0) {
                         $(".class-popup").remove();
@@ -51,17 +55,10 @@ $(document).ready(() => {
                                 .addClass("class-popup class-shadow-large")
                         );
 
-                        let completeList = {
-                            "id": "all-films-a-z",
-                            "description": "All films on this site in alphabetical order, in case you want to search for one.",
-                            "properties": [],
-                            "films": []
-                        };
+                        // The order in the catalogue is obeyed and the a-z button always comes last.
+                        Object.keys(catalogue).forEach((listName, index) => {
 
-                        Object.keys(catalog).forEach((listName, index) => {
-                            //completeList["properties"] = completeList["properties"].concat(catalog[list]["properties"]);
-                            //completeList["films"] = completeList["films"].concat(catalog[list]["films"]);
-
+                            // Draw a divider after the last spooky list item. It's assumed these always come first.
                             if (listName.indexOf("spooky") < 0 && $(".class-popup-hr").length == 0) {
                                 $("#id-lists-popup")
                                     .append(
@@ -70,6 +67,7 @@ $(document).ready(() => {
                                     );
                             }
 
+                            // Draw a button to load that list.
                             $("#id-lists-popup")
                                 .append(
                                     $("<button>")
@@ -81,6 +79,7 @@ $(document).ready(() => {
                                 );
                         });
 
+                        // Draw a final divider, and a button to load all films in a-z order aftewards.
                         $("#id-lists-popup")
                             .append(
                                 $("<div>")
@@ -96,6 +95,7 @@ $(document).ready(() => {
                     }
                 });
 
+                // Render the default list, probably the top of the catalogue.
                 populate(defaultList);
             }
         };
@@ -104,15 +104,13 @@ $(document).ready(() => {
         return;
     };
 
+    // Render a list based on the name from the parameter. If the name is "a-z", load all films.
     const populate = (list) => {
         $(".class-popup").remove();
         $(".class-body-text").remove();
         $(".class-film-card").remove();
 
-        const description = list == "a-z"
-            ? "All films on this site in alphabetical order, in case you want to search for one."
-            : catalog[list].description;
-
+        // Render the description, using a hard-coded description in the case of the "a-z" list.
         $("body")
             .append(
                 $("<div>")
@@ -120,22 +118,26 @@ $(document).ready(() => {
                     .append(
                         $("<div>")
                             .attr("id", "id-description")
-                            .html(description)
+                            .html(list == "a-z"
+                                ? "All films on this site in alphabetical order, in case you want to search for one."
+                                : catalogue[list].description)
                     ));
 
+        // Find a list of films to load from the catalogue.
         let films = [];
-        Object.keys(catalog).forEach((listName, index) => {
+        Object.keys(catalogue).forEach((listName, index) => {
             if (list == "a-z" || list == listName) {
-                films = films.concat(catalog[listName].films.map(film => {
+                films = films.concat(catalogue[listName].films.map(film => {
                     return {
-                        "list": catalog[listName].id,
-                        "properties": catalog[listName].properties,
+                        "list": catalogue[listName].id,
+                        "properties": catalogue[listName].properties,
                         "id": film
                     };
                 }));
             }
         });
 
+        // Sort that list only if the "a-z" list is used. Otherwise the order in the catalogue is obeyed.
         if (list == "a-z") {
             films = films.sort((a, b) =>
                 a.id < b.id
