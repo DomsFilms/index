@@ -2,7 +2,7 @@ $(document).ready(() => {
 
     const defaultList = "2024 ad hoc spooky stuff";
     const date = new Date();
-    const cacheVersion = date.getFullYear().toString() + date.getMonth().toString();
+    const cacheVersion = date.getFullYear().toString() + date.getMonth().toString() + date.getDate().toString();
     let catalogue = null;
 
     // Set the theme, currently supports "dark" and "light";
