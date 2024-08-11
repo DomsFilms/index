@@ -142,7 +142,7 @@ $(document).ready(() => {
             films = films.sort((a, b) =>
                 a.id < b.id
                     ? -1
-                    : 0);
+                    : 1);
         };
 
         films.forEach((film, index) => {
