@@ -169,3 +169,11 @@ body {
 .class-film-summary {
     margin-bottom: 0.5rem;
 }
+
+details {
+   margin-top: 0.5rem; 
+}
+
+summary {
+    list-style-type: "❕ ";
+}
