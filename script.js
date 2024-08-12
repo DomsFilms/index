@@ -54,7 +54,7 @@ $(document).ready(() => {
 
     // Set up the older lists button.
     $("#id-controls")
-        .append($("<button>")
+        .prepend($("<button>")
             .attr("id", "id-lists-button")
             .addClass("class-shadow-small")
             .addClass("class-font-small")
