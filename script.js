@@ -5,6 +5,14 @@ $(document).ready(() => {
     const cacheVersion = date.getFullYear().toString() + date.getMonth().toString() + date.getDate().toString();
     let catalogue = {};
 
+    const strings = {
+        "darkButton": "🌘 dark mode",
+        "lightButton": "🌔 light mode",
+        "olderLists": "📆 older lists",
+        "allFilms": "🔎 all films A-Z",
+        "allFilmsDescription": "All films on this site in alphabetical order, in case you want to search for one."
+    };
+
     $("body")
         .append($("<div>")
             .attr("id", "id-controls")
@@ -20,7 +28,7 @@ $(document).ready(() => {
                     .removeClass("class-theme-light")
                     .addClass("class-theme-dark");
                 $("#id-theme-toggle")
-                    .html("🌔 light mode");
+                    .html(strings.lightButton);
                 break;
             case "light":
             default:
@@ -28,7 +36,7 @@ $(document).ready(() => {
                     .removeClass("class-theme-dark")
                     .addClass("class-theme-light");
                 $("#id-theme-toggle")
-                    .html("🌘 dark mode");
+                    .html(strings.darkButton);
         }
     };
 
@@ -38,7 +46,7 @@ $(document).ready(() => {
             .attr("id", "id-theme-toggle")
             .addClass("class-shadow-small")
             .addClass("class-font-small")
-            .html("🌘 dark mode")
+            .html(strings.darkButton)
             .on("click", () => {
                 const body = $("body");
                 if (body.hasClass("class-theme-light")) {
@@ -58,7 +66,7 @@ $(document).ready(() => {
             .attr("id", "id-lists-button")
             .addClass("class-shadow-small")
             .addClass("class-font-small")
-            .html("📆 older lists")
+            .html(strings.olderLists)
             .on("click", () => {
                 if ($(".class-popup").length > 0) {
                     $(".class-popup").remove();
@@ -104,7 +112,7 @@ $(document).ready(() => {
                                 .on("click", () => {
                                     populate("a-z");
                                 })
-                                .html("🔎 all films A-Z")
+                                .html(strings.allFilms)
                         );
                 }
             })
@@ -144,7 +152,7 @@ $(document).ready(() => {
                         $("<div>")
                             .attr("id", "id-description")
                             .html(list == "a-z"
-                                ? "All films on this site in alphabetical order, in case you want to search for one."
+                                ? strings.allFilmsDescription
                                 : catalogue[list].description)
                     ));
 
