@@ -3,7 +3,12 @@ $(document).ready(() => {
     const defaultList = "2024 ad hoc spooky stuff";
     const date = new Date();
     const cacheVersion = date.getFullYear().toString() + date.getMonth().toString() + date.getDate().toString();
-    let catalogue = null;
+    let catalogue = {};
+
+    $("body")
+        .append($("<div>")
+            .attr("id", "id-controls")
+        );
 
     // Set the theme, currently supports "dark" and "light";
     // Save in local storage so it doesn't reset on refresh.
@@ -11,28 +16,99 @@ $(document).ready(() => {
         localStorage.setItem("theme", theme);
         switch (theme) {
             case "dark":
-                $("body").removeClass("class-theme-light").addClass("class-theme-dark");
-                $("#id-theme-toggle").html("🌔 light mode");
+                $("body")
+                    .removeClass("class-theme-light")
+                    .addClass("class-theme-dark");
+                $("#id-theme-toggle")
+                    .html("🌔 light mode");
                 break;
             case "light":
             default:
-                $("body").removeClass("class-theme-dark").addClass("class-theme-light");
-                $("#id-theme-toggle").html("🌘 dark mode");
+                $("body")
+                    .removeClass("class-theme-dark")
+                    .addClass("class-theme-light");
+                $("#id-theme-toggle")
+                    .html("🌘 dark mode");
         }
     };
+
+    // Set up the theme toggle button.
+    $("#id-controls")
+        .append($("<button>")
+            .attr("id", "id-theme-toggle")
+            .addClass("class-shadow-small")
+            .addClass("class-font-small")
+            .html("🌘 dark mode")
+            .on("click", () => {
+                const body = $("body");
+                if (body.hasClass("class-theme-light")) {
+                    setTheme("dark");
+                } else {
+                    setTheme("light");
+                }
+            })
+        );
 
     // Set the default theme now, loading from storage if possible.
     setTheme(localStorage.getItem("theme") || "light");
 
-    // Set up the theme toggle button.
-    $("#id-theme-toggle").on("click", () => {
-        const body = $("body");
-        if (body.hasClass("class-theme-light")) {
-            setTheme("dark");
-        } else {
-            setTheme("light");
-        }
-    });
+    // Set up the older lists button.
+    $("#id-controls")
+        .append($("<button>")
+            .attr("id", "id-lists-button")
+            .addClass("class-shadow-small")
+            .addClass("class-font-small")
+            .html("📆 older lists")
+            .on("click", () => {
+                if ($(".class-popup").length > 0) {
+                    $(".class-popup").remove();
+                } else {
+                    $("body").append(
+                        $("<div>")
+                            .attr("id", "id-lists-popup")
+                            .addClass("class-popup class-shadow-large")
+                    );
+
+                    // The order in the catalogue is obeyed and the a-z button always comes last.
+                    Object.keys(catalogue).forEach((listName, index) => {
+
+                        // Draw a divider after the last spooky list item. It's assumed these always come first.
+                        if (listName.indexOf("spooky") < 0 && $(".class-popup-hr").length == 0) {
+                            $("#id-lists-popup")
+                                .append(
+                                    $("<div>")
+                                        .addClass("class-popup-hr")
+                                );
+                        }
+
+                        // Draw a button to load that list.
+                        $("#id-lists-popup")
+                            .append(
+                                $("<button>")
+                                    .addClass("class-shadow-small class-font-small")
+                                    .on("click", () => {
+                                        populate(listName);
+                                    })
+                                    .html(listName)
+                            );
+                    });
+
+                    // Draw a final divider, and a button to load all films in a-z order aftewards.
+                    $("#id-lists-popup")
+                        .append(
+                            $("<div>")
+                                .addClass("class-popup-hr")
+                        ).append(
+                            $("<button>")
+                                .addClass("class-shadow-small class-font-small")
+                                .on("click", () => {
+                                    populate("a-z");
+                                })
+                                .html("🔎 all films A-Z")
+                        );
+                }
+            })
+        );
 
     // Load the catalogue of films into the catalogue variable.
     // Also set up the list changer button.
@@ -43,57 +119,6 @@ $(document).ready(() => {
         request.onload = () => {
             if (request.status === 200) {
                 catalogue = request.response;
-
-                // Set up the list changer button.
-                $("#id-lists-button").on("click", () => {
-                    if ($(".class-popup").length > 0) {
-                        $(".class-popup").remove();
-                    } else {
-                        $("body").append(
-                            $("<div>")
-                                .attr("id", "id-lists-popup")
-                                .addClass("class-popup class-shadow-large")
-                        );
-
-                        // The order in the catalogue is obeyed and the a-z button always comes last.
-                        Object.keys(catalogue).forEach((listName, index) => {
-
-                            // Draw a divider after the last spooky list item. It's assumed these always come first.
-                            if (listName.indexOf("spooky") < 0 && $(".class-popup-hr").length == 0) {
-                                $("#id-lists-popup")
-                                    .append(
-                                        $("<div>")
-                                            .addClass("class-popup-hr")
-                                    );
-                            }
-
-                            // Draw a button to load that list.
-                            $("#id-lists-popup")
-                                .append(
-                                    $("<button>")
-                                        .addClass("class-shadow-small class-font-small")
-                                        .on("click", () => {
-                                            populate(listName);
-                                        })
-                                        .html(listName)
-                                );
-                        });
-
-                        // Draw a final divider, and a button to load all films in a-z order aftewards.
-                        $("#id-lists-popup")
-                            .append(
-                                $("<div>")
-                                    .addClass("class-popup-hr")
-                            ).append(
-                                $("<button>")
-                                    .addClass("class-shadow-small class-font-small")
-                                    .on("click", () => {
-                                        populate("a-z");
-                                    })
-                                    .html("all films A-Z")
-                            );
-                    }
-                });
 
                 // Render the default list, probably the top of the catalogue.
                 populate(defaultList);
