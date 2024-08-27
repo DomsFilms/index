@@ -236,7 +236,10 @@ $(document).ready(() => {
                         .addClass(`class-rating-${request.response.rating}`);
 
                     card.find(".class-film-review")
-                        .html(request.response.review);
+                        .html(request.response.review
+                            .replace("#s", "<details><summary>spoilers</summary>")
+                            .replace("#d", "</details>")
+                        );
 
                     // Add sub-ratings.
                     film.properties.forEach((property, index) => {
