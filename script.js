@@ -80,7 +80,7 @@ $(document).ready(() => {
         if (!$(event.target).closest(".class-popup").length && $(".class-popup").length) {
             $(".class-popup").remove();
 
-        // Open the older lists popup if the button is clicked.
+            // Open the older lists popup if the button is clicked.
         } else if ($(event.target).attr("id") == "id-lists-button") {
             $("body").append(
                 $("<div>")
@@ -202,6 +202,19 @@ $(document).ready(() => {
             }
         });
 
+        // Load all the required films, if they have review data.
+        films.forEach((film, index) => {
+            const request = new XMLHttpRequest();
+            request.open('GET', `films/${film.list}/${film.id}.json?v=${cacheVersion}`, true);
+            request.responseType = 'json';
+            request.onload = () => {
+                if (request.status === 200 && !!request.response.review) {
+                    Object.assign(film, request.response);
+                };
+            };
+            request.send();
+        });
+
         // Sort that list if required. Otherwise the order in the catalogue is obeyed.
         // The film ID is unique per film, and I append a 2, 3 etc when I watch it again, so an alphabetical sort is inherently then sorted by watch time.
         if (list == "alphabetical") {
@@ -222,7 +235,7 @@ $(document).ready(() => {
 
         films.forEach((film, index) => {
 
-            // Add empty content.
+            // Add empty content. Because we show empty content if a film is in the catalogue but is not reviewed yet.
             $("body")
                 .append(
                     $("<div>")
@@ -246,79 +259,70 @@ $(document).ready(() => {
                         )
                 );
 
-            // Load film data.
-            const request = new XMLHttpRequest();
-            request.open('GET', `films/${film.list}/${film.id}.json?v=${cacheVersion}`, true);
-            request.responseType = 'json';
-            request.onload = () => {
-                const card = $(`#id-film-${film.id}`);
-                if (request.status === 200 && !!request.response.review) {
-
-                    // Hydrate element.
-                    card.removeClass("class-film-unwatched")
+            // Hydrate element if a review exists.
+            const card = $(`#id-film-${film.id}`);
+            if (!!film.review) {
+                card.removeClass("class-film-unwatched")
+                    .append(
+                        $("<div>")
+                            .addClass("class-film-summary class-font-small")
+                            .html(`released: ${film.year}, watched: ${film.date} ${film.seen ? "(seen before)" : "(first time)"}`)
+                    )
+                    .append($("<div>")
+                        .addClass("class-film-bar")
                         .append(
                             $("<div>")
-                                .addClass("class-film-summary class-font-small")
-                                .html(`released: ${request.response.year}, watched: ${request.response.date} ${request.response.seen ? "(seen before)" : "(first time)"}`)
+                                .addClass("class-film-word class-font-small")
+                                .html((film.word || "").toLowerCase())
                         )
-                        .append($("<div>")
-                            .addClass("class-film-bar")
+                    );
+
+                card.find(".class-film-title")
+                    .html(film.title);
+
+                card.find(".class-rating-large")
+                    .html(film.rating)
+                    .addClass(`class-rating-${film.rating}`);
+
+                card.find(".class-film-review")
+                    .html(film.review
+                        .replace("#s", `<details><summary>${strings.spoilers}</summary>`)
+                        .replace("#d", "</details>")
+                    );
+
+                // Add sub-ratings.
+                film.properties.forEach((property, index) => {
+                    if (film[property] !== undefined) {
+                        card.find(".class-film-word")
+                            .after(
+                                $("<div>")
+                                    .addClass(`class-rating-small class-rating-${film[property]} class-font-small`)
+                                    .html(`${property}: ${film[property]}`)
+                            )
+                    }
+                });
+            } else {
+                // If there is no review, move it to the end of the list.
+                $("body").append(card);
+            }
+
+            // If the list is now complete, show the average.
+            if (films.length == $(".class-film-card:not(.class-film-unwatched)").length) {
+                let ratingTotal = 0;
+                let ratings = $(":not(.class-film-unwatched) > .class-film-bar > .class-rating-large");
+                ratings.each((index, rating) => {
+                    ratingTotal += Number(rating.innerHTML);
+                });
+                $("body")
+                    .append(
+                        $("<div>")
+                            .addClass("class-body-text")
                             .append(
                                 $("<div>")
-                                    .addClass("class-film-word class-font-small")
-                                    .html((request.response.word || "").toLowerCase())
-                            )
-                        );
-
-                    card.find(".class-film-title")
-                        .html(request.response.title);
-
-                    card.find(".class-rating-large")
-                        .html(request.response.rating)
-                        .addClass(`class-rating-${request.response.rating}`);
-
-                    card.find(".class-film-review")
-                        .html(request.response.review
-                            .replace("#s", `<details><summary>${strings.spoilers}</summary>`)
-                            .replace("#d", "</details>")
-                        );
-
-                    // Add sub-ratings.
-                    film.properties.forEach((property, index) => {
-                        if (request.response[property] !== undefined) {
-                            card.find(".class-film-word")
-                                .after(
-                                    $("<div>")
-                                        .addClass(`class-rating-small class-rating-${request.response[property]} class-font-small`)
-                                        .html(`${property}: ${request.response[property]}`)
-                                )
-                        }
-                    });
-                } else {
-                    // If there is no review, move it to the end of the list.
-                    $("body").append(card);
-                }
-
-                // If the list is now complete, show the average.
-                if (films.length == $(".class-film-card:not(.class-film-unwatched)").length) {
-                    let ratingTotal = 0;
-                    let ratings = $(":not(.class-film-unwatched) > .class-film-bar > .class-rating-large");
-                    ratings.each((index, rating) => {
-                        ratingTotal += Number(rating.innerHTML);
-                    });
-                    $("body")
-                        .append(
-                            $("<div>")
-                                .addClass("class-body-text")
-                                .append(
-                                    $("<div>")
-                                        .attr("id", "id-average")
-                                        .html(`${strings.average}: ${(ratingTotal / ratings.length).toFixed(1)}`)
-                                ));
-                }
-            };
-
-            request.send();
+                                    .attr("id", "id-average")
+                                    .html(`${strings.average}: ${(ratingTotal / ratings.length).toFixed(1)}`)
+                            ));
+            }
             return;
         });
     };
