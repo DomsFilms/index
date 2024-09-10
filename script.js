@@ -192,7 +192,8 @@ $(document).ready(() => {
                 films = films.concat(catalogue[listName].films.map(film => {
                     return {
                         "list": catalogue[listName].id,
-                        "id": film
+                        "id": film,
+                        "properties": catalogue[listName].properties
                     };
                 }));
             }
@@ -277,7 +278,7 @@ $(document).ready(() => {
                     );
 
                 // Add sub-ratings.
-                catalogue[film.list].properties.forEach((property, index) => {
+                film.properties.forEach((property, index) => {
                     if (film[property] !== undefined) {
                         card.find(".class-film-word")
                             .after(
