@@ -135,23 +135,18 @@ $(document).ready(() => {
         }
     });
 
-    // Load the catalogue of films into the catalogue variable.
-    // Also populate the page with the default catalogue.
-    const getCatalog = () => {
-        const request = new XMLHttpRequest();
-        request.open('GET', `catalogue.json?v=${cacheVersion}`, true);
-        request.responseType = 'json';
-        request.onload = () => {
-            if (request.status === 200) {
-                catalogue = request.response;
-
-                // Render the default list, probably the top of the catalogue.
-                populate(defaultList);
-            }
+    // Load a film from the server, and assign its properties to the parameter object.
+    const loadFilm = (film) => {
+        const filmRequest = new XMLHttpRequest();
+        filmRequest.open('GET', `films/${film.list}/${film.id}.json?v=${cacheVersion}`, true);
+        filmRequest.responseType = 'json';
+        filmRequest.onload = () => {
+            if (request.status === 200 && !!filmRequest.response.review) {
+                Object.assign(film, filmRequest.response);
+            };
+            resolve(film);
         };
-
-        request.send();
-        return;
+        filmRequest.send();
     };
 
     // Render a list based on the name from the parameter.
@@ -195,7 +190,6 @@ $(document).ready(() => {
                 films = films.concat(catalogue[listName].films.map(film => {
                     return {
                         "list": catalogue[listName].id,
-                        "properties": catalogue[listName].properties,
                         "id": film
                     };
                 }));
@@ -203,17 +197,7 @@ $(document).ready(() => {
         });
 
         // Load all the required films, if they have review data.
-        films.forEach((film, index) => {
-            const request = new XMLHttpRequest();
-            request.open('GET', `films/${film.list}/${film.id}.json?v=${cacheVersion}`, true);
-            request.responseType = 'json';
-            request.onload = () => {
-                if (request.status === 200 && !!request.response.review) {
-                    Object.assign(film, request.response);
-                };
-            };
-            request.send();
-        });
+        films.forEach(async (film, index) => await loadFilm(film));
 
         // Sort that list if required. Otherwise the order in the catalogue is obeyed.
         // The film ID is unique per film, and I append a 2, 3 etc when I watch it again, so an alphabetical sort is inherently then sorted by watch time.
@@ -291,7 +275,7 @@ $(document).ready(() => {
                     );
 
                 // Add sub-ratings.
-                film.properties.forEach((property, index) => {
+                catalogue[film.list].properties.forEach((property, index) => {
                     if (film[property] !== undefined) {
                         card.find(".class-film-word")
                             .after(
@@ -327,5 +311,19 @@ $(document).ready(() => {
         });
     };
 
-    getCatalog();
+    // Load the catalogue of films into the catalogue variable.
+    // Also populate the page with the default catalogue.
+    const calatlogueRequest = new XMLHttpRequest();
+    calatlogueRequest.open('GET', `catalogue.json?v=${cacheVersion}`, true);
+    calatlogueRequest.responseType = 'json';
+    calatlogueRequest.onload = () => {
+        if (calatlogueRequest.status === 200) {
+            catalogue = calatlogueRequest.response;
+
+            // Render the default list, probably the top of the catalogue.
+            populate(defaultList);
+        }
+    };
+
+    calatlogueRequest.send();
 });
