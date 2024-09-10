@@ -9,8 +9,12 @@ $(document).ready(() => {
         "darkButton": "🌘 dark mode",
         "lightButton": "🌔 light mode",
         "olderLists": "📆 older lists",
-        "allFilms": "🔎 all films A-Z",
-        "allFilmsDescription": "All films on this site in alphabetical order, in case you want to search for one."
+        "alphabetical": "🔎 all films A-Z",
+        "alphabeticalDescription": "All films on this site in alphabetical order, in case you want to search for one.",
+        "rating": "👍 all films best-worst",
+        "ratingDescription": "All films on this site in order of my personal rating, from best to worst.",
+        "spoilers": "spoilers",
+        "average": "average"
     };
 
     $("body")
@@ -67,59 +71,69 @@ $(document).ready(() => {
             .addClass("class-shadow-small")
             .addClass("class-font-small")
             .html(strings.olderLists)
-            .on("click", () => {
-                if ($(".class-popup").length > 0) {
-                    $(".class-popup").remove();
-                } else {
-                    $("body").append(
-                        $("<div>")
-                            .attr("id", "id-lists-popup")
-                            .addClass("class-popup class-shadow-large")
-                    );
+        );
 
-                    // The order in the catalogue is obeyed and the a-z button always comes last.
-                    Object.keys(catalogue).forEach((listName, index) => {
+    $(document).on("click", (event) => {
+        // Close the popup if it's displayed, and there's a click anywhere except inside the popup.
+        if (!$(event.target).closest(".class-popup").length && $(".class-popup").length) {
+            $(".class-popup").remove();
+        } else if ($(event.target).attr("id") == "id-lists-button") {
+            // Open the older lists popup.
+            $("body").append(
+                $("<div>")
+                    .attr("id", "id-lists-popup")
+                    .addClass("class-popup class-shadow-large")
+            );
 
-                        // Draw a divider after the last spooky list item. It's assumed these always come first.
-                        if (listName.indexOf("spooky") < 0 && $(".class-popup-hr").length == 0) {
-                            $("#id-lists-popup")
-                                .append(
-                                    $("<div>")
-                                        .addClass("class-popup-hr")
-                                );
-                        }
+            // The order in the catalogue is obeyed and the all films buttons always come last.
+            Object.keys(catalogue).forEach((listName, index) => {
 
-                        // Draw a button to load that list.
-                        $("#id-lists-popup")
-                            .append(
-                                $("<button>")
-                                    .addClass("class-shadow-small class-font-small")
-                                    .on("click", () => {
-                                        populate(listName);
-                                    })
-                                    .html(listName)
-                            );
-                    });
-
-                    // Draw a final divider, and a button to load all films in a-z order aftewards.
+                // Draw a divider after the last spooky list item. It's assumed these always come first.
+                if (listName.indexOf("spooky") < 0 && $(".class-popup-hr").length == 0) {
                     $("#id-lists-popup")
                         .append(
                             $("<div>")
                                 .addClass("class-popup-hr")
-                        ).append(
-                            $("<button>")
-                                .addClass("class-shadow-small class-font-small")
-                                .on("click", () => {
-                                    populate("a-z");
-                                })
-                                .html(strings.allFilms)
                         );
                 }
-            })
-        );
+
+                // Draw a button to load that list.
+                $("#id-lists-popup")
+                    .append(
+                        $("<button>")
+                            .addClass("class-shadow-small class-font-small")
+                            .on("click", () => {
+                                populate(listName);
+                            })
+                            .html(listName)
+                    );
+            });
+
+            // Draw a final divider, and buttons to load all the films aftewards.
+            $("#id-lists-popup")
+                .append(
+                    $("<div>")
+                        .addClass("class-popup-hr")
+                ).append(
+                    $("<button>")
+                        .addClass("class-shadow-small class-font-small")
+                        .on("click", () => {
+                            populate("alphabetical");
+                        })
+                        .html(strings.alphabetical)
+                ).append(
+                    $("<button>")
+                        .addClass("class-shadow-small class-font-small")
+                        .on("click", () => {
+                            populate("rating");
+                        })
+                        .html(strings.rating)
+                );
+        }
+    });
 
     // Load the catalogue of films into the catalogue variable.
-    // Also set up the list changer button.
+    // Also populate the page with the default catalogue.
     const getCatalog = () => {
         const request = new XMLHttpRequest();
         request.open('GET', `catalogue.json?v=${cacheVersion}`, true);
@@ -137,13 +151,24 @@ $(document).ready(() => {
         return;
     };
 
-    // Render a list based on the name from the parameter. If the name is "a-z", load all films.
+    // Render a list based on the name from the parameter.
+    // If the name is "alphabetical", load all films in alphabetical order, and then date watched.
+    // If the name is "rating", load all films in order of score, and then alphabetical, and then by date watched.
     const populate = (list) => {
         $(".class-popup").remove();
         $(".class-body-text").remove();
         $(".class-film-card").remove();
 
-        // Render the description, using a hard-coded description in the case of the "a-z" list.
+        // Render the description, using a hard-coded description in the case of an all-films list.
+        let description = "";
+        switch (list) {
+            case "alphabetical":
+                description = strings.alphabeticalDescription;
+            case "rating":
+                description = strings.ratingDescription;
+            default:
+                description = catalogue[list].description;
+        }
         $("body")
             .append(
                 $("<div>")
@@ -151,15 +176,14 @@ $(document).ready(() => {
                     .append(
                         $("<div>")
                             .attr("id", "id-description")
-                            .html(list == "a-z"
-                                ? strings.allFilmsDescription
-                                : catalogue[list].description)
-                    ));
+                            .html(description)
+                    )
+            );
 
         // Find a list of films to load from the catalogue.
         let films = [];
         Object.keys(catalogue).forEach((listName, index) => {
-            if (list == "a-z" || list == listName) {
+            if (["alphabetical", "rating", listName].includes(list)) {
                 films = films.concat(catalogue[listName].films.map(film => {
                     return {
                         "list": catalogue[listName].id,
@@ -170,12 +194,22 @@ $(document).ready(() => {
             }
         });
 
-        // Sort that list only if the "a-z" list is used. Otherwise the order in the catalogue is obeyed.
-        if (list == "a-z") {
+        // Sort that list if required. Otherwise the order in the catalogue is obeyed.
+        // The film ID is unique per film, and I append a 2, 3 etc when I watch it again, so an alphabetical sort is inherently then sorted by watch time.
+        if (list == "alphabetical") {
             films = films.sort((a, b) =>
                 a.id < b.id
                     ? -1
                     : 1);
+        };
+
+        if (list == "rating") {
+            films = films.sort((a, b) =>
+                a.rating != b.rating
+                    ? b.rating - a.rating
+                    : a.id < b.id
+                        ? -1
+                        : 1);
         };
 
         films.forEach((film, index) => {
@@ -237,7 +271,7 @@ $(document).ready(() => {
 
                     card.find(".class-film-review")
                         .html(request.response.review
-                            .replace("#s", "<details><summary>spoilers</summary>")
+                            .replace("#s", `<details><summary>${strings.spoilers}</summary>`)
                             .replace("#d", "</details>")
                         );
 
@@ -271,7 +305,7 @@ $(document).ready(() => {
                                 .append(
                                     $("<div>")
                                         .attr("id", "id-average")
-                                        .html(`average: ${(ratingTotal / ratings.length).toFixed(1)}`)
+                                        .html(`${strings.average}: ${(ratingTotal / ratings.length).toFixed(1)}`)
                                 ));
                 }
             };
