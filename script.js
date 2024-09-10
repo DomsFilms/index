@@ -154,7 +154,7 @@ $(document).ready(() => {
     // Render a list based on the name from the parameter.
     // If the name is "alphabetical", load all films in alphabetical order, and then date watched.
     // If the name is "rating", load all films in order of score, and then alphabetical, and then by date watched.
-    const populate = (list) => {
+    const populate = async (list) => {
         $(".class-popup").remove();
         $(".class-body-text").remove();
         $(".class-film-card").remove();
@@ -199,7 +199,7 @@ $(document).ready(() => {
         });
 
         // Load all the required films, if they have review data.
-        films.forEach(async (film, index) => await loadFilm(film));
+        await Promise.all(films.map(loadFilm(film)));
 
         // Sort that list if required. Otherwise the order in the catalogue is obeyed.
         // The film ID is unique per film, and I append a 2, 3 etc when I watch it again, so an alphabetical sort is inherently then sorted by watch time.
