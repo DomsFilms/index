@@ -137,16 +137,18 @@ $(document).ready(() => {
 
     // Load a film from the server, and assign its properties to the parameter object.
     const loadFilm = (film) => {
-        const filmRequest = new XMLHttpRequest();
-        filmRequest.open('GET', `films/${film.list}/${film.id}.json?v=${cacheVersion}`, true);
-        filmRequest.responseType = 'json';
-        filmRequest.onload = () => {
-            if (filmRequest.status === 200 && !!filmRequest.response.review) {
-                Object.assign(film, filmRequest.response);
+        return new Promise((resolve) => {
+            const filmRequest = new XMLHttpRequest();
+            filmRequest.open('GET', `films/${film.list}/${film.id}.json?v=${cacheVersion}`, true);
+            filmRequest.responseType = 'json';
+            filmRequest.onload = () => {
+                if (filmRequest.status === 200 && !!filmRequest.response.review) {
+                    Object.assign(film, filmRequest.response);
+                };
+                resolve();
             };
-            resolve(film);
-        };
-        filmRequest.send();
+            filmRequest.send();
+        });
     };
 
     // Render a list based on the name from the parameter.
