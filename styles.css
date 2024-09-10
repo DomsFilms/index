@@ -67,11 +67,15 @@ body {
 }
 
 .class-body-text div {
-    width: fit-content;
+    width: 100%;
 }
 
 #id-description {
     max-width: 1200px;
+}
+
+#id-average {
+    text-align: center;
 }
 
 /* Some mobile specific bodges. */
@@ -222,7 +226,8 @@ body {
 
 .class-theme-dark .class-rating-large,
 .class-theme-dark .class-rating-small {
-    color: #000000f7 !important; /* Important because I do not have theme colours on ratings yet, and need to use the light theme font here. */
+    color: #000000f7 !important;
+    /* Important because I do not have theme colours on ratings yet, and need to use the light theme font here. */
 }
 
 .class-theme-dark .class-film-summary,
