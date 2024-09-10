@@ -13,7 +13,7 @@ $(document).ready(() => {
         "alphabeticalDescription": "All films on this site in alphabetical order, in case you want to search for one.",
         "rating": "👍 all films best-worst",
         "ratingDescription": "All films on this site in order of my personal rating, from best to worst.",
-        "spoilers": "spoilers",
+        "spoilers": "spoilers...",
         "average": "average"
     };
 
