@@ -22,7 +22,7 @@ $(document).ready(() => {
             .attr("id", "id-controls")
         );
 
-    // Set the theme, currently supports "dark" and "light";
+    // Set the theme, currently supports "dark" and "light".
     // Save in local storage so it doesn't reset on refresh.
     const setTheme = (theme) => {
         localStorage.setItem("theme", theme);

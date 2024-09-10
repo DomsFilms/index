@@ -1,0 +1,269 @@
+/* General rules. */
+
+html {
+    font-family: 'Roboto', sans-serif;
+    font-size: medium;
+}
+
+body {
+    display: flex;
+    padding: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem 1rem;
+}
+
+.class-shadow-small {
+    box-shadow: 0.1vw 0.1vw 1vw #00000020;
+}
+
+.class-shadow-large {
+    box-shadow: 0.5vw 0.5vw 5vw #000000aa;
+}
+
+.class-font-large {
+    font-size: 2rem;
+}
+
+/* Control buttons. */
+
+#id-controls {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+#id-controls button,
+.class-popup button {
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-family: 'Roboto', sans-serif;
+    padding: 0.3rem 0.4rem 0.3rem 0.4rem;
+}
+
+.class-popup {
+    border-radius: 0.8rem;
+    padding: 1rem;
+    position: fixed;
+    top: 4rem;
+    right: 3em;
+    z-index: 999;
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem 1rem;
+}
+
+/* Text on the page outside of any specific film. */
+
+.class-body-text {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.class-body-text div {
+    width: fit-content;
+}
+
+#id-description {
+    max-width: 1200px;
+}
+
+/* Some mobile specific bodges. */
+
+@media (max-width: 1000px) {
+    html {
+        font-size: 22pt !important;
+    }
+
+    .class-film-title {
+        font-weight: bold !important;
+    }
+
+    .class-font-small {
+        font-size: 2vw !important;
+    }
+
+    .class-film-card {
+        width: 100% !important;
+    }
+}
+
+/* Each film card. */
+
+.class-film-card {
+    width: 30rem;
+    height: auto;
+    border-radius: 0.8rem;
+    padding: 1rem;
+}
+
+.class-film-bar {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.class-film-title {
+    flex-grow: 2;
+}
+
+.class-film-unwatched .class-film-title {
+    border-radius: 0.2rem;
+    color: #00000000 !important;
+    /* Important so that the theme colours don't override it. */
+}
+
+.class-rating-large {
+    border-radius: 0.2rem;
+    min-width: 1.2em;
+    height: 1.2em;
+    text-align: center;
+}
+
+.class-rating-small {
+    border-radius: 0.2rem;
+    width: auto;
+    height: 1.2em;
+    padding: 0 0.3rem 0 0.3rem;
+    text-align: center;
+}
+
+.class-film-review {
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.class-film-unwatched .class-film-review {
+    width: 100%;
+    height: 7rem;
+}
+
+.class-film-word {
+    flex-grow: 2;
+    font-style: italic;
+}
+
+.class-film-summary {
+    margin-bottom: 0.5rem;
+}
+
+/* Ratings colour grade. */
+
+.class-rating-0 {
+    background-color: #F4C7C3;
+}
+
+.class-rating-1 {
+    background-color: #F5CDC0;
+}
+
+.class-rating-2 {
+    background-color: #F7D4BD;
+}
+
+.class-rating-3 {
+    background-color: #F8DAB9;
+}
+
+.class-rating-4 {
+    background-color: #FAE1B6;
+}
+
+.class-rating-5 {
+    background-color: #FCE8B2;
+}
+
+.class-rating-6 {
+    background-color: #EFE7B7;
+}
+
+.class-rating-7 {
+    background-color: #E1E6BC;
+}
+
+.class-rating-8 {
+    background-color: #D3E4C2;
+}
+
+.class-rating-9 {
+    background-color: #C5E3C7;
+}
+
+.class-rating-10 {
+    background-color: #B7E1CD;
+    min-width: 1.4em;
+}
+
+/* Dark theme. */
+
+.class-theme-dark .class-film-card,
+.class-theme-dark #id-controls button,
+.class-theme-dark .class-popup {
+    background-color: #020202;
+    color: #ffffffB0;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.class-theme-dark,
+.class-theme-dark .class-film-unwatched .class-film-title,
+.class-theme-dark .class-film-unwatched .class-rating-large,
+.class-theme-dark .class-film-unwatched .class-rating-small,
+.class-theme-dark .class-film-unwatched .class-film-review,
+.class-theme-dark .class-popup button {
+    background-color: #202020;
+    color: #ffffffB0;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.class-theme-dark .class-rating-large,
+.class-theme-dark .class-rating-small {
+    color: #000000f7 !important; /* Important because I do not have theme colours on ratings yet, and need to use the light theme font here. */
+}
+
+.class-theme-dark .class-film-summary,
+.class-theme-dark summary {
+    color: #ffffff7e;
+    transition: color 0.5s;
+}
+
+.class-theme-dark .class-popup-hr {
+    border-bottom: #202020 0.1rem solid;
+    transition: border-bottom 0.5s;
+}
+
+/* Light theme. */
+
+.class-theme-light .class-film-card,
+.class-theme-light #id-controls button,
+.class-theme-light .class-popup {
+    background-color: #e5e5e5;
+    color: #000000f7;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.class-theme-light,
+.class-theme-light .class-film-unwatched .class-film-title,
+.class-theme-light .class-film-unwatched .class-rating-large,
+.class-theme-light .class-film-unwatched .class-rating-small,
+.class-theme-light .class-film-unwatched .class-film-review,
+.class-theme-light .class-popup button {
+    background-color: #d0d0d0;
+    color: #000000f7;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.class-theme-light .class-film-summary,
+.class-theme-light summary {
+    color: #0000007e;
+    transition: color 0.5s;
+}
+
+.class-theme-light .class-popup-hr {
+    border-bottom: #d0d0d0 0.1rem solid;
+    transition: border-bottom 0.5s;
+}
