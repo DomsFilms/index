@@ -141,7 +141,7 @@ $(document).ready(() => {
         filmRequest.open('GET', `films/${film.list}/${film.id}.json?v=${cacheVersion}`, true);
         filmRequest.responseType = 'json';
         filmRequest.onload = () => {
-            if (request.status === 200 && !!filmRequest.response.review) {
+            if (filmRequest.status === 200 && !!filmRequest.response.review) {
                 Object.assign(film, filmRequest.response);
             };
             resolve(film);
