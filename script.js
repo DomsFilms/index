@@ -199,7 +199,7 @@ $(document).ready(() => {
         });
 
         // Load all the required films, if they have review data.
-        await Promise.all(films.map(loadFilm(film)));
+        await Promise.all(films.map(film => loadFilm(film)));
 
         // Sort that list if required. Otherwise the order in the catalogue is obeyed.
         // The film ID is unique per film, and I append a 2, 3 etc when I watch it again, so an alphabetical sort is inherently then sorted by watch time.
