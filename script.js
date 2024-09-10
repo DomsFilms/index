@@ -64,7 +64,7 @@ $(document).ready(() => {
     // Set the default theme now, loading from storage if possible.
     setTheme(localStorage.getItem("theme") || "light");
 
-    // Set up the older lists button.
+    // Create up the older lists button.
     $("#id-controls")
         .prepend($("<button>")
             .attr("id", "id-lists-button")
@@ -73,12 +73,15 @@ $(document).ready(() => {
             .html(strings.olderLists)
         );
 
+    // Add events to show and hide the older lists popup.
     $(document).on("click", (event) => {
+
         // Close the popup if it's displayed, and there's a click anywhere except inside the popup.
         if (!$(event.target).closest(".class-popup").length && $(".class-popup").length) {
             $(".class-popup").remove();
+
+        // Open the older lists popup if the button is clicked.
         } else if ($(event.target).attr("id") == "id-lists-button") {
-            // Open the older lists popup.
             $("body").append(
                 $("<div>")
                     .attr("id", "id-lists-popup")
@@ -159,16 +162,21 @@ $(document).ready(() => {
         $(".class-body-text").remove();
         $(".class-film-card").remove();
 
-        // Render the description, using a hard-coded description in the case of an all-films list.
+        // Use a hard-coded description in the case of an all-films list.
         let description = "";
         switch (list) {
             case "alphabetical":
                 description = strings.alphabeticalDescription;
+                break;
             case "rating":
                 description = strings.ratingDescription;
+                break;
             default:
                 description = catalogue[list].description;
+                break;
         }
+
+        // Render the description at the top of the page.
         $("body")
             .append(
                 $("<div>")
