@@ -1,8 +1,14 @@
 $(document).ready(() => {
 
+    // Use this default list, so the page always shows the current project as it loads.
     const defaultList = "2024 ad hoc spooky stuff";
+
+    // Change the cache parameter every day, so data is cached but automatically downloaded the next day.
+    // During periods where I'm not editing existing reviews, I should reduce this to be monthly. 
     const date = new Date();
     const cacheVersion = date.getFullYear().toString() + date.getMonth().toString() + date.getDate().toString();
+
+    // Store the catalogue here, after loading it once while the page loads.
     let catalogue = {};
 
     const strings = {
@@ -64,7 +70,7 @@ $(document).ready(() => {
     // Set the default theme now, loading from storage if possible.
     setTheme(localStorage.getItem("theme") || "light");
 
-    // Create up the older lists button.
+    // Create the older lists button.
     $("#id-controls")
         .prepend($("<button>")
             .attr("id", "id-lists-button")
@@ -135,6 +141,21 @@ $(document).ready(() => {
         }
     });
 
+    // Load the catalogue of films into the catalogue variable.
+    const calatlogueRequest = new XMLHttpRequest();
+    calatlogueRequest.open('GET', `catalogue.json?v=${cacheVersion}`, true);
+    calatlogueRequest.responseType = 'json';
+    calatlogueRequest.onload = () => {
+        if (calatlogueRequest.status === 200) {
+            catalogue = calatlogueRequest.response;
+
+            // Render the default list.
+            populate(defaultList);
+        }
+    };
+
+    calatlogueRequest.send();
+
     // Load a film from the server, and assign its properties to the parameter object.
     const loadFilm = (film) => {
         return new Promise((resolve) => {
@@ -186,6 +207,8 @@ $(document).ready(() => {
             );
 
         // Find a list of films to load from the catalogue.
+        // Here we add the properties to each film, so we know which ones to render.
+        // We also add the list name that it came from, so we know what folder the file is in.
         let films = [];
         Object.keys(catalogue).forEach((listName, index) => {
             if (["alphabetical", "rating", listName].includes(list)) {
@@ -199,7 +222,7 @@ $(document).ready(() => {
             }
         });
 
-        // Load all the required films, if they have review data.
+        // Wait and load all the required films, if they have review data.
         await Promise.all(films.map(film => loadFilm(film)));
 
         // Sort that list if required. Otherwise the order in the catalogue is obeyed.
@@ -273,11 +296,12 @@ $(document).ready(() => {
 
                 card.find(".class-film-review")
                     .html(film.review
+                        // Render the spoiler tags over placeholders, if they exist.
                         .replace("#s", `<details><summary>${strings.spoilers}</summary>`)
                         .replace("#d", "</details>")
                     );
 
-                // Add sub-ratings.
+                // Add sub-ratings based on the properies from the list that the film belongs to.
                 film.properties.forEach((property, index) => {
                     if (film[property] !== undefined) {
                         card.find(".class-film-word")
@@ -289,44 +313,23 @@ $(document).ready(() => {
                     }
                 });
             } else {
-                // If there is no review, move it to the end of the list.
+                // If there is no review, and the content is still empty, move it to the end of the list.
                 $("body").append(card);
             }
+        });
 
-            // If the list is now complete, show the average.
-            if (films.length == $(".class-film-card:not(.class-film-unwatched)").length) {
-                let ratingTotal = 0;
-                let ratings = $(":not(.class-film-unwatched) > .class-film-bar > .class-rating-large");
-                ratings.each((index, rating) => {
-                    ratingTotal += Number(rating.innerHTML);
-                });
-                $("body")
+        // Add the average rating for whatever is displayed, at the bottom of the page.
+        // Start by getting a list of ratings that are actually set, as some films in the list might not be rated yet.
+        const ratings = films.map(film => film.rating).filter(rating => rating != undefined);
+
+        $("body")
+            .append(
+                $("<div>")
+                    .addClass("class-body-text")
                     .append(
                         $("<div>")
-                            .addClass("class-body-text")
-                            .append(
-                                $("<div>")
-                                    .attr("id", "id-average")
-                                    .html(`${strings.average}: ${(ratingTotal / ratings.length).toFixed(1)}`)
-                            ));
-            }
-            return;
-        });
+                            .attr("id", "id-average")
+                            .html(`${strings.average}: ${(ratings.reduce((total, rating) => total + rating, 0) / ratings.length).toFixed(1)}`)
+                    ));
     };
-
-    // Load the catalogue of films into the catalogue variable.
-    // Also populate the page with the default catalogue.
-    const calatlogueRequest = new XMLHttpRequest();
-    calatlogueRequest.open('GET', `catalogue.json?v=${cacheVersion}`, true);
-    calatlogueRequest.responseType = 'json';
-    calatlogueRequest.onload = () => {
-        if (calatlogueRequest.status === 200) {
-            catalogue = calatlogueRequest.response;
-
-            // Render the default list, probably the top of the catalogue.
-            populate(defaultList);
-        }
-    };
-
-    calatlogueRequest.send();
 });
