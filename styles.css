@@ -216,9 +216,15 @@ details {
 
 /* Fonts */
 @font-face {
-    font-family: "Westminster";
-    src: url("../westminster.ttf");
-  }
+    font-family: "font-westminster";
+    src: url("../index/westminster.ttf");
+}
+
+.class-westminster {
+    font-family: 'font-westminster', 'Roboto', sans-serif;
+    font-weight: normal !important;
+    /* Important because the mobile specific font weight bodge also must be important. */
+}
 
 /* Dark theme. */
 
