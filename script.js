@@ -143,8 +143,8 @@ $(document).ready(() => {
 
     // Load the catalogue of films into the catalogue variable.
     const calatlogueRequest = new XMLHttpRequest();
-    calatlogueRequest.open('GET', `catalogue.json?v=${cacheVersion}`, true);
-    calatlogueRequest.responseType = 'json';
+    calatlogueRequest.open("GET", `catalogue.json?v=${cacheVersion}`, true);
+    calatlogueRequest.responseType = "json";
     calatlogueRequest.onload = () => {
         if (calatlogueRequest.status === 200) {
             catalogue = calatlogueRequest.response;
@@ -160,8 +160,8 @@ $(document).ready(() => {
     const loadFilm = (film) => {
         return new Promise((resolve) => {
             const filmRequest = new XMLHttpRequest();
-            filmRequest.open('GET', `films/${film.list}/${film.id}.json?v=${cacheVersion}`, true);
-            filmRequest.responseType = 'json';
+            filmRequest.open("GET", `films/${film.list}/${film.id}.json?v=${cacheVersion}`, true);
+            filmRequest.responseType = "json";
             filmRequest.onload = () => {
                 if (filmRequest.status === 200 && !!filmRequest.response.review) {
                     Object.assign(film, filmRequest.response);
@@ -314,11 +314,10 @@ $(document).ready(() => {
                 });
 
                 // If the film has a style property, and it hasn't been added already, and add a style element to the page head.
-                if (film.style != undefined
-                    && $("style").find((element) => element.html().indexOf(film.id)) == undefined) {
+                if (film.style != undefined && $(`style:contains("${film.id}")`).length == 0) {
                     $("head").append($("<style>").html(`/* ${film.id} */ ${film.style}`));
                 }
-                
+
             } else {
                 // If there is no review, and the content is still empty, move it to the end of the list.
                 $("body").append(card);
