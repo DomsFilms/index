@@ -1,6 +1,6 @@
 {
     "date": "within last 12 months",
-    "title": "A  l  i  e  n",
+    "title": "Alien",
     "year": 1979,
     "seen": true,
     "review": "Looks amazing for the 70s, with gorgeous lighting and sets. The sound design and soundtrack is great. I like how well it predicts future technology (<i>2001</i> is the king of this). The body horror hasn't aged very well and my grotesque rating is unforgiving of outdated unrealistic special effects; they don't evoke the same kind of reaction that they used to. This might be my favourite film ever!",
@@ -8,5 +8,5 @@
     "suspense": 8,
     "shock": 6,
     "grotesque": 6,
-    "style": "@font-face {font-family: \"font-alien1979\"; src: url(\"films/2021-10-horror/alien1979.woff2\");} #id-film-alien1979 .class-film-title {font-family: 'font-alien1979', 'Roboto', sans-serif; text-transform: uppercase; font-weight: normal !important; /* Important because the mobile specific font weight bodge also must be important. */}"
+    "style": "@font-face {font-family: \"font-alien1979\"; src: url(\"films/2021-10-horror/alien1979.woff2\");} #id-film-alien1979 .class-film-title {font-family: 'font-alien1979', 'Roboto', sans-serif; text-transform: uppercase; letter-spacing: 2.5rem; font-weight: normal !important; /* Important because the mobile specific font weight bodge also must be important. */}"
 }
