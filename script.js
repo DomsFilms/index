@@ -312,6 +312,13 @@ $(document).ready(() => {
                             )
                     }
                 });
+
+                // If the film has a style property, and it hasn't been added already, and add a style element to the page head.
+                if (film.style != undefined
+                    && $("style").find((element) => element.html().indexOf(film.id)) == undefined) {
+                    $("head").append($("<style>").html(`/* ${film.id} */ ${film.style}`));
+                }
+                
             } else {
                 // If there is no review, and the content is still empty, move it to the end of the list.
                 $("body").append(card);
