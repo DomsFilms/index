@@ -228,19 +228,23 @@ $(document).ready(() => {
         // Sort that list if required. Otherwise the order in the catalogue is obeyed.
         // The film ID is unique per film, and I append a 2, 3 etc when I watch it again, so an alphabetical sort is inherently then sorted by watch time.
         if (list == "alphabetical") {
-            films = films.sort((a, b) =>
-                a.id < b.id
-                    ? -1
-                    : 1);
+            films = films
+                .filter(film => film.review != undefined)
+                .sort((a, b) =>
+                    a.id < b.id
+                        ? -1
+                        : 1);
         };
 
         if (list == "rating") {
-            films = films.sort((a, b) =>
-                a.rating != b.rating
-                    ? b.rating - a.rating
-                    : a.id < b.id
-                        ? -1
-                        : 1);
+            films = films
+                .filter(film => film.review != undefined)
+                .sort((a, b) =>
+                    a.rating != b.rating
+                        ? b.rating - a.rating
+                        : a.id < b.id
+                            ? -1
+                            : 1);
         };
 
         films.forEach((film, index) => {
