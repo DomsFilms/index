@@ -1,7 +1,7 @@
 $(document).ready(() => {
 
     // Use this default list, so the page always shows the current project as it loads.
-    const defaultList = "2024 ad hoc spooky stuff";
+    const defaultList = "2024 spooky month";
 
     // Change the cache parameter every day, so data is cached but automatically downloaded the next day.
     // During periods where I'm not editing existing reviews, I should reduce this to be monthly. 
