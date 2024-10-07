@@ -100,7 +100,7 @@ $(document).ready(() => {
             Object.keys(catalogue).forEach((listName, index) => {
 
                 // Draw a divider after the last spooky list item. It's assumed these always come first.
-                if (listName.includes("spooky") && $(".class-popup-hr").length == 0) {
+                if (!listName.includes("spooky") && $(".class-popup-hr").length == 0) {
                     $("#id-lists-popup")
                         .append(
                             $("<button>")
