@@ -15,6 +15,8 @@ $(document).ready(() => {
         "darkButton": "🌘 dark mode",
         "lightButton": "🌔 light mode",
         "olderLists": "📆 older lists",
+        "horror": "👻 all horror best-worst",
+        "horrorDescription": "All horror films on this site in order of my personal rating, from best to worst.",
         "alphabetical": "🔎 all films A-Z",
         "alphabeticalDescription": "All films on this site in alphabetical order, in case you want to search for one.",
         "rating": "👍 all films best-worst",
@@ -98,9 +100,16 @@ $(document).ready(() => {
             Object.keys(catalogue).forEach((listName, index) => {
 
                 // Draw a divider after the last spooky list item. It's assumed these always come first.
-                if (listName.indexOf("spooky") < 0 && $(".class-popup-hr").length == 0) {
+                if (listName.includes("spooky") && $(".class-popup-hr").length == 0) {
                     $("#id-lists-popup")
                         .append(
+                            $("<button>")
+                                .addClass("class-shadow-small class-font-small")
+                                .on("click", () => {
+                                    populate("horror");
+                                })
+                                .html(strings.horror)
+                        ).append(
                             $("<div>")
                                 .addClass("class-popup-hr")
                         );
@@ -173,6 +182,7 @@ $(document).ready(() => {
     };
 
     // Render a list based on the name from the parameter.
+    // If the name is "horror", load all horror films in order of score, and then alphabetical, and then by date watched.
     // If the name is "alphabetical", load all films in alphabetical order, and then date watched.
     // If the name is "rating", load all films in order of score, and then alphabetical, and then by date watched.
     const populate = async (list) => {
@@ -183,6 +193,9 @@ $(document).ready(() => {
         // Use a hard-coded description in the case of an all-films list.
         let description = "";
         switch (list) {
+            case "horror":
+                description = strings.horrorDescription;
+                break;
             case "alphabetical":
                 description = strings.alphabeticalDescription;
                 break;
@@ -211,7 +224,7 @@ $(document).ready(() => {
         // We also add the list name that it came from, so we know what folder the file is in.
         let films = [];
         Object.keys(catalogue).forEach((listName, index) => {
-            if (["alphabetical", "rating", listName].includes(list)) {
+            if ([listName.includes("spooky") ? "horror" : "ignore", "alphabetical", "rating", listName].includes(list)) {
                 films = films.concat(catalogue[listName].films.map(film => {
                     return {
                         "list": catalogue[listName].id,
@@ -236,7 +249,7 @@ $(document).ready(() => {
                         : 1);
         };
 
-        if (list == "rating") {
+        if (["rating", "horror"].includes(list)) {
             films = films
                 .filter(film => film.review != undefined)
                 .sort((a, b) =>
