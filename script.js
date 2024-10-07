@@ -15,12 +15,12 @@ $(document).ready(() => {
         "darkButton": "🌘 dark mode",
         "lightButton": "🌔 light mode",
         "olderLists": "📆 older lists",
-        "horror": "👻 all horror best-worst",
-        "horrorDescription": "All horror films on this site in order of my personal rating, from best to worst.",
+        "horror": "💀 all horror best-worst",
+        "horrorDescription": "All horror film reviews on this site in order of my personal rating, from best to worst. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
         "alphabetical": "🔎 all films A-Z",
-        "alphabeticalDescription": "All films on this site in alphabetical order, in case you want to search for one.",
+        "alphabeticalDescription": "All film reviews on this site in alphabetical order, in case you want to search for one.",
         "rating": "👍 all films best-worst",
-        "ratingDescription": "All films on this site in order of my personal rating, from best to worst.",
+        "ratingDescription": "All film reviews on this site in order of my personal rating, from best to worst.",
         "spoilers": "spoilers...",
         "average": "average"
     };
