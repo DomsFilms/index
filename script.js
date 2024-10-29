@@ -25,7 +25,7 @@ $(document).ready(() => {
         "average": "average"
     };
 
-    const titleSortRegex = /(^The\\s)|(^A\\s)/i;
+    const titleSortRegex = /(^The\s)|(^A\s)/i;
 
     $("body")
         .append($("<div>")
