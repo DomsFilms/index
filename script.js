@@ -25,7 +25,9 @@ $(document).ready(() => {
         "average": "average"
     };
 
+    // If the title matches the title regex, remove the matching id regex, to manipulate the id for sorting based on the title.
     const titleSortRegex = /(^The\s)|(^A\s)/i;
+    const idSortRegex = /(^the)|(^a)/i
 
     $("body")
         .append($("<div>")
@@ -241,7 +243,9 @@ $(document).ready(() => {
         await Promise.all(films.map(film => loadFilm(film)));
 
         films.forEach((film, index) => {
-            film.sortTitle = (film.title || "").replace(titleSortRegex, "") + film.id;
+            if (titleSortRegex.test(film.title)) {
+                film.sortTitle = film.id.replace(idSortRegex, "");
+            }
         });
 
         // Sort that list if required. Otherwise the order in the catalogue is obeyed.
