@@ -243,9 +243,9 @@ $(document).ready(() => {
         await Promise.all(films.map(film => loadFilm(film)));
 
         films.forEach((film, index) => {
-            if (titleSortRegex.test(film.title)) {
-                film.sortTitle = film.id.replace(idSortRegex, "");
-            }
+            film.sortTitle = titleSortRegex.test(film.title)
+                ? film.id.replace(idSortRegex, "")
+                : film.id;
         });
 
         // Sort that list if required. Otherwise the order in the catalogue is obeyed.
