@@ -25,6 +25,8 @@ $(document).ready(() => {
         "average": "average"
     };
 
+    const titleSortRegex = /^The\\s/;
+
     $("body")
         .append($("<div>")
             .attr("id", "id-controls")
@@ -238,16 +240,22 @@ $(document).ready(() => {
         // Wait and load all the required films, if they have review data.
         await Promise.all(films.map(film => loadFilm(film)));
 
+        films.forEach((film, index) => {
+            film.sortTitle = film.title.replace(titleSortRegex, "") + film.id;
+        });
+
         // Sort that list if required. Otherwise the order in the catalogue is obeyed.
+        // Apply the title transformation regex replace, then also add the ID.
         // The film ID is unique per film, and I append a 2, 3 etc when I watch it again, so an alphabetical sort is inherently then sorted by watch time.
         if (list == "alphabetical") {
             films = films
                 .filter(film => film.review != undefined)
                 .sort((a, b) =>
-                    a.id < b.id
+                    a.sortTitle < b.sortTitle
                         ? -1
-                        : 1);
-        };
+                        : 1
+                );
+        }
 
         if (["rating", "horror"].includes(list)) {
             films = films
@@ -255,10 +263,10 @@ $(document).ready(() => {
                 .sort((a, b) =>
                     a.rating != b.rating
                         ? b.rating - a.rating
-                        : a.id < b.id
+                        : a.sortTitle < b.sortTitle
                             ? -1
                             : 1);
-        };
+        }
 
         films.forEach((film, index) => {
 
