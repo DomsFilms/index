@@ -25,7 +25,7 @@ $(document).ready(() => {
         "average": "average"
     };
 
-    const titleSortRegex = /^The\\s/;
+    const titleSortRegex = /(^The\\s)|(^A\\s)/i;
 
     $("body")
         .append($("<div>")
@@ -241,7 +241,7 @@ $(document).ready(() => {
         await Promise.all(films.map(film => loadFilm(film)));
 
         films.forEach((film, index) => {
-            film.sortTitle = film.title.replace(titleSortRegex, "") + film.id;
+            film.sortTitle = (film.title || "").replace(titleSortRegex, "") + film.id;
         });
 
         // Sort that list if required. Otherwise the order in the catalogue is obeyed.
