@@ -343,7 +343,7 @@ $(document).ready(() => {
                 });
 
                 // If the film has a style property, and it hasn't been added already, and add a style element to the page head.
-                if (film.style != undefined && $(`style:contains("${film.id}")`).length == 0) {
+                if (film.style != undefined && $(`style:contains("/* ${film.id} /*")`).length == 0) {
                     $("head").append($("<style>").html(`/* ${film.id} */ ${film.style}`));
                 }
 
