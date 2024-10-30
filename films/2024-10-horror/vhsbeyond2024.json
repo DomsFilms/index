@@ -8,5 +8,6 @@
     "word": "Riotous",
     "suspense": 4,
     "shock": 3,
-    "grotesque": 9
+    "grotesque": 9,
+    "style": "@font-face {font-family: \"font-vhs\"; src: url(\"films/2024-10-horror/vhs.woff2\");} #id-film-vhsbeyond2024 .class-film-title {font-family: 'font-vhs', 'Roboto', sans-serif; text-transform: uppercase;}"
 }

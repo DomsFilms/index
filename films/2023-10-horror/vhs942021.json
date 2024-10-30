@@ -8,5 +8,6 @@
     "word": "Fuzzy",
     "suspense": 6,
     "shock": 7,
-    "grotesque": 9
+    "grotesque": 9,
+    "style": "@font-face {font-family: \"font-vhs\"; src: url(\"films/2024-10-horror/vhs.woff2\");} #id-film-vhs942021 .class-film-title {font-family: 'font-vhs', 'Roboto', sans-serif; text-transform: uppercase;}"
 }

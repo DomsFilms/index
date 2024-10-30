@@ -8,5 +8,6 @@
     "word": "Nostalgic",
     "suspense": 7,
     "shock": 7,
-    "grotesque": 8
+    "grotesque": 8,
+    "style": "@font-face {font-family: \"font-vhs\"; src: url(\"films/2024-10-horror/vhs.woff2\");} #id-film-vhs992022 .class-film-title {font-family: 'font-vhs', 'Roboto', sans-serif; text-transform: uppercase;}"
 }

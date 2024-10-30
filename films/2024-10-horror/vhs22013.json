@@ -8,5 +8,6 @@
     "word": "Uninspired",
     "suspense": 1,
     "shock": 5,
-    "grotesque": 8
+    "grotesque": 8,
+    "style": "@font-face {font-family: \"font-vhs\"; src: url(\"films/2024-10-horror/vhs.woff2\");} #id-film-vhs22013 .class-film-title {font-family: 'font-vhs', 'Roboto', sans-serif; text-transform: uppercase;}"
 }
