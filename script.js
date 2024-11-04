@@ -164,7 +164,7 @@ $(document).ready(() => {
 
             // Check the fragment for specific list, or use the default list.
             let hash = window.location.hash.replace("#", "");
-            let listId = catalogue.find(list => list.id == hash || list.films.contains(hash))
+            let listId = catalogue.find(list => list.id == hash || list.films.includes(hash))
                 || defaultList;
             populate(listId);
         }
@@ -204,7 +204,7 @@ $(document).ready(() => {
         switch (listId) {
             case "horror":
                 films = calatlogue
-                    .filter(list => list.id.contains("horror"))
+                    .filter(list => list.id.includes("horror"))
                     .map(list => list.films)
                     .flat()
                     .map(film => { return { "id": film } });
@@ -247,7 +247,7 @@ $(document).ready(() => {
         // Here we add the properties to each film, so we know which ones to render.
         // We also add the list name that it came from, so we know what folder the file is in.
         films.forEach((film, index) => {
-            let filmList = list || catalogue.find(list => list.films.contains(film));
+            let filmList = list || catalogue.find(list => list.films.includes(film));
             film.list = filmList.id;
             film.properties = filmList.properties;
         });
