@@ -50,12 +50,13 @@
             "whatjosiahsaw2021",
             "pulse2001",
             "thesadness2021",
-            "midorithecamelliagirl2016"
+            "midorithecamelliagirl2016",
+            "isawthetvglow2024"
         ]
     },
-    "2024 ad hoc spooky stuff": {
+    "2024 off-season spooky": {
         "id": "2024-01-horror",
-        "description": "I feel an urge to review all horror films I see throughout the year, and slowly build this list. I may still do the usual October marathon.",
+        "description": "I feel an urge to review all horror films I see throughout the year, and slowly build this list. There is a separate list for the traditional October marathon in 2024.",
         "properties": [
             "grotesque",
             "shock",
@@ -337,9 +338,20 @@
             "thefountain2006"
         ]
     },
-    "2022 new to me": {
+    "old favourites": {
+        "id": "2024-11-favourites",
+        "description": "After watching and writing about a bunch of mediocre horror movies, I just want to watch something that I already know I love, and I'll write about it only if I feel like it. There'll be no horror in this list, and I'll rate their appeal for rewatching for someone who already knows the ending. It's sometimes more fun and rewarding to write about movies I'm passionate about, than to dunk on low budget slashers.",
+        "properties": [
+            "rewatchability"
+        ],
+        "films": [
+            "boogienights1997",
+            "highfidelity2000"
+        ]
+    },
+    "new to me": {
         "id": "2022-01-new",
-        "description": "Using this review writing exercise as motivation to watch famous films I've never seen. I try to string together streaks of watching films daily.",
+        "description": "Using this review writing exercise as motivation to watch famous films I've never seen. I try to string together streaks of watching unseen films daily.",
         "properties": [
             "expected"
         ],
