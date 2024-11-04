@@ -265,7 +265,7 @@ $(document).ready(() => {
         // Sort that list if required. Otherwise the order in the catalogue is obeyed.
         // Apply the title transformation regex replace, then also add the ID.
         // The film ID is unique per film, and I append a 2, 3 etc when I watch it again, so an alphabetical sort is inherently then sorted by watch time.
-        if (list == "alphabetical") {
+        if (listId == "alphabetical") {
             films = films
                 .filter(film => film.review != undefined)
                 .sort((a, b) =>
@@ -275,7 +275,7 @@ $(document).ready(() => {
                 );
         }
 
-        if (["rating", "horror"].includes(list)) {
+        if (["rating", "horror"].includes(listId)) {
             films = films
                 .filter(film => film.review != undefined)
                 .sort((a, b) =>
