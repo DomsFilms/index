@@ -164,7 +164,8 @@ $(document).ready(() => {
 
             // Check the fragment for specific list, or use the default list.
             let hash = window.location.hash.replace("#", "");
-            let listId = (catalogue.find(list => list.id == hash || list.films.includes(hash)) || {}).id
+            let listId = ["horror", "alphabetical", "rating"].find(listId => listId == hash)
+                || (catalogue.find(list => list.id == hash || list.films.includes(hash)) || {}).id
                 || defaultList;
             populate(listId);
         }
