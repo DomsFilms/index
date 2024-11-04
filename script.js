@@ -9,7 +9,7 @@ $(document).ready(() => {
     const cacheVersion = date.getFullYear().toString() + date.getMonth().toString() + date.getDate().toString();
 
     // Store the catalogue here, after loading it once while the page loads.
-    let catalogue = {};
+    let catalogue = [];
 
     const strings = {
         "darkButton": "🌘 dark mode",
@@ -101,10 +101,10 @@ $(document).ready(() => {
             );
 
             // The order in the catalogue is obeyed and the all films buttons always come last.
-            Object.keys(catalogue).forEach((listName, index) => {
+            catalogue.forEach((list, index) => {
 
                 // Draw a divider after the last spooky list item. It's assumed these always come first.
-                if (!listName.includes("spooky") && $(".class-popup-hr").length == 0) {
+                if (!list.title.includes("spooky") && $(".class-popup-hr").length == 0) {
                     $("#id-lists-popup")
                         .append(
                             $("<button>")
@@ -125,9 +125,9 @@ $(document).ready(() => {
                         $("<button>")
                             .addClass("class-shadow-small class-font-small")
                             .on("click", () => {
-                                populate(listName);
+                                populate(list.id);
                             })
-                            .html(listName)
+                            .html(list.title)
                     );
             });
 
@@ -162,8 +162,11 @@ $(document).ready(() => {
         if (calatlogueRequest.status === 200) {
             catalogue = calatlogueRequest.response;
 
-            // Render the default list.
-            populate(defaultList);
+            // Check the fragment for specific list, or use the default list.
+            let hash = window.location.hash.replace("#", "");
+            let listId = catalogue.find(list => list.id == hash || list.films.contains(hash))
+                || defaultList;
+            populate(listId);
         }
     };
 
@@ -185,29 +188,47 @@ $(document).ready(() => {
         });
     };
 
-    // Render a list based on the name from the parameter.
+    // Render a list based on the id from the parameter.
     // If the name is "horror", load all horror films in order of score, and then alphabetical, and then by date watched.
     // If the name is "alphabetical", load all films in alphabetical order, and then date watched.
     // If the name is "rating", load all films in order of score, and then alphabetical, and then by date watched.
-    const populate = async (list) => {
+    const populate = async (listId) => {
         $(".class-popup").remove();
         $(".class-body-text").remove();
         $(".class-film-card").remove();
 
+        // Get the initial film list, and list description.
         // Use a hard-coded description in the case of an all-films list.
+        let films = [];
         let description = "";
-        switch (list) {
+        switch (listId) {
             case "horror":
+                films = calatlogue
+                    .filter(list => list.id.contains("horror"))
+                    .map(list => list.films)
+                    .flat()
+                    .map(film => { return { "id": film } });
                 description = strings.horrorDescription;
                 break;
             case "alphabetical":
+                films = calatlogue
+                    .map(list => list.films)
+                    .flat()
+                    .map(film => { return { "id": film } });
                 description = strings.alphabeticalDescription;
                 break;
             case "rating":
+                films = calatlogue
+                    .map(list => list.films)
+                    .flat()
+                    .map(film => { return { "id": film } });
                 description = strings.ratingDescription;
                 break;
             default:
-                description = catalogue[list].description;
+                let list = catalogue.find(list => list.id == listId);
+                description = list.description;
+                films = list.films
+                    .map(film => { return { "id": film } });
                 break;
         }
 
@@ -223,25 +244,18 @@ $(document).ready(() => {
                     )
             );
 
-        // Find a list of films to load from the catalogue.
         // Here we add the properties to each film, so we know which ones to render.
         // We also add the list name that it came from, so we know what folder the file is in.
-        let films = [];
-        Object.keys(catalogue).forEach((listName, index) => {
-            if ([listName.includes("spooky") ? "horror" : "ignore", "alphabetical", "rating", listName].includes(list)) {
-                films = films.concat(catalogue[listName].films.map(film => {
-                    return {
-                        "list": catalogue[listName].id,
-                        "id": film,
-                        "properties": catalogue[listName].properties
-                    };
-                }));
-            }
+        films.forEach((film, index) => {
+            let filmList = list || catalogue.find(list => list.films.contains(film));
+            film.list = filmList.id;
+            film.properties = filmList.properties;
         });
 
         // Wait and load all the required films, if they have review data.
         await Promise.all(films.map(film => loadFilm(film)));
 
+        // Add a sortTitle property using the regex.
         films.forEach((film, index) => {
             film.sortTitle = titleSortRegex.test(film.title)
                 ? film.id.replace(idSortRegex, "")

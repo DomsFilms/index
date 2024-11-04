@@ -1,6 +1,7 @@
-{
-    "2024 spooky month": {
+[
+    {
         "id": "2024-10-horror",
+        "title": "2024 spooky month",
         "description": "For the fourth year running I'm watching at least one horror movie per day in October and rating them from 0 to 10. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
         "properties": [
             "grotesque",
@@ -54,8 +55,9 @@
             "isawthetvglow2024"
         ]
     },
-    "2024 off-season spooky": {
+    {
         "id": "2024-01-horror",
+        "title": "2024 off-season spooky",
         "description": "I feel an urge to review all horror films I see throughout the year, and slowly build this list. There is a separate list for the traditional October marathon in 2024.",
         "properties": [
             "grotesque",
@@ -97,8 +99,9 @@
             "thelittlegirlwholivesdownthelane1976"
         ]
     },
-    "2023 spooky month": {
+    {
         "id": "2023-10-horror",
+        "title": "2023 spooky month",
         "description": "For the third year running I've watched at least one horror movie per day in October and given them ratings from 0 to 10. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
         "properties": [
             "grotesque",
@@ -156,8 +159,9 @@
             "thelovewitch2016"
         ]
     },
-    "2022 spooky month": {
+    {
         "id": "2022-07-horror",
+        "title": "2022 spooky month",
         "description": "<s>October</s> July spooky challenge. Suspense means a film instils dread or is grimly mysterious. Shock means the film has fun and effective jump scares. Grotesque means the film disgusts with striking imagery.",
         "properties": [
             "grotesque",
@@ -199,8 +203,9 @@
             "climax2018"
         ]
     },
-    "2021 spooky month": {
+    {
         "id": "2021-10-horror",
+        "title": "2021 spooky month",
         "description": "I decided to challenge myself to watch as many horror films as possible in October, rating them from 0 to 10, and also rating them in terms of suspense, shock and grotesuqe; the fundamental traits of horror.",
         "properties": [
             "grotesque",
@@ -260,8 +265,9 @@
             "agirlwalkshomealoneatnight2014"
         ]
     },
-    "2023 action romp": {
+    {
         "id": "2023-07-action",
+        "title": "2023 action romp",
         "description": "Binging action movies, mainly because I heard the Mission: Impossible series would get better if I saw it all. It's not a genre I am too familiar with.",
         "properties": [
             "believable",
@@ -269,7 +275,6 @@
             "bombast"
         ],
         "films": [
-            "dune2021",
             "missionimpossible1996",
             "oldboy2003",
             "missionimpossible22000",
@@ -294,8 +299,9 @@
             "thequickandthedead1995"
         ]
     },
-    "2022 sci-fi odyssey": {
+    {
         "id": "2022-03-scifi",
+        "title": "2022 sci-fi odyssey",
         "description": "Binging sci-fi movies, which is hard because they are all really long and heavy. I love the genre but I don't want to do this again. Horror is the best to binge.",
         "properties": [
             "hardness",
@@ -303,6 +309,7 @@
             "worldbuilding"
         ],
         "films": [
+            "dune2021",
             "flightofthenavigator1986",
             "aquietplacepartii2021",
             "madmaxfuryroad2015",
@@ -338,8 +345,9 @@
             "thefountain2006"
         ]
     },
-    "old favourites": {
+    {
         "id": "2024-11-favourites",
+        "title": "old favourites",
         "description": "After watching and writing about a bunch of mediocre horror movies, I just want to watch something that I already know I love, and I'll write about it only if I feel like it. There'll be no horror in this list, and I'll rate their appeal for rewatching for someone who already knows the ending. It's sometimes more fun and rewarding to write about movies I'm passionate about, than to dunk on low budget slashers.",
         "properties": [
             "rewatchability"
@@ -349,8 +357,9 @@
             "highfidelity2000"
         ]
     },
-    "new to me": {
+    {
         "id": "2022-01-new",
+        "title": "new to me",
         "description": "Using this review writing exercise as motivation to watch famous films I've never seen. I try to string together streaks of watching unseen films daily.",
         "properties": [
             "expected"
@@ -413,4 +422,4 @@
             "babylon2022"
         ]
     }
-}
+]
