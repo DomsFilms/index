@@ -199,38 +199,44 @@ $(document).ready(() => {
 
         // Get the initial film list, and list description.
         // Use a hard-coded description in the case of an all-films list.
-        let films = [];
-        let description = "";
+        let films = null;
+        let description = null;
+        let list = null;
         switch (listId) {
             case "horror":
                 films = calatlogue
-                    .filter(list => list.id.includes("horror"))
-                    .map(list => list.films)
-                    .flat()
-                    .map(film => { return { "id": film } });
+                    .filter(list => list.id.includes("horror"));
                 description = strings.horrorDescription;
                 break;
             case "alphabetical":
-                films = calatlogue
-                    .map(list => list.films)
-                    .flat()
-                    .map(film => { return { "id": film } });
+                films = calatlogue;
                 description = strings.alphabeticalDescription;
                 break;
             case "rating":
-                films = calatlogue
-                    .map(list => list.films)
-                    .flat()
-                    .map(film => { return { "id": film } });
+                films = calatlogue;
                 description = strings.ratingDescription;
                 break;
             default:
-                let list = catalogue.find(list => list.id == listId);
+                list = catalogue.find(list => list.id == listId);
                 description = list.description;
-                films = list.films
-                    .map(film => { return { "id": film } });
+                films = [list];
                 break;
         }
+
+        // At the moment the films value is an array of catalogue entries, a list of lists.
+        // Convert it to a list of film data, ready to be loaded.
+        // We add the list name that it came from, so we know what folder the file is in.
+        // We also add the properties to render for each film.
+        films = films
+            .map(list => list.films
+                .map(film => {
+                    return {
+                        "id": film,
+                        "list": list.id,
+                        "properties": list.properties
+                    };
+                })
+            ).flat();
 
         // Render the description at the top of the page.
         $("body")
@@ -243,14 +249,6 @@ $(document).ready(() => {
                             .html(description)
                     )
             );
-
-        // Here we add the properties to each film, so we know which ones to render.
-        // We also add the list name that it came from, so we know what folder the file is in.
-        films.forEach((film, index) => {
-            let filmList = list || catalogue.find(filmList => filmList.films.includes(film));
-            film.list = filmList.id;
-            film.properties = filmList.properties;
-        });
 
         // Wait and load all the required films, if they have review data.
         await Promise.all(films.map(film => loadFilm(film)));
