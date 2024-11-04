@@ -1,0 +1,13 @@
+{
+    "date": "11/09/2024",
+    "title": "Phase IV",
+    "year": 1974,
+    "seen": false,
+    "review": "I love this kind of thing. High concept, low budget, extremely 70s vibe. This is the kind of film I'll remember for a long time, not for the performances but for the ideas. It has some really weird cuts, sometimes half way through sentences. It has long sequences of ant footage, set to synth music. I laughed a bit when that one scientist had a great idea, and we saw a montage of their old drawing machine rendering a signal, and it turned out he just wanted to send them a square. I really like that Westminster/Data 70 font used on the modern releases of this movie.",
+    "rating": 7,
+    "word": "Entomological",
+    "suspense": 5,
+    "shock": 0,
+    "grotesque": 3,
+    "style": "@font-face {font-family: \"font-phaseiv1974\"; src: url(\"films/allhorror2024/phaseiv1974.woff2\");} #id-film-phaseiv1974 .class-film-title {font-family: 'font-phaseiv1974', 'Roboto', sans-serif; text-transform: uppercase; font-weight: normal !important; /* Important because the mobile specific font weight bodge also must be important. */}"
+}
