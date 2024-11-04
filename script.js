@@ -247,7 +247,7 @@ $(document).ready(() => {
         // Here we add the properties to each film, so we know which ones to render.
         // We also add the list name that it came from, so we know what folder the file is in.
         films.forEach((film, index) => {
-            let filmList = list || catalogue.find(list => list.films.includes(film));
+            let filmList = list || catalogue.find(filmList => filmList.films.includes(film));
             film.list = filmList.id;
             film.properties = filmList.properties;
         });
