@@ -204,16 +204,16 @@ $(document).ready(() => {
         let list = null;
         switch (listId) {
             case "horror":
-                films = calatlogue
+                films = catalogue
                     .filter(list => list.id.includes("horror"));
                 description = strings.horrorDescription;
                 break;
             case "alphabetical":
-                films = calatlogue;
+                films = catalogue;
                 description = strings.alphabeticalDescription;
                 break;
             case "rating":
-                films = calatlogue;
+                films = catalogue;
                 description = strings.ratingDescription;
                 break;
             default:
@@ -224,7 +224,8 @@ $(document).ready(() => {
         }
 
         // At the moment the films value is an array of catalogue entries, a list of lists.
-        // Convert it to a list of film data, ready to be loaded.
+        // We just did this because it's easy to filter the catalogue on the listId above.
+        // Now, convert it to a list of film data, ready to be loaded.
         // We add the list name that it came from, so we know what folder the file is in.
         // We also add the properties to render for each film.
         films = films
