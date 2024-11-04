@@ -1,7 +1,7 @@
 $(document).ready(() => {
 
     // Use this default list, so the page always shows the current project as it loads.
-    const defaultList = "2024 spooky month";
+    const defaultList = "horror2024";
 
     // Change the cache parameter every day, so data is cached but automatically downloaded the next day.
     // During periods where I'm not editing existing reviews, I should reduce this to be monthly. 
@@ -103,8 +103,8 @@ $(document).ready(() => {
             // The order in the catalogue is obeyed and the all films buttons always come last.
             catalogue.forEach((list, index) => {
 
-                // Draw a divider after the last spooky list item. It's assumed these always come first.
-                if (!list.title.includes("spooky") && $(".class-popup-hr").length == 0) {
+                // Draw a divider after the last horror list item. It's assumed these always come first.
+                if (!list.id.includes("horror") && $(".class-popup-hr").length == 0) {
                     $("#id-lists-popup")
                         .append(
                             $("<button>")
