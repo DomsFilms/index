@@ -23,6 +23,11 @@ body {
     font-size: 2rem;
 }
 
+.class-break {
+    flex-basis: 100%;
+    height: 0;
+}
+
 /* Control buttons. */
 
 #id-controls {
@@ -32,12 +37,27 @@ body {
     gap: 0.5rem;
 }
 
+button {
+    border: none;
+}
+
 #id-controls button {
     font-size: 1rem;
-    border: none;
     border-radius: 0.5rem;
     font-family: 'Roboto', sans-serif;
     padding: 0.3rem 0.4rem 0.3rem 0.4rem;
+}
+
+#id-latest button,
+#id-rating button,
+#id-horror button {
+    border-radius: 0.8rem;
+}
+
+#id-latest {
+    height: 10rem;
+    text-align: center;
+    align-content: end;
 }
 
 /* Text on the page outside of any specific film. */
@@ -199,7 +219,7 @@ summary {
 /* Dark theme. */
 
 .class-theme-dark .class-film-card,
-.class-theme-dark #id-controls button {
+.class-theme-dark button {
     background-color: #020202;
     color: #ffffffB0;
     transition: background-color 0.5s, color 0.5s;
@@ -234,7 +254,7 @@ summary {
 /* Light theme. */
 
 .class-theme-light .class-film-card,
-.class-theme-light #id-controls button {
+.class-theme-light button {
     background-color: #e5e5e5;
     color: #000000f7;
     transition: background-color 0.5s, color 0.5s;

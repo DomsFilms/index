@@ -61,14 +61,12 @@ $(document).ready(() => {
             .append($("<button>")
                 .attr("id", "id-home")
                 .addClass("class-shadow")
-                .addClass("class-font-small")
                 .html(strings.indexButton)
                 .on("click", () => display(""))
             )
             .append($("<button>")
                 .attr("id", "id-theme-toggle")
                 .addClass("class-shadow")
-                .addClass("class-font-small")
                 .html(strings.darkButton)
                 .on("click", () => {
                     const body = $("body");
@@ -155,25 +153,26 @@ $(document).ready(() => {
             // If the hash is empty, show the index page.
             $("body")
                 .append(
-                    $("<div>")
+                    $("<button>")
                         .attr("id", "id-latest")
-                        .addClass("class-film-card")
                         .addClass("class-shadow")
                         .html(defaultList.title)
                         .on("click", () => display(defaultList.id))
                 )
                 .append(
                     $("<div>")
+                    .addClass("class-break")
+                )
+                .append(
+                    $("<button>")
                         .attr("id", "id-rating")
-                        .addClass("class-film-card")
                         .addClass("class-shadow")
                         .html(strings.rating)
                         .on("click", () => display("rating"))
                 )
                 .append(
-                    $("<div>")
+                    $("<button>")
                         .attr("id", "id-horror")
-                        .addClass("class-film-card")
                         .addClass("class-shadow")
                         .html(strings.horror)
                         .on("click", () => display("horror"))
