@@ -188,7 +188,7 @@ $(document).ready(() => {
     // If the fragment is "alphabetical", load all films in alphabetical order, and then date watched.
     // If the fragment is "rating", load all films in order of score, and then alphabetical, and then by date watched.
     // This is bound to the window so that links can call it.
-    window.populate = (fragment) => {
+    window.populate = async (fragment) => {
         $(".class-popup").remove();
         $(".class-body-text").remove();
         $(".class-film-card").remove();
