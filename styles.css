@@ -48,16 +48,29 @@ button {
     padding: 0.3rem 0.4rem 0.3rem 0.4rem;
 }
 
-#id-latest button,
-#id-rating button,
-#id-horror button {
+#id-latest,
+#id-rating,
+#id-horror {
+    height: auto;
     border-radius: 0.8rem;
+    padding: 1rem;
 }
 
 #id-latest {
+    width: 30rem;
     height: 10rem;
-    text-align: center;
-    align-content: end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    background-size: cover;
+    background-position: center;
+    color: #ffffffB0 !important;
+}
+
+#id-latest,
+#id-rating {
+    width: 14.5rem;
 }
 
 /* Text on the page outside of any specific film. */

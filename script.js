@@ -2,7 +2,7 @@ $(document).ready(() => {
 
     const defaultList = {
         "title": "2024 horror marathon",
-        "image": "",
+        "image": "url(\"films/horror2024/image.jpg\")",
         "id": "horror2024"
     };
 
@@ -157,6 +157,7 @@ $(document).ready(() => {
                         .attr("id", "id-latest")
                         .addClass("class-shadow")
                         .html(defaultList.title)
+                        .css("background-image", defaultList.image)
                         .on("click", () => display(defaultList.id))
                 )
                 .append(
