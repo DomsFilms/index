@@ -9,50 +9,182 @@
             "suspense"
         ],
         "films": [
-            "thenighthouse2021",
-            "frankenstein1931",
-            "thesubstance2024",
-            "thecoffeetable2022",
-            "fromdusktilldawn1996",
-            "below2002",
-            "noonewillsaveyou2023",
-            "redwhiteandblue2010",
-            "eventhorizon19972",
-            "youmightbethekiller2019",
-            "28dayslater2002",
-            "theblairwitchproject19992",
-            "somethinginthedirt2022",
-            "whenevillurks2023",
-            "greenroom2015",
-            "vhsbeyond2024",
-            "theholeintheground2019",
-            "suspiria1977",
-            "vhs22013",
-            "whoinvitedthem2022",
-            "oddity2024",
-            "constantine2005",
-            "bubbahotep2002",
-            "frankenhooker1990",
-            "vhs9920222",
-            "dreamscenario2023",
-            "braindamage1988",
-            "posession1981",
-            "terrifier22022",
-            "onecutofthedead20172",
-            "themist2007",
-            "noroithecurse2005",
-            "latenightwiththedevil2024",
-            "vivarium2019",
-            "hereditary20182",
-            "vhs852023",
-            "abcsofdeath22014",
-            "14082007",
-            "southbound2015",
-            "whatjosiahsaw2021",
-            "pulse2001",
-            "thesadness2021",
-            "midorithecamelliagirl2016",
-            "isawthetvglow2024"
+            {
+                "id": "thenighthouse2021",
+                "title": "The Night House"
+            },
+            {
+                "id": "frankenstein1931",
+                "title": "Frankenstein"
+            },
+            {
+                "id": "thesubstance2024",
+                "title": "The Substance"
+            },
+            {
+                "id": "thecoffeetable2022",
+                "title": "The Coffee Table"
+            },
+            {
+                "id": "fromdusktilldawn1996",
+                "title": "From Dusk till Dawn"
+            },
+            {
+                "id": "below2002",
+                "title": "Below"
+            },
+            {
+                "id": "noonewillsaveyou2023",
+                "title": "No One Will Save You"
+            },
+            {
+                "id": "redwhiteandblue2010",
+                "title": "Red White &amp; Blue"
+            },
+            {
+                "id": "eventhorizon19972",
+                "title": "Event Horizon"
+            },
+            {
+                "id": "youmightbethekiller2019",
+                "title": "You Might Be the Killer"
+            },
+            {
+                "id": "28dayslater2002",
+                "title": "28 Days Later"
+            },
+            {
+                "id": "theblairwitchproject19992",
+                "title": "The Blair Witch Project"
+            },
+            {
+                "id": "somethinginthedirt2022",
+                "title": "Something in the Dirt"
+            },
+            {
+                "id": "whenevillurks2023",
+                "title": "When Evil Lurks"
+            },
+            {
+                "id": "greenroom2015",
+                "title": "Green Room"
+            },
+            {
+                "id": "vhsbeyond2024",
+                "title": "V/H/S/Beyond"
+            },
+            {
+                "id": "theholeintheground2019",
+                "title": "The Hole in the Ground"
+            },
+            {
+                "id": "suspiria1977",
+                "title": "Suspiria"
+            },
+            {
+                "id": "vhs22013",
+                "title": "V/H/S/2"
+            },
+            {
+                "id": "whoinvitedthem2022",
+                "title": "Who Invited Them"
+            },
+            {
+                "id": "oddity2024",
+                "title": "Oddity"
+            },
+            {
+                "id": "constantine2005",
+                "title": "Constantine"
+            },
+            {
+                "id": "bubbahotep2002",
+                "title": "Bubba Ho-Tep"
+            },
+            {
+                "id": "frankenhooker1990",
+                "title": "Frankenhooker"
+            },
+            {
+                "id": "vhs9920222",
+                "title": "V/H/S/99"
+            },
+            {
+                "id": "dreamscenario2023",
+                "title": "Dream Scenario"
+            },
+            {
+                "id": "braindamage1988",
+                "title": "Brain Damage"
+            },
+            {
+                "id": "posession1981",
+                "title": "Posession"
+            },
+            {
+                "id": "terrifier22022",
+                "title": "Terrifier 2"
+            },
+            {
+                "id": "onecutofthedead20172",
+                "title": "One Cut of the Dead"
+            },
+            {
+                "id": "themist2007",
+                "title": "The Mist"
+            },
+            {
+                "id": "noroithecurse2005",
+                "title": "Noroi: The Curse"
+            },
+            {
+                "id": "latenightwiththedevil2024",
+                "title": "Late Night with the Devil"
+            },
+            {
+                "id": "vivarium2019",
+                "title": "Vivarium"
+            },
+            {
+                "id": "hereditary20182",
+                "title": "Hereditary"
+            },
+            {
+                "id": "vhs852023",
+                "title": "V/H/S/85"
+            },
+            {
+                "id": "abcsofdeath22014",
+                "title": "ABCs of Death 2"
+            },
+            {
+                "id": "14082007",
+                "title": "1408"
+            },
+            {
+                "id": "southbound2015",
+                "title": "Southbound"
+            },
+            {
+                "id": "whatjosiahsaw2021",
+                "title": "What Josiah Saw"
+            },
+            {
+                "id": "pulse2001",
+                "title": "Pulse"
+            },
+            {
+                "id": "thesadness2021",
+                "title": "The Sadness"
+            },
+            {
+                "id": "midorithecamelliagirl2016",
+                "title": "Midori: The Camellia Girl"
+            },
+            {
+                "id": "isawthetvglow2024",
+                "title": "I Saw the TV Glow"
+            }
         ]
     },
     {
@@ -65,38 +197,134 @@
             "suspense"
         ],
         "films": [
-            "posessor2020",
-            "bloodpunch2014",
-            "thebeyond1981",
-            "possum2018",
-            "theabcsofdeath2012",
-            "saintmaud2019",
-            "creamyoutubeshort2018",
-            "run2020",
-            "alien³1992",
-            "noexit2022",
-            "thefirstomen2024",
-            "immaculate2024",
-            "readyornot2019",
-            "suitableflesh2023",
-            "thelighthouse20192",
-            "longlegs2024",
-            "maxxxine2024",
-            "signs2002",
-            "theritual2017",
-            "hueserathebonewoman2023",
-            "killlist2011",
-            "alienresurrection1997",
-            "prometheus20122",
-            "alienromulus2024",
-            "beetlejuice1988",
-            "3headedsharkattack2015",
-            "ghostwatch1992",
-            "5headedsharkattack2017",
-            "prey2022",
-            "phaseiv1974",
-            "thevoid2016",
-            "thelittlegirlwholivesdownthelane1976"
+            {
+                "id": "posessor2020",
+                "title": "Posessor"
+            },
+            {
+                "id": "bloodpunch2014",
+                "title": "Blood Punch"
+            },
+            {
+                "id": "thebeyond1981",
+                "title": "The Beyond"
+            },
+            {
+                "id": "possum2018",
+                "title": "Possum"
+            },
+            {
+                "id": "theabcsofdeath2012",
+                "title": "The ABCs of Death"
+            },
+            {
+                "id": "saintmaud2019",
+                "title": "Saint Maud"
+            },
+            {
+                "id": "creamyoutubeshort2018",
+                "title": "Cream (YouTube short)"
+            },
+            {
+                "id": "run2020",
+                "title": "Run"
+            },
+            {
+                "id": "alien³1992",
+                "title": "Alien³"
+            },
+            {
+                "id": "noexit2022",
+                "title": "No Exit"
+            },
+            {
+                "id": "thefirstomen2024",
+                "title": "The First Omen"
+            },
+            {
+                "id": "immaculate2024",
+                "title": "Immaculate"
+            },
+            {
+                "id": "readyornot2019",
+                "title": "Ready or Not"
+            },
+            {
+                "id": "suitableflesh2023",
+                "title": "Suitable Flesh"
+            },
+            {
+                "id": "thelighthouse20192",
+                "title": "The Lighthouse"
+            },
+            {
+                "id": "longlegs2024",
+                "title": "Longlegs"
+            },
+            {
+                "id": "maxxxine2024",
+                "title": "MaXXXine"
+            },
+            {
+                "id": "signs2002",
+                "title": "Signs"
+            },
+            {
+                "id": "theritual2017",
+                "title": "The Ritual"
+            },
+            {
+                "id": "hueserathebonewoman2023",
+                "title": "Huesera: The Bone Woman"
+            },
+            {
+                "id": "killlist2011",
+                "title": "Kill List"
+            },
+            {
+                "id": "alienresurrection1997",
+                "title": "Alien Resurrection"
+            },
+            {
+                "id": "prometheus20122",
+                "title": "Prometheus"
+            },
+            {
+                "id": "alienromulus2024",
+                "title": "Alien: Romulus"
+            },
+            {
+                "id": "beetlejuice1988",
+                "title": "Beetlejuice"
+            },
+            {
+                "id": "3headedsharkattack2015",
+                "title": "3-Headed Shark Attack"
+            },
+            {
+                "id": "ghostwatch1992",
+                "title": "Ghostwatch"
+            },
+            {
+                "id": "5headedsharkattack2017",
+                "title": "5-Headed Shark Attack"
+            },
+            {
+                "id": "prey2022",
+                "title": "Prey"
+            },
+            {
+                "id": "phaseiv1974",
+                "title": "Phase IV"
+            },
+            {
+                "id": "thevoid2016",
+                "title": "The Void"
+            },
+            {
+                "id": "thelittlegirlwholivesdownthelane1976",
+                "title": "The Little Girl Who Lives Down the Lane"
+            }
         ]
     },
     {
@@ -109,54 +337,198 @@
             "suspense"
         ],
         "films": [
-            "relic2020",
-            "thedarkandthewicked2020",
-            "alteredstates1980",
-            "salemslotpart11979",
-            "salemslotpart21979",
-            "thetexaschainsawmassacre1974",
-            "thecabinetofdrcaligari1920",
-            "nope2022",
-            "halloween1978",
-            "thestrangers2008",
-            "theemptyman2020",
-            "itfollows2014",
-            "bramstokersdracula1992",
-            "planetterror2007",
-            "bliss2019",
-            "crimesofthefuture2022",
-            "inlandempire2006",
-            "pearl2022",
-            "petsematary1989",
-            "talktome2022",
-            "annihilation20182",
-            "rec2007",
-            "thephantomcarriage1921",
-            "malignant2021",
-            "gonjiamhauntedasylum2018",
-            "hellhousellc2015",
-            "rec22009",
-            "guillermoddeltoroscabinetofcuriositiestheviewing2022",
-            "itchaptertwo2019",
-            "renfield2023",
-            "braindead1992",
-            "infinitypool2023",
-            "theblob1988",
-            "deathgasm2015",
-            "vhs942021",
-            "anamericanwerewolfinlondon1981",
-            "thewickerman1973",
-            "thewickerman2006",
-            "sororitybabesintheslimeballbowlorama1988",
-            "vhs992022",
-            "devilfetus1983",
-            "themenu2022",
-            "ahauntinginvenice2023",
-            "kwaidan1964",
-            "thecell2000",
-            "theomen1976",
-            "reanimator1985",
-            "thelovewitch2016"
+            {
+                "id": "relic2020",
+                "title": "Relic"
+            },
+            {
+                "id": "thedarkandthewicked2020",
+                "title": "The Dark and the Wicked"
+            },
+            {
+                "id": "alteredstates1980",
+                "title": "Altered States"
+            },
+            {
+                "id": "salemslotpart11979",
+                "title": "Salem's Lot Part 1"
+            },
+            {
+                "id": "salemslotpart21979",
+                "title": "Salem's Lot Part 2"
+            },
+            {
+                "id": "thetexaschainsawmassacre1974",
+                "title": "The Texas Chain Saw Massacre"
+            },
+            {
+                "id": "thecabinetofdrcaligari1920",
+                "title": "The Cabinet of Dr. Caligari"
+            },
+            {
+                "id": "nope2022",
+                "title": "Nope"
+            },
+            {
+                "id": "halloween1978",
+                "title": "Halloween"
+            },
+            {
+                "id": "thestrangers2008",
+                "title": "The Strangers"
+            },
+            {
+                "id": "theemptyman2020",
+                "title": "The Empty Man"
+            },
+            {
+                "id": "itfollows2014",
+                "title": "It Follows"
+            },
+            {
+                "id": "bramstokersdracula1992",
+                "title": "Bram Stoker's Dracula"
+            },
+            {
+                "id": "planetterror2007",
+                "title": "Planet Terror"
+            },
+            {
+                "id": "bliss2019",
+                "title": "Bliss"
+            },
+            {
+                "id": "crimesofthefuture2022",
+                "title": "Crimes of the Future"
+            },
+            {
+                "id": "inlandempire2006",
+                "title": "Inland Empire"
+            },
+            {
+                "id": "pearl2022",
+                "title": "Pearl"
+            },
+            {
+                "id": "petsematary1989",
+                "title": "Pet Sematary"
+            },
+            {
+                "id": "talktome2022",
+                "title": "Talk to Me"
+            },
+            {
+                "id": "annihilation20182",
+                "title": "Annihilation"
+            },
+            {
+                "id": "rec2007",
+                "title": "[🔴REC]"
+            },
+            {
+                "id": "thephantomcarriage1921",
+                "title": "The Phantom Carriage"
+            },
+            {
+                "id": "malignant2021",
+                "title": "Malignant"
+            },
+            {
+                "id": "gonjiamhauntedasylum2018",
+                "title": "Gonjiam; Haunted Asylum"
+            },
+            {
+                "id": "hellhousellc2015",
+                "title": "Hell House LLC"
+            },
+            {
+                "id": "rec22009",
+                "title": "[🔴REC]²"
+            },
+            {
+                "id": "guillermoddeltoroscabinetofcuriositiestheviewing2022",
+                "title": "Guillermo del Toro's Cabinet of Curiosities (season 1 episode 7: The Viewing)"
+            },
+            {
+                "id": "itchaptertwo2019",
+                "title": "It Chapter Two"
+            },
+            {
+                "id": "renfield2023",
+                "title": "Renfield"
+            },
+            {
+                "id": "braindead1992",
+                "title": "Braindead"
+            },
+            {
+                "id": "infinitypool2023",
+                "title": "Infinity Pool"
+            },
+            {
+                "id": "theblob1988",
+                "title": "The Blob"
+            },
+            {
+                "id": "deathgasm2015",
+                "title": "Deathgasm"
+            },
+            {
+                "id": "vhs942021",
+                "title": "V/H/S/94"
+            },
+            {
+                "id": "anamericanwerewolfinlondon1981",
+                "title": "An American Werewolf in London"
+            },
+            {
+                "id": "thewickerman1973",
+                "title": "The Wicker Man"
+            },
+            {
+                "id": "thewickerman2006",
+                "title": "The Wicker Man"
+            },
+            {
+                "id": "sororitybabesintheslimeballbowlorama1988",
+                "title": "Sorority Babes in the Slimeball Bowl-O-Rama"
+            },
+            {
+                "id": "vhs992022",
+                "title": "V/H/S/99"
+            },
+            {
+                "id": "devilfetus1983",
+                "title": "Devil Fetus"
+            },
+            {
+                "id": "themenu2022",
+                "title": "The Menu"
+            },
+            {
+                "id": "ahauntinginvenice2023",
+                "title": "A Haunting in Venice"
+            },
+            {
+                "id": "kwaidan1964",
+                "title": "Kwaidan"
+            },
+            {
+                "id": "thecell2000",
+                "title": "The Cell"
+            },
+            {
+                "id": "theomen1976",
+                "title": "The Omen"
+            },
+            {
+                "id": "reanimator1985",
+                "title": "Re-Animator"
+            },
+            {
+                "id": "thelovewitch2016",
+                "title": "The Love Witch"
+            }
         ]
     },
     {
@@ -169,38 +541,134 @@
             "suspense"
         ],
         "films": [
-            "theneondemon2016",
-            "traintobusan2016",
-            "psycho1960",
-            "sinister2012",
-            "theblairwitchproject1999",
-            "saw1999",
-            "armyofdarkness1992",
-            "strangerthingsseason4episodes892022",
-            "dracula1958",
-            "juonthegrudge2002",
-            "thegrudge2004",
-            "scoobydoo2monstersunleashed2004",
-            "madgod2021",
-            "blackswan2010",
-            "thepoughkeepsietapes2007",
-            "vampireskiss1988",
-            "gremlins1984",
-            "lakemungo2008",
-            "betrayalathouseonthehilltheboardgame2004",
-            "incantation2022",
-            "tokyogorepolice2008",
-            "sunshine2007",
-            "ganjahess1973",
-            "men2022",
-            "dabbecurseofthejinn2013",
-            "x2022",
-            "isawthedevil2010",
-            "silenthilltheplaystationgame1999",
-            "sleepyhollow1999",
-            "themedium2021",
-            "us2019",
-            "climax2018"
+            {
+                "id": "theneondemon2016",
+                "title": "The Neon Demon"
+            },
+            {
+                "id": "traintobusan2016",
+                "title": "Train to Busan"
+            },
+            {
+                "id": "psycho1960",
+                "title": "Psycho"
+            },
+            {
+                "id": "sinister2012",
+                "title": "Sinister"
+            },
+            {
+                "id": "theblairwitchproject1999",
+                "title": "The Blair Witch Project"
+            },
+            {
+                "id": "saw1999",
+                "title": "Saw"
+            },
+            {
+                "id": "armyofdarkness1992",
+                "title": "Army of Darkness"
+            },
+            {
+                "id": "strangerthingsseason4episodes892022",
+                "title": "Stranger Things (season 4 episodes 8 &amp; 9)"
+            },
+            {
+                "id": "dracula1958",
+                "title": "Dracula"
+            },
+            {
+                "id": "juonthegrudge2002",
+                "title": "Ju-On: The Grudge"
+            },
+            {
+                "id": "thegrudge2004",
+                "title": "The Grudge"
+            },
+            {
+                "id": "scoobydoo2monstersunleashed2004",
+                "title": "Scooby Doo 2: Monsters Unleashed"
+            },
+            {
+                "id": "madgod2021",
+                "title": "Mad God"
+            },
+            {
+                "id": "blackswan2010",
+                "title": "Black Swan"
+            },
+            {
+                "id": "thepoughkeepsietapes2007",
+                "title": "The Poughkeepsie Tapes"
+            },
+            {
+                "id": "vampireskiss1988",
+                "title": "Vampire's Kiss"
+            },
+            {
+                "id": "gremlins1984",
+                "title": "Gremlins"
+            },
+            {
+                "id": "lakemungo2008",
+                "title": "Lake Mungo"
+            },
+            {
+                "id": "betrayalathouseonthehilltheboardgame2004",
+                "title": "Betrayal at House on the Hill (the board game)"
+            },
+            {
+                "id": "incantation2022",
+                "title": "Incantation"
+            },
+            {
+                "id": "tokyogorepolice2008",
+                "title": "Tokyo Gore Police"
+            },
+            {
+                "id": "sunshine2007",
+                "title": "Sunshine"
+            },
+            {
+                "id": "ganjahess1973",
+                "title": "Ganja &amp; Hess"
+            },
+            {
+                "id": "men2022",
+                "title": "Men"
+            },
+            {
+                "id": "dabbecurseofthejinn2013",
+                "title": "Dabbe: Curse of the Jinn"
+            },
+            {
+                "id": "x2022",
+                "title": "X"
+            },
+            {
+                "id": "isawthedevil2010",
+                "title": "I Saw the Devil"
+            },
+            {
+                "id": "silenthilltheplaystationgame1999",
+                "title": "Silent Hill (The PlayStation game)"
+            },
+            {
+                "id": "sleepyhollow1999",
+                "title": "Sleepy Hollow"
+            },
+            {
+                "id": "themedium2021",
+                "title": "The Medium"
+            },
+            {
+                "id": "us2019",
+                "title": "Us"
+            },
+            {
+                "id": "climax2018",
+                "title": "Climax"
+            }
         ]
     },
     {
@@ -213,56 +681,206 @@
             "suspense"
         ],
         "films": [
-            "dragmetohell2009",
-            "alien1979",
-            "hereditary2018",
-            "thecabininthewoods2011",
-            "annabelle2014",
-            "mandy2018",
-            "thesilenceofthelambs1991",
-            "thefog1980",
-            "theevildead1981",
-            "theconjuring2theenfieldcase2016",
-            "thething1982",
-            "nosferatu1922",
-            "lettherightonein2008",
-            "prometheus2012",
-            "cube1997",
-            "evildeadii1987",
-            "hannibal2001",
-            "maximumoverdrive1986",
-            "theshining1980",
-            "onecutofthedead2017",
-            "eventhorizon1997",
-            "inthemouthofmadness1994",
-            "hellraiser1987",
-            "underworld2003",
-            "thewailing2016",
-            "aliencovenant2017",
-            "harrypotterandthechamberofsecrets2002",
-            "thewitch2015",
-            "theendless2017",
-            "attacktheblock2011",
-            "annihilation2018",
-            "theshining19802",
-            "ataleoftwosisters2003",
-            "jacobsladder1990",
-            "reddragon2002",
-            "theconjuringthedevilmademedoit2021",
-            "doctorsleep2019",
-            "anightmareonelmstreet1984",
-            "thelighthouse2019",
-            "darkcity1998",
-            "paranormalactivity2007",
-            "thevanishing1988",
-            "hagazussaaheathenscurse2017",
-            "houseofthedead2003",
-            "aquietplace2018",
-            "it2017",
-            "getout2017",
-            "thebabadook2014",
-            "tremors1990",
-            "agirlwalkshomealoneatnight2014"
+            {
+                "id": "dragmetohell2009",
+                "title": "Drag Me To Hell"
+            },
+            {
+                "id": "alien1979",
+                "title": "Alien"
+            },
+            {
+                "id": "hereditary2018",
+                "title": "Hereditary"
+            },
+            {
+                "id": "thecabininthewoods2011",
+                "title": "The Cabin In The Woods"
+            },
+            {
+                "id": "annabelle2014",
+                "title": "Annabelle"
+            },
+            {
+                "id": "mandy2018",
+                "title": "Mandy"
+            },
+            {
+                "id": "thesilenceofthelambs1991",
+                "title": "The Silence of the Lambs"
+            },
+            {
+                "id": "thefog1980",
+                "title": "The Fog"
+            },
+            {
+                "id": "theevildead1981",
+                "title": "The Evil Dead"
+            },
+            {
+                "id": "theconjuring2theenfieldcase2016",
+                "title": "The Conjuring 2: The Enfield Case"
+            },
+            {
+                "id": "thething1982",
+                "title": "The Thing"
+            },
+            {
+                "id": "nosferatu1922",
+                "title": "Nosferatu"
+            },
+            {
+                "id": "lettherightonein2008",
+                "title": "Let the Right One In"
+            },
+            {
+                "id": "prometheus2012",
+                "title": "Prometheus"
+            },
+            {
+                "id": "cube1997",
+                "title": "Cube"
+            },
+            {
+                "id": "evildeadii1987",
+                "title": "Evil Dead II"
+            },
+            {
+                "id": "hannibal2001",
+                "title": "Hannibal"
+            },
+            {
+                "id": "maximumoverdrive1986",
+                "title": "Maximum Overdrive"
+            },
+            {
+                "id": "theshining1980",
+                "title": "The Shining"
+            },
+            {
+                "id": "onecutofthedead2017",
+                "title": "One Cut of the Dead"
+            },
+            {
+                "id": "eventhorizon1997",
+                "title": "Event Horizon"
+            },
+            {
+                "id": "inthemouthofmadness1994",
+                "title": "In the Mouth of Madness"
+            },
+            {
+                "id": "hellraiser1987",
+                "title": "Hellraiser"
+            },
+            {
+                "id": "underworld2003",
+                "title": "Underworld"
+            },
+            {
+                "id": "thewailing2016",
+                "title": "The Wailing"
+            },
+            {
+                "id": "aliencovenant2017",
+                "title": "Alien: Covenant"
+            },
+            {
+                "id": "harrypotterandthechamberofsecrets2002",
+                "title": "Harry Potter and the Chamber of Secrets"
+            },
+            {
+                "id": "thewitch2015",
+                "title": "The Witch"
+            },
+            {
+                "id": "theendless2017",
+                "title": "The Endless"
+            },
+            {
+                "id": "attacktheblock2011",
+                "title": "Attack the Block"
+            },
+            {
+                "id": "annihilation2018",
+                "title": "Annihilation"
+            },
+            {
+                "id": "theshining19802",
+                "title": "The Shining"
+            },
+            {
+                "id": "ataleoftwosisters2003",
+                "title": "A Tale of Two Sisters"
+            },
+            {
+                "id": "jacobsladder1990",
+                "title": "Jacob's Ladder"
+            },
+            {
+                "id": "reddragon2002",
+                "title": "Red Dragon"
+            },
+            {
+                "id": "theconjuringthedevilmademedoit2021",
+                "title": "The Conjuring: The Devil Made Me Do It"
+            },
+            {
+                "id": "doctorsleep2019",
+                "title": "Doctor Sleep"
+            },
+            {
+                "id": "anightmareonelmstreet1984",
+                "title": "A Nightmare on Elm Street"
+            },
+            {
+                "id": "thelighthouse2019",
+                "title": "The Lighthouse"
+            },
+            {
+                "id": "darkcity1998",
+                "title": "Dark City"
+            },
+            {
+                "id": "paranormalactivity2007",
+                "title": "Paranormal Activity"
+            },
+            {
+                "id": "thevanishing1988",
+                "title": "The Vanishing"
+            },
+            {
+                "id": "hagazussaaheathenscurse2017",
+                "title": "Hagazussa: A Heathen's Curse"
+            },
+            {
+                "id": "houseofthedead2003",
+                "title": "House of the Dead"
+            },
+            {
+                "id": "aquietplace2018",
+                "title": "A Quiet Place"
+            },
+            {
+                "id": "it2017",
+                "title": "It"
+            },
+            {
+                "id": "getout2017",
+                "title": "Get Out"
+            },
+            {
+                "id": "thebabadook2014",
+                "title": "The Babadook"
+            },
+            {
+                "id": "tremors1990",
+                "title": "Tremors"
+            },
+            {
+                "id": "agirlwalkshomealoneatnight2014",
+                "title": "A Girl Walks Home Alone at Night"
+            }
         ]
     },
     {
@@ -275,28 +893,94 @@
             "bombast"
         ],
         "films": [
-            "missionimpossible1996",
-            "oldboy2003",
-            "missionimpossible22000",
-            "thefugitive1993",
-            "missionimpossibleiii2006",
-            "terminator2judgmentday1991",
-            "aliens1986",
-            "missionimpossibleghostprotocol2011",
-            "raidersofthelostark1981",
-            "missionimpossibleroguenation2015",
-            "thebourneidentity2002",
-            "thebournesupremacy2004",
-            "thebourneultimatum2007",
-            "faceoff1997",
-            "missionimpossiblefallout2018",
-            "rushhour1998",
-            "blade1998",
-            "bladeii2002",
-            "madmax1979",
-            "rushhour22001",
-            "madmax2theroadwarrior1981",
-            "thequickandthedead1995"
+            {
+                "id": "missionimpossible1996",
+                "title": "Mission: Impossible"
+            },
+            {
+                "id": "oldboy2003",
+                "title": "Oldboy"
+            },
+            {
+                "id": "missionimpossible22000",
+                "title": "Mission: Impossible 2"
+            },
+            {
+                "id": "thefugitive1993",
+                "title": "The Fugitive"
+            },
+            {
+                "id": "missionimpossibleiii2006",
+                "title": "Mission: Impossible III"
+            },
+            {
+                "id": "terminator2judgmentday1991",
+                "title": "Terminator 2: Judgment Day"
+            },
+            {
+                "id": "aliens1986",
+                "title": "Aliens"
+            },
+            {
+                "id": "missionimpossibleghostprotocol2011",
+                "title": "Mission: Impossible - Ghost Protocol"
+            },
+            {
+                "id": "raidersofthelostark1981",
+                "title": "Raiders of the Lost Ark"
+            },
+            {
+                "id": "missionimpossibleroguenation2015",
+                "title": "Mission: Impossible - Rogue Nation"
+            },
+            {
+                "id": "thebourneidentity2002",
+                "title": "The Bourne Identity"
+            },
+            {
+                "id": "thebournesupremacy2004",
+                "title": "The Bourne Supremacy"
+            },
+            {
+                "id": "thebourneultimatum2007",
+                "title": "The Bourne Ultimatum"
+            },
+            {
+                "id": "faceoff1997",
+                "title": "Face/Off"
+            },
+            {
+                "id": "missionimpossiblefallout2018",
+                "title": "Mission: Impossible - Fallout"
+            },
+            {
+                "id": "rushhour1998",
+                "title": "Rush Hour"
+            },
+            {
+                "id": "blade1998",
+                "title": "Blade"
+            },
+            {
+                "id": "bladeii2002",
+                "title": "Blade II"
+            },
+            {
+                "id": "madmax1979",
+                "title": "Mad Max"
+            },
+            {
+                "id": "rushhour22001",
+                "title": "Rush Hour 2"
+            },
+            {
+                "id": "madmax2theroadwarrior1981",
+                "title": "Mad Max 2: The Road Warrior"
+            },
+            {
+                "id": "thequickandthedead1995",
+                "title": "The Quick and the Dead"
+            }
         ]
     },
     {
@@ -309,40 +993,142 @@
             "worldbuilding"
         ],
         "films": [
-            "dune2021",
-            "flightofthenavigator1986",
-            "aquietplacepartii2021",
-            "madmaxfuryroad2015",
-            "fantasticplanet1973",
-            "snowpiercer2013",
-            "aiartificialintelligence2001",
-            "atlantisthelostempire2001",
-            "planetoftheapes1968",
-            "thefifthelement1997",
-            "12monkeys1995",
-            "marjorieprime2017",
-            "theirongiant1999",
-            "starwarsepisode2attackoftheclones2002",
-            "pacificrim2013",
-            "airplaneiithesequel1982",
-            "tenet2020",
-            "thethirteenthfloor1999",
-            "bedknobsandbroomsticks1971",
-            "okja2017",
-            "ascannerdarkly2006",
-            "backtothefuture1985",
-            "memories1995",
-            "coneheads1993",
-            "futuramabendersbigscore2007",
-            "backtothefuturepartii1989",
-            "undertheskin2013",
-            "thelaststarfighter1984",
-            "interstellar2014",
-            "bladerunner20492017",
-            "terminator1984",
-            "2010theyearwemakecontact1984",
-            "theabyss1989",
-            "thefountain2006"
+            {
+                "id": "dune2021",
+                "title": "Dune"
+            },
+            {
+                "id": "flightofthenavigator1986",
+                "title": "Flight of the Navigator"
+            },
+            {
+                "id": "aquietplacepartii2021",
+                "title": "A Quiet Place Part II"
+            },
+            {
+                "id": "madmaxfuryroad2015",
+                "title": "Mad Max: Fury Road"
+            },
+            {
+                "id": "fantasticplanet1973",
+                "title": "Fantastic Planet"
+            },
+            {
+                "id": "snowpiercer2013",
+                "title": "Snowpiercer"
+            },
+            {
+                "id": "aiartificialintelligence2001",
+                "title": "A.I. Artificial Intelligence"
+            },
+            {
+                "id": "atlantisthelostempire2001",
+                "title": "Atlantis: The Lost Empire "
+            },
+            {
+                "id": "planetoftheapes1968",
+                "title": "Planet of the Apes"
+            },
+            {
+                "id": "thefifthelement1997",
+                "title": "The Fifth Element"
+            },
+            {
+                "id": "12monkeys1995",
+                "title": "12 Monkeys"
+            },
+            {
+                "id": "marjorieprime2017",
+                "title": "Marjorie Prime"
+            },
+            {
+                "id": "theirongiant1999",
+                "title": "The Iron Giant"
+            },
+            {
+                "id": "starwarsepisode2attackoftheclones2002",
+                "title": "Star Wars Episode 2: Attack of the Clones"
+            },
+            {
+                "id": "pacificrim2013",
+                "title": "Pacific Rim"
+            },
+            {
+                "id": "airplaneiithesequel1982",
+                "title": "Airplane II: The Sequel"
+            },
+            {
+                "id": "tenet2020",
+                "title": "Tenet"
+            },
+            {
+                "id": "thethirteenthfloor1999",
+                "title": "The Thirteenth Floor"
+            },
+            {
+                "id": "bedknobsandbroomsticks1971",
+                "title": "Bedknobs and Broomsticks"
+            },
+            {
+                "id": "okja2017",
+                "title": "Okja"
+            },
+            {
+                "id": "ascannerdarkly2006",
+                "title": "A Scanner Darkly"
+            },
+            {
+                "id": "backtothefuture1985",
+                "title": "Back to the Future"
+            },
+            {
+                "id": "memories1995",
+                "title": "Memories"
+            },
+            {
+                "id": "coneheads1993",
+                "title": "Coneheads"
+            },
+            {
+                "id": "futuramabendersbigscore2007",
+                "title": "Futurama: Bender's Big Score"
+            },
+            {
+                "id": "backtothefuturepartii1989",
+                "title": "Back to the Future Part II"
+            },
+            {
+                "id": "undertheskin2013",
+                "title": "Under The Skin"
+            },
+            {
+                "id": "thelaststarfighter1984",
+                "title": "The Last Starfighter"
+            },
+            {
+                "id": "interstellar2014",
+                "title": "Interstellar"
+            },
+            {
+                "id": "bladerunner20492017",
+                "title": "Blade Runner 2049"
+            },
+            {
+                "id": "terminator1984",
+                "title": "Terminator"
+            },
+            {
+                "id": "2010theyearwemakecontact1984",
+                "title": "2010 (The Year We Make Contact)"
+            },
+            {
+                "id": "theabyss1989",
+                "title": "The Abyss"
+            },
+            {
+                "id": "thefountain2006",
+                "title": "The Fountain"
+            }
         ]
     },
     {
@@ -353,11 +1139,14 @@
             "rewatchability"
         ],
         "films": [
-            "boogienights1997",
-            "highfidelity2000",
-            "hereditarylink1",
-            "climaxlink1",
-            "tarlink1"
+            {
+                "id": "boogienights1997",
+                "title": "Boogie Nights"
+            },
+            {
+                "id": "highfidelity2000",
+                "title": "High Fidelity"
+            }
         ]
     },
     {
@@ -368,61 +1157,226 @@
             "expected"
         ],
         "films": [
-            "drno1963",
-            "jaws1975",
-            "hardtickettohawaii1987",
-            "thegreenknight2021",
-            "peterpan1953",
-            "mysticriver2003",
-            "cronos1994",
-            "clerks1994",
-            "porcorosso1992",
-            "predator1987",
-            "kuboandthetwostrings2016",
-            "jurassicpark1993",
-            "diamondsareforever1971",
-            "lastnightinsoho2021",
-            "batman1989",
-            "clerksii2006",
-            "themanwiththegoldengun1974",
-            "thefrenchdispatch2021",
-            "ponyo2008",
-            "findingdory2016",
-            "thefly1986",
-            "thesecretworldofarrietty2010",
-            "samsara2011",
-            "crimsonpeak2015",
-            "hausuhouse1977",
-            "uncharted2022",
-            "chinatown1974",
-            "lilostitch2002",
-            "boburnhaminside2021",
-            "batmanreturns1992",
-            "blueruin2014",
-            "chungkingexpress1994",
-            "inthemoodforlove2000",
-            "topgun1986",
-            "robocop1987",
-            "tar2022",
-            "topgunmaverick2022",
-            "barbarian2022",
-            "withnaili1987",
-            "go1999",
-            "kingsmanthesecretservice2014",
-            "existenz1999",
-            "myownprivateidaho1991",
-            "theexorcist1973",
-            "skinamarink2022",
-            "wakinglife2001",
-            "thenakedgunfromthefilesofpolicesquad1988",
-            "demons1985",
-            "johnwickchapter22017",
-            "21jumpstreet2012",
-            "stepbrothers2008",
-            "dungeonsdragonshonouramongthieves2023",
-            "casablanca1942",
-            "irreversible2002",
-            "babylon2022"
+            {
+                "id": "drno1963",
+                "title": "Dr. No"
+            },
+            {
+                "id": "jaws1975",
+                "title": "Jaws"
+            },
+            {
+                "id": "hardtickettohawaii1987",
+                "title": "Hard Ticket To Hawaii"
+            },
+            {
+                "id": "thegreenknight2021",
+                "title": "The Green Knight"
+            },
+            {
+                "id": "peterpan1953",
+                "title": "Peter Pan"
+            },
+            {
+                "id": "mysticriver2003",
+                "title": "Mystic River"
+            },
+            {
+                "id": "cronos1994",
+                "title": "Cronos"
+            },
+            {
+                "id": "clerks1994",
+                "title": "Clerks"
+            },
+            {
+                "id": "porcorosso1992",
+                "title": "Porco Rosso"
+            },
+            {
+                "id": "predator1987",
+                "title": "Predator"
+            },
+            {
+                "id": "kuboandthetwostrings2016",
+                "title": "Kubo and the Two Strings"
+            },
+            {
+                "id": "jurassicpark1993",
+                "title": "Jurassic Park"
+            },
+            {
+                "id": "diamondsareforever1971",
+                "title": "Diamonds are Forever"
+            },
+            {
+                "id": "lastnightinsoho2021",
+                "title": "Last Night In Soho"
+            },
+            {
+                "id": "batman1989",
+                "title": "Batman"
+            },
+            {
+                "id": "clerksii2006",
+                "title": "Clerks II"
+            },
+            {
+                "id": "themanwiththegoldengun1974",
+                "title": "The Man with the Golden Gun"
+            },
+            {
+                "id": "thefrenchdispatch2021",
+                "title": "The French Dispatch"
+            },
+            {
+                "id": "ponyo2008",
+                "title": "Ponyo"
+            },
+            {
+                "id": "findingdory2016",
+                "title": "Finding Dory"
+            },
+            {
+                "id": "thefly1986",
+                "title": "The Fly"
+            },
+            {
+                "id": "thesecretworldofarrietty2010",
+                "title": "The Secret World of Arrietty"
+            },
+            {
+                "id": "samsara2011",
+                "title": "Samsara"
+            },
+            {
+                "id": "crimsonpeak2015",
+                "title": "Crimson Peak"
+            },
+            {
+                "id": "hausuhouse1977",
+                "title": "Hausu (House)"
+            },
+            {
+                "id": "uncharted2022",
+                "title": "Uncharted "
+            },
+            {
+                "id": "chinatown1974",
+                "title": "Chinatown"
+            },
+            {
+                "id": "lilostitch2002",
+                "title": "Lilo &amp; Stitch"
+            },
+            {
+                "id": "boburnhaminside2021",
+                "title": "Bo Burnham: Inside"
+            },
+            {
+                "id": "batmanreturns1992",
+                "title": "Batman Returns"
+            },
+            {
+                "id": "blueruin2014",
+                "title": "Blue Ruin"
+            },
+            {
+                "id": "chungkingexpress1994",
+                "title": "Chungking Express"
+            },
+            {
+                "id": "inthemoodforlove2000",
+                "title": "In the Mood for Love"
+            },
+            {
+                "id": "topgun1986",
+                "title": "Top Gun"
+            },
+            {
+                "id": "robocop1987",
+                "title": "Robocop"
+            },
+            {
+                "id": "tar2022",
+                "title": "Tár"
+            },
+            {
+                "id": "topgunmaverick2022",
+                "title": "Top Gun: Maverick"
+            },
+            {
+                "id": "barbarian2022",
+                "title": "Barbarian"
+            },
+            {
+                "id": "withnaili1987",
+                "title": "Withnail &amp; I"
+            },
+            {
+                "id": "go1999",
+                "title": "Go"
+            },
+            {
+                "id": "kingsmanthesecretservice2014",
+                "title": "Kingsman: The Secret Service"
+            },
+            {
+                "id": "existenz1999",
+                "title": "eXistenZ"
+            },
+            {
+                "id": "myownprivateidaho1991",
+                "title": "My Own Private Idaho"
+            },
+            {
+                "id": "theexorcist1973",
+                "title": "The Exorcist"
+            },
+            {
+                "id": "skinamarink2022",
+                "title": "Skinamarink"
+            },
+            {
+                "id": "wakinglife2001",
+                "title": "Waking Life"
+            },
+            {
+                "id": "thenakedgunfromthefilesofpolicesquad1988",
+                "title": "The Naked Gun: From the Files of Police Squad!"
+            },
+            {
+                "id": "demons1985",
+                "title": "Demons"
+            },
+            {
+                "id": "johnwickchapter22017",
+                "title": "John Wick: Chapter 2"
+            },
+            {
+                "id": "21jumpstreet2012",
+                "title": "21 Jump Street"
+            },
+            {
+                "id": "stepbrothers2008",
+                "title": "Stepbrothers"
+            },
+            {
+                "id": "dungeonsdragonshonouramongthieves2023",
+                "title": "Dungeons &amp; Dragons: Honour Among Thieves"
+            },
+            {
+                "id": "casablanca1942",
+                "title": "Casablanca"
+            },
+            {
+                "id": "irreversible2002",
+                "title": "Irréversible"
+            },
+            {
+                "id": "babylon2022",
+                "title": "Babylon"
+            }
         ]
     }
 ]
