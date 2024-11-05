@@ -1,7 +1,7 @@
 [
     {
         "id": "horror2024",
-        "title": "2024 spooky month",
+        "title": "2024 horror marathon",
         "description": "For the fourth year running I'm watching at least one horror movie per day in October and rating them from 0 to 10. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
         "properties": [
             "grotesque",
@@ -189,7 +189,7 @@
     },
     {
         "id": "allhorror2024",
-        "title": "2024 off-season spooky",
+        "title": "2024 off-season horror",
         "description": "I feel an urge to review all horror films I see throughout the year, and slowly build this list. There is a separate list for the traditional October marathon in 2024.",
         "properties": [
             "grotesque",
@@ -329,7 +329,7 @@
     },
     {
         "id": "horror2023",
-        "title": "2023 spooky month",
+        "title": "2023 horror marathon",
         "description": "For the third year running I've watched at least one horror movie per day in October and given them ratings from 0 to 10. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
         "properties": [
             "grotesque",
@@ -533,7 +533,7 @@
     },
     {
         "id": "horror2022",
-        "title": "2022 spooky month",
+        "title": "2022 horror marathon",
         "description": "<s>October</s> July spooky challenge. Suspense means a film instils dread or is grimly mysterious. Shock means the film has fun and effective jump scares. Grotesque means the film disgusts with striking imagery.",
         "properties": [
             "grotesque",
@@ -673,7 +673,7 @@
     },
     {
         "id": "horror2021",
-        "title": "2021 spooky month",
+        "title": "2021 horror marathon",
         "description": "I decided to challenge myself to watch as many horror films as possible in October, rating them from 0 to 10, and also rating them in terms of suspense, shock and grotesuqe; the fundamental traits of horror.",
         "properties": [
             "grotesque",

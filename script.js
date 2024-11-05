@@ -1,7 +1,9 @@
+// TODO:
+// Add older lists in dropdown, they have no images. Also add search box.
+
 $(document).ready(() => {
 
     const defaultList = {
-        "title": "2024 horror marathon",
         "image": "url(\"films/horror2024/image.jpg\")",
         "id": "horror2024"
     };
@@ -147,6 +149,7 @@ $(document).ready(() => {
     const display = async (hash) => {
         $(".class-body-text").remove();
         $(".class-film-card").remove();
+        $(".class-index").remove();
 
         window.location.hash = hash;
         let description = null;
@@ -157,8 +160,9 @@ $(document).ready(() => {
                 .append(
                     $("<button>")
                         .attr("id", "id-latest")
+                        .addClass("class-index")
                         .addClass("class-shadow")
-                        .html(defaultList.title)
+                        .html(catalogue.find(list => list.id == defaultList.id).title)
                         .css("background-image", defaultList.image)
                         .on("click", () => display(defaultList.id))
                 )
@@ -169,6 +173,7 @@ $(document).ready(() => {
                 .append(
                     $("<button>")
                         .attr("id", "id-rating")
+                        .addClass("class-index")
                         .addClass("class-shadow")
                         .html(strings.rating)
                         .on("click", () => display("rating"))
@@ -176,6 +181,7 @@ $(document).ready(() => {
                 .append(
                     $("<button>")
                         .attr("id", "id-horror")
+                        .addClass("class-index")
                         .addClass("class-shadow")
                         .html(strings.horror)
                         .on("click", () => display("horror"))
