@@ -1,5 +1,5 @@
 // TODO:
-// Add older lists in dropdown, they have no images. Also add search box.
+// Add older lists in dropdown, they have no images.
 
 $(document).ready(() => {
 
@@ -90,6 +90,7 @@ $(document).ready(() => {
                     .attr("type", "text")
                     .attr("placeholder", "search...")
                     .attr("id", "id-search")
+                    .addClass("class-shadow")
             )
         );
 
