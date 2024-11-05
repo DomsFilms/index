@@ -83,16 +83,26 @@ $(document).ready(() => {
             )
             .append(
                 $("<div>")
-                .addClass("class-index")
-                .addClass("class-break")
+                    .addClass("class-removable")
+                    .addClass("class-break")
             )
             .append(
                 $("<input>")
-                .attr("type", "text")
-                .attr("placeholder", "search...")
-                .attr("id", "id-search")
+                    .attr("type", "text")
+                    .attr("placeholder", "search...")
+                    .attr("id", "id-search")
             )
         );
+
+    // Add a debounced search function to the search box.
+    const delaySearch = () => {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => display($("#id-search").val()), 500);
+        };
+    };
+    $("#id-search").on("input", delaySearch());
 
     // Load the catalogue of films into the catalogue variable.
     const calatlogueRequest = new XMLHttpRequest();
@@ -178,8 +188,8 @@ $(document).ready(() => {
                 )
                 .append(
                     $("<div>")
-                    .addClass("class-removable")
-                    .addClass("class-break")
+                        .addClass("class-removable")
+                        .addClass("class-break")
                 )
                 .append(
                     $("<button>")

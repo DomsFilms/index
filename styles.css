@@ -39,7 +39,8 @@ body {
     margin-bottom: 1rem;
 }
 
-button {
+button,
+input {
     border: none;
     font-size: 1rem;
 }
@@ -56,6 +57,7 @@ button {
     border-radius: 0.8rem;
     padding: 1rem;
     width: 14.5rem;
+    margin-bottom: 1rem;
 }
 
 #id-latest {
@@ -72,8 +74,7 @@ button {
 
 #id-search {
     height: 1.5rem;
-    border-radius: 0.8rem;
-    font-size: 1rem;
+    border-radius: 0.5rem;
     padding: 0 0.5rem;
     flex-grow: 1;
 }
@@ -239,7 +240,8 @@ summary {
 /* Dark theme. */
 
 .class-theme-dark .class-film-card,
-.class-theme-dark button {
+.class-theme-dark button,
+#id-search {
     background-color: #020202;
     color: #ffffffB0;
     transition: background-color 0.5s, color 0.5s;
@@ -274,7 +276,8 @@ summary {
 /* Light theme. */
 
 .class-theme-light .class-film-card,
-.class-theme-light button {
+.class-theme-light button,
+#id-search {
     background-color: #e5e5e5;
     color: #000000f7;
     transition: background-color 0.5s, color 0.5s;
