@@ -56,12 +56,11 @@ input {
     height: auto;
     border-radius: 0.8rem;
     padding: 1rem;
-    width: 14.5rem;
     margin-bottom: 1rem;
+    flex-grow: 1;
 }
 
 #id-latest {
-    width: 30rem;
     height: 10rem;
     display: flex;
     flex-direction: column;
