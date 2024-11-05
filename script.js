@@ -61,12 +61,14 @@ $(document).ready(() => {
             .append($("<button>")
                 .attr("id", "id-home")
                 .addClass("class-shadow")
+                .addClass("class-font-small")
                 .html(strings.indexButton)
                 .on("click", () => display(""))
             )
             .append($("<button>")
                 .attr("id", "id-theme-toggle")
                 .addClass("class-shadow")
+                .addClass("class-font-small")
                 .html(strings.darkButton)
                 .on("click", () => {
                     const body = $("body");

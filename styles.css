@@ -34,15 +34,15 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    gap: 0.5rem;
+    padding: 0, 0.5rem, 0, 0.5rem;
 }
 
 button {
     border: none;
+    font-size: 1rem;
 }
 
 #id-controls button {
-    font-size: 1rem;
     border-radius: 0.5rem;
     font-family: 'Roboto', sans-serif;
     padding: 0.3rem 0.4rem 0.3rem 0.4rem;
@@ -68,8 +68,8 @@ button {
     color: #ffffffB0 !important;
 }
 
-#id-latest,
-#id-rating {
+#id-rating,
+#id-horror {
     width: 14.5rem;
 }
 
