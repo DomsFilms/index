@@ -235,6 +235,10 @@ details {
     transition: background-color 0.5s, color 0.5s;
 }
 
+.class-theme-dark .class-film-review a {
+    color: lightblue;
+}
+
 .class-theme-dark .class-rating-large,
 .class-theme-dark .class-rating-small {
     color: #000000f7 !important;

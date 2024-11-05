@@ -3,6 +3,9 @@ $(document).ready(() => {
     // Use this default list, so the page always shows the current project as it loads.
     const defaultList = "horror2024";
 
+    // Ingest the fragment
+    const fragment = window.location.hash.replace("#", "");
+
     // Change the cache parameter every day, so data is cached but automatically downloaded the next day.
     // During periods where I'm not editing existing reviews, I should reduce this to be monthly. 
     const date = new Date();
@@ -163,9 +166,8 @@ $(document).ready(() => {
             catalogue = calatlogueRequest.response;
 
             // Check the fragment for specific list, or use the default list.
-            let hash = window.location.hash.replace("#", "");
-            let listId = ["horror", "alphabetical", "rating"].find(listId => listId == hash)
-                || (catalogue.find(list => list.id == hash || list.films.includes(hash)) || {}).id
+            let listId = ["horror", "alphabetical", "rating"].find(listId => listId == fragment)
+                || (catalogue.find(list => list.id == fragment || list.films.includes(fragment)) || {}).id
                 || defaultList;
             populate(listId);
         }
@@ -238,7 +240,9 @@ $(document).ready(() => {
                         "properties": list.properties
                     };
                 })
-            ).flat();
+            )
+            .flat()
+            .filter(film => film.link != true || !["horror", "alphabetical", "rating"].includes(listId));
 
         // Render the description at the top of the page.
         $("body")
@@ -316,19 +320,6 @@ $(document).ready(() => {
             const card = $(`#id-film-${film.id}`);
             if (!!film.review) {
                 card.removeClass("class-film-unwatched")
-                    .append(
-                        $("<div>")
-                            .addClass("class-film-summary class-font-small")
-                            .html(`released: ${film.year}, watched: ${film.date} ${film.seen ? "(seen before)" : "(first time)"}`)
-                    )
-                    .append($("<div>")
-                        .addClass("class-film-bar")
-                        .append(
-                            $("<div>")
-                                .addClass("class-film-word class-font-small")
-                                .html((film.word || "").toLowerCase())
-                        )
-                    );
 
                 card.find(".class-film-title")
                     .html(film.title);
@@ -344,21 +335,43 @@ $(document).ready(() => {
                         .replace("#d", "</details>")
                     );
 
-                // Add sub-ratings based on the properies from the list that the film belongs to.
-                film.properties.forEach((property, index) => {
-                    if (film[property] !== undefined) {
-                        card.find(".class-film-word")
-                            .after(
+                if (film.link == false) {
+                    card
+                        .append(
+                            $("<div>")
+                                .addClass("class-film-summary class-font-small")
+                                .html(`released: ${film.year}, watched: ${film.date} ${film.seen ? "(seen before)" : "(first time)"}`)
+                        )
+                        .append($("<div>")
+                            .addClass("class-film-bar")
+                            .append(
                                 $("<div>")
-                                    .addClass(`class-rating-small class-rating-${film[property]} class-font-small`)
-                                    .html(`${property}: ${film[property]}`)
+                                    .addClass("class-film-word class-font-small")
+                                    .html((film.word || "").toLowerCase())
                             )
-                    }
-                });
+                        );
+
+                    // Add sub-ratings based on the properies from the list that the film belongs to.
+                    film.properties.forEach((property, index) => {
+                        if (film[property] !== undefined) {
+                            card.find(".class-film-word")
+                                .after(
+                                    $("<div>")
+                                        .addClass(`class-rating-small class-rating-${film[property]} class-font-small`)
+                                        .html(`${property}: ${film[property]}`)
+                                )
+                        }
+                    });
+                }
 
                 // If the film has a style property, and it hasn't been added already, and add a style element to the page head.
                 if (film.style != undefined && $(`style:contains("/* ${film.id} /*")`).length == 0) {
                     $("head").append($("<style>").html(`/* ${film.id} */ ${film.style}`));
+                }
+
+                // Scroll to the film, if it was in the fragment.
+                if (fragment == film.id) {
+                    card[0].scrollIntoView();
                 }
 
             } else {
