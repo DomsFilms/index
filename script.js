@@ -154,17 +154,6 @@ $(document).ready(() => {
         }
     });
 
-    // Find a list to render, and start the process.
-    // Bind this to the window so links can call it.
-    window.display = (fragment) => {
-        window.location.hash = fragment;
-        // Check the fragment for specific list, or use the default list.
-        let listId = ["horror", "alphabetical", "rating"].find(listId => listId == fragment)
-            || (catalogue.find(list => list.id == fragment || list.films.includes(fragment)) || {}).id
-            || defaultList;
-        populate(listId);
-    }
-
     // Load the catalogue of films into the catalogue variable.
     const calatlogueRequest = new XMLHttpRequest();
     calatlogueRequest.open("GET", `catalogue.json?v=${cacheVersion}`, true);
@@ -172,7 +161,7 @@ $(document).ready(() => {
     calatlogueRequest.onload = () => {
         if (calatlogueRequest.status === 200) {
             catalogue = calatlogueRequest.response;
-            display(window.location.hash.replace("#", ""));
+            populate(window.location.hash.replace("#", ""));
         }
     };
 
@@ -194,14 +183,21 @@ $(document).ready(() => {
         });
     };
 
-    // Render a list based on the id from the parameter.
-    // If the name is "horror", load all horror films in order of score, and then alphabetical, and then by date watched.
-    // If the name is "alphabetical", load all films in alphabetical order, and then date watched.
-    // If the name is "rating", load all films in order of score, and then alphabetical, and then by date watched.
-    const populate = async (listId) => {
+    // Render a list based on the fragment from the parameter.
+    // If the fragment is "horror", load all horror films in order of score, and then alphabetical, and then by date watched.
+    // If the fragment is "alphabetical", load all films in alphabetical order, and then date watched.
+    // If the fragment is "rating", load all films in order of score, and then alphabetical, and then by date watched.
+    // This is bound to the window so that links can call it.
+    window.populate = (fragment) => {
         $(".class-popup").remove();
         $(".class-body-text").remove();
         $(".class-film-card").remove();
+
+        window.location.hash = fragment;
+        // Check the fragment for specific list, or use the default list.
+        let listId = ["horror", "alphabetical", "rating"].find(listId => listId == fragment)
+            || (catalogue.find(list => list.id == fragment || list.films.includes(fragment)) || {}).id
+            || defaultList;
 
         // Get the initial film list, and list description.
         // Use a hard-coded description in the case of an all-films list.
@@ -373,7 +369,7 @@ $(document).ready(() => {
                 }
 
                 // Scroll to the film, if it was in the fragment.
-                if (window.location.hash.replace("#", "") == film.id) {
+                if (fragment == film.id) {
                     card[0].scrollIntoView();
                 }
 
