@@ -3,6 +3,7 @@ $(document).ready(() => {
     const defaultList = {
         "title": "2024 Horror Marathon",
         "image": "",
+        "id": "horror2024"
     };
 
     // Change the cache parameter every day, so data is cached but automatically downloaded the next day.
@@ -11,10 +12,10 @@ $(document).ready(() => {
     const cacheVersion = date.getFullYear().toString() + date.getMonth().toString() + date.getDate().toString();
 
     const strings = {
-        "darkButton": "🌘 dark mode",
-        "lightButton": "🌔 light mode",
-        "olderLists": "📆 older lists",
-        "horror": "💀 all horror best-worst",
+        "indexButton": "🏠 home",
+        "darkButton": "🌘 theme",
+        "lightButton": "🌔 theme",
+        "horror": "💀 all horror",
         "horrorDescription": "All horror film reviews on this site in order of my personal rating, from best to worst. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
         "alphabetical": "🔎 all films A-Z",
         "alphabeticalDescription": "All film reviews on this site in alphabetical order, in case you want to search for one.",
@@ -55,7 +56,7 @@ $(document).ready(() => {
     // Set the default theme now, loading from storage if possible.
     setTheme(localStorage.getItem("theme") || "light");
 
-    // Draw the theme button.
+    // Draw the home and theme buttons.
     $("body")
         .append($("<div>")
             .attr("id", "id-controls")
@@ -72,6 +73,13 @@ $(document).ready(() => {
                         setTheme("light");
                     }
                 })
+            )
+            .append($("<button>")
+                .attr("id", "id-theme-toggle")
+                .addClass("class-shadow-small")
+                .addClass("class-font-small")
+                .html(strings.indexButton)
+                .on("click", () => display(""))
             )
         );
 
@@ -149,6 +157,18 @@ $(document).ready(() => {
 
         if (hash == "") {
             // If the hash is empty, show the index page.
+            $("body")
+                .append(
+                    $("<div>")
+                        .addClass("class-body-text")
+                        .append(
+                            $("<div>")
+                                .attr("id", "id-latest")
+                                .html(defaultList.title)
+                                .on("click", () => display(defaultList.id))
+                        )
+                );
+
         } else {
             // Search for movies and display them.
             let films = [];
@@ -167,10 +187,12 @@ $(document).ready(() => {
                     .filter(film => film.list.includes("horror")));
                 description = strings.horrorDescription;
             } else {
-                const catalogueList = catalogue.find(list => list.id == hash);
+                const catalogueList = catalogue
+                    .find(list => list.id == hash);
                 if (!!catalogueList) {
                     // Show all films from one list, ordered as per the list.
-                    films = catalogueFilms.filter(film => film.list == catalogueList.id);
+                    films = catalogueFilms
+                        .filter(film => film.list == catalogueList.id);
                     description = catalogueList.description;
                 } else {
                     // Search on film title, ordered A-Z.
@@ -257,7 +279,9 @@ $(document).ready(() => {
 
                 // If the film has a style property, and it hasn't been added already, and add a style element to the page head.
                 if (film.style != undefined && $(`style:contains("/* ${film.id} /*")`).length == 0) {
-                    $("head").append($("<style>").html(`/* ${film.id} */ ${film.style}`));
+                    $("head")
+                        .append($("<style>")
+                            .html(`/* ${film.id} */ ${film.style}`));
                 }
             });
 
