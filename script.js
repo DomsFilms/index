@@ -7,7 +7,7 @@ $(document).ready(() => {
 
     // Change the cache parameter every day, so data is cached but automatically downloaded the next day.
     // During periods where I'm not editing existing reviews, I should reduce this to be monthly. 
-    const cacheDate = new Date();
+    const date = new Date();
     const cacheVersion = date.getFullYear().toString() + date.getMonth().toString() + date.getDate().toString();
 
     const strings = {
