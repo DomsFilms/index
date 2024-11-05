@@ -90,6 +90,7 @@ $(document).ready(() => {
                 $("<input>")
                 .attr("type", "text")
                 .attr("placeholder", "search...")
+                .attr("id", "id-search")
             )
         );
 
@@ -169,6 +170,7 @@ $(document).ready(() => {
                     $("<button>")
                         .attr("id", "id-latest")
                         .addClass("class-removable")
+                        .addClass("class-index")
                         .addClass("class-shadow")
                         .html(catalogue.find(list => list.id == defaultList.id).title)
                         .css("background-image", defaultList.image)
@@ -176,13 +178,14 @@ $(document).ready(() => {
                 )
                 .append(
                     $("<div>")
-                    .addClass("class-index")
+                    .addClass("class-removable")
                     .addClass("class-break")
                 )
                 .append(
                     $("<button>")
                         .attr("id", "id-rating")
                         .addClass("class-removable")
+                        .addClass("class-index")
                         .addClass("class-shadow")
                         .html(strings.rating)
                         .on("click", () => display("rating"))
@@ -191,6 +194,7 @@ $(document).ready(() => {
                     $("<button>")
                         .attr("id", "id-horror")
                         .addClass("class-removable")
+                        .addClass("class-index")
                         .addClass("class-shadow")
                         .html(strings.horror)
                         .on("click", () => display("horror"))
