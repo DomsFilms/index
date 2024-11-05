@@ -240,7 +240,7 @@ summary {
 
 .class-theme-dark .class-film-card,
 .class-theme-dark button,
-#id-search {
+.class-theme-dark #id-search {
     background-color: #020202;
     color: #ffffffB0;
     transition: background-color 0.5s, color 0.5s;
@@ -276,7 +276,7 @@ summary {
 
 .class-theme-light .class-film-card,
 .class-theme-light button,
-#id-search {
+.class-theme-light #id-search {
     background-color: #e5e5e5;
     color: #000000f7;
     transition: background-color 0.5s, color 0.5s;
