@@ -12,7 +12,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
-    gap: 1rem 1rem;
+    gap: 0 1rem;
 }
 
 .class-shadow {
@@ -54,6 +54,7 @@ button {
     height: auto;
     border-radius: 0.8rem;
     padding: 1rem;
+    width: 14.5rem;
 }
 
 #id-latest {
@@ -68,9 +69,12 @@ button {
     color: #ffffffB0 !important;
 }
 
-#id-rating,
-#id-horror {
-    width: 14.5rem;
+#id-search {
+    height: 1.5rem;
+    border-radius: 0.8rem;
+    font-size: 1rem;
+    padding: 0 0.5rem;
+    flex-grow: 1;
 }
 
 /* Text on the page outside of any specific film. */
@@ -79,6 +83,7 @@ button {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-bottom: 1rem;
 }
 
 .class-body-text div {
@@ -120,6 +125,7 @@ button {
     height: auto;
     border-radius: 0.8rem;
     padding: 1rem;
+    margin-bottom: 1rem;
 }
 
 .class-film-bar {

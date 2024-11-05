@@ -81,6 +81,16 @@ $(document).ready(() => {
                     }
                 })
             )
+            .append(
+                $("<div>")
+                .addClass("class-index")
+                .addClass("class-break")
+            )
+            .append(
+                $("<input>")
+                .attr("type", "text")
+                .attr("placeholder", "search...")
+            )
         );
 
     // Load the catalogue of films into the catalogue variable.
@@ -147,9 +157,7 @@ $(document).ready(() => {
     // If the hash is populated, display films as search results.
     // Special searches are: rating, horror, or a specific list ID.
     const display = async (hash) => {
-        $(".class-body-text").remove();
-        $(".class-film-card").remove();
-        $(".class-index").remove();
+        $(".class-removable").remove();
 
         window.location.hash = hash;
         let description = null;
@@ -160,7 +168,7 @@ $(document).ready(() => {
                 .append(
                     $("<button>")
                         .attr("id", "id-latest")
-                        .addClass("class-index")
+                        .addClass("class-removable")
                         .addClass("class-shadow")
                         .html(catalogue.find(list => list.id == defaultList.id).title)
                         .css("background-image", defaultList.image)
@@ -168,12 +176,13 @@ $(document).ready(() => {
                 )
                 .append(
                     $("<div>")
+                    .addClass("class-index")
                     .addClass("class-break")
                 )
                 .append(
                     $("<button>")
                         .attr("id", "id-rating")
-                        .addClass("class-index")
+                        .addClass("class-removable")
                         .addClass("class-shadow")
                         .html(strings.rating)
                         .on("click", () => display("rating"))
@@ -181,7 +190,7 @@ $(document).ready(() => {
                 .append(
                     $("<button>")
                         .attr("id", "id-horror")
-                        .addClass("class-index")
+                        .addClass("class-removable")
                         .addClass("class-shadow")
                         .html(strings.horror)
                         .on("click", () => display("horror"))
@@ -226,6 +235,7 @@ $(document).ready(() => {
                         .append(
                             $("<div>")
                                 .attr("id", "id-description")
+                                .addClass("class-removable")
                                 .html(description)
                         )
                 );
@@ -240,8 +250,9 @@ $(document).ready(() => {
                 $("body")
                     .append(
                         $("<div>")
-                            .addClass("class-film-card class-shadow")
                             .attr("id", `id-film-${film.id}`)
+                            .addClass("class-film-card class-shadow")
+                            .addClass("class-removable")
                             .append($("<div>")
                                 .addClass("class-film-bar")
                                 .append(
