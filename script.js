@@ -1,7 +1,7 @@
 $(document).ready(() => {
 
     const defaultList = {
-        "title": "2024 Horror Marathon",
+        "title": "2024 horror marathon",
         "image": "",
         "id": "horror2024"
     };
@@ -15,14 +15,14 @@ $(document).ready(() => {
         "indexButton": "🏠 home",
         "darkButton": "🌘 theme",
         "lightButton": "🌔 theme",
+        "search": "search...",
+        "noResults": "no search results 👻",
         "horror": "💀 all horror",
         "horrorDescription": "All horror film reviews on this site in order of my personal rating, from best to worst. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
         "alphabetical": "🔎 all films A-Z",
         "alphabeticalDescription": "All film reviews on this site in alphabetical order, in case you want to search for one.",
-        "rating": "👍 all films best-worst",
+        "rating": "👍 all films",
         "ratingDescription": "All film reviews on this site in order of my personal rating, from best to worst.",
-        "search": "search...",
-        "noResults": "no search results 👻",
         "spoilers": "spoilers...",
         "average": "average"
     };
@@ -61,6 +61,13 @@ $(document).ready(() => {
         .append($("<div>")
             .attr("id", "id-controls")
             .append($("<button>")
+                .attr("id", "id-home")
+                .addClass("class-shadow-small")
+                .addClass("class-font-small")
+                .html(strings.indexButton)
+                .on("click", () => display(""))
+            )
+            .append($("<button>")
                 .attr("id", "id-theme-toggle")
                 .addClass("class-shadow-small")
                 .addClass("class-font-small")
@@ -73,13 +80,6 @@ $(document).ready(() => {
                         setTheme("light");
                     }
                 })
-            )
-            .append($("<button>")
-                .attr("id", "id-theme-toggle")
-                .addClass("class-shadow-small")
-                .addClass("class-font-small")
-                .html(strings.indexButton)
-                .on("click", () => display(""))
             )
         );
 
@@ -164,8 +164,26 @@ $(document).ready(() => {
                         .append(
                             $("<div>")
                                 .attr("id", "id-latest")
+                                .addClass("class-film-card")
+                                .addClass("class-shadow-small")
                                 .html(defaultList.title)
                                 .on("click", () => display(defaultList.id))
+                        )
+                        .append(
+                            $("<div>")
+                                .attr("id", "id-rating")
+                                .addClass("class-film-card")
+                                .addClass("class-shadow-small")
+                                .html(strings.rating)
+                                .on("click", () => display("alphabetical"))
+                        )
+                        .append(
+                            $("<div>")
+                                .attr("id", "id-horror")
+                                .addClass("class-film-card")
+                                .addClass("class-shadow-small")
+                                .html(strings.horror)
+                                .on("click", () => display("horror"))
                         )
                 );
 

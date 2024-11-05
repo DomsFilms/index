@@ -32,7 +32,7 @@ body {
 #id-controls {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 0.5rem;
 }
 
