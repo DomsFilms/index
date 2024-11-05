@@ -106,6 +106,9 @@ $(document).ready(() => {
         }
     };
 
+    // This helps the back and forwards buttons work.
+    $("body").onhashchange = () => display(window.location.hash.replace("#", ""));
+
     // Store the catalogue here, after loading it once while the page loads.
     let catalogue = [];
     let catalogueFilms = [];
@@ -153,31 +156,27 @@ $(document).ready(() => {
             $("body")
                 .append(
                     $("<div>")
-                        .addClass("class-body-text")
-                        .append(
-                            $("<div>")
-                                .attr("id", "id-latest")
-                                .addClass("class-film-card")
-                                .addClass("class-shadow")
-                                .html(defaultList.title)
-                                .on("click", () => display(defaultList.id))
-                        )
-                        .append(
-                            $("<div>")
-                                .attr("id", "id-rating")
-                                .addClass("class-film-card")
-                                .addClass("class-shadow")
-                                .html(strings.rating)
-                                .on("click", () => display("rating"))
-                        )
-                        .append(
-                            $("<div>")
-                                .attr("id", "id-horror")
-                                .addClass("class-film-card")
-                                .addClass("class-shadow")
-                                .html(strings.horror)
-                                .on("click", () => display("horror"))
-                        )
+                        .attr("id", "id-latest")
+                        .addClass("class-film-card")
+                        .addClass("class-shadow")
+                        .html(defaultList.title)
+                        .on("click", () => display(defaultList.id))
+                )
+                .append(
+                    $("<div>")
+                        .attr("id", "id-rating")
+                        .addClass("class-film-card")
+                        .addClass("class-shadow")
+                        .html(strings.rating)
+                        .on("click", () => display("rating"))
+                )
+                .append(
+                    $("<div>")
+                        .attr("id", "id-horror")
+                        .addClass("class-film-card")
+                        .addClass("class-shadow")
+                        .html(strings.horror)
+                        .on("click", () => display("horror"))
                 );
 
         } else {
