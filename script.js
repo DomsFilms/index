@@ -83,7 +83,6 @@ $(document).ready(() => {
             )
             .append(
                 $("<div>")
-                    .addClass("class-removable")
                     .addClass("class-break")
             )
             .append(
@@ -331,6 +330,7 @@ $(document).ready(() => {
                     .append(
                         $("<div>")
                             .addClass("class-body-text")
+                            .addClass("class-removable")
                             .append(
                                 $("<div>")
                                     .attr("id", "id-average")
