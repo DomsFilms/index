@@ -338,7 +338,7 @@ $(document).ready(() => {
                         .replace("#d", "</details>")
                     );
 
-                if (film.link == false) {
+                if (film.link != true) {
                     card
                         .append(
                             $("<div>")

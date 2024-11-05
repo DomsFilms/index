@@ -1,6 +1,6 @@
 {
     "title": "Climax",
-    "review": "<a href=\"index#climax2018\">Find my review here.</a>",
+    "review": "<a onclick=\"display('climax2018')\" href=\"javascript:void(0);\">Find my review here.</a>",
     "rating": 9,
     "link": true
 }
