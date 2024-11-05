@@ -170,7 +170,7 @@ $(document).ready(() => {
                 const catalogueList = catalogue.find(list => list.id == hash);
                 if (!!catalogueList) {
                     // Show all films from one list, ordered as per the list.
-                    films = catalogueList.films;
+                    films = catalogueFilms.filter(film => film.list == catalogueList.id);
                     description = catalogueList.description;
                 } else {
                     // Search on film title, ordered A-Z.
