@@ -292,9 +292,9 @@ $(document).ready(() => {
                 }
             });
 
-            if (filmsms.length > 0) {
-                // Add the average rating for whatever is displayed, at the bottom of the page.
-                const ratings = films.map(film => film.rating).filter(rating => rating != undefined);
+            // Add the average rating for whatever is displayed, at the bottom of the page.
+            const ratings = films.map(film => film.rating).filter(rating => rating != undefined);
+            if (ratings.length > 0) {
                 $("body")
                     .append(
                         $("<div>")
