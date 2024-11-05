@@ -3,9 +3,6 @@ $(document).ready(() => {
     // Use this default list, so the page always shows the current project as it loads.
     const defaultList = "horror2024";
 
-    // Ingest the fragment
-    const fragment = window.location.hash.replace("#", "");
-
     // Change the cache parameter every day, so data is cached but automatically downloaded the next day.
     // During periods where I'm not editing existing reviews, I should reduce this to be monthly. 
     const date = new Date();
@@ -157,6 +154,17 @@ $(document).ready(() => {
         }
     });
 
+    // Find a list to render, and start the process.
+    // Bind this to the window so links can call it.
+    window.display = (fragment) => {
+        window.location.hash = fragment;
+        // Check the fragment for specific list, or use the default list.
+        let listId = ["horror", "alphabetical", "rating"].find(listId => listId == fragment)
+            || (catalogue.find(list => list.id == fragment || list.films.includes(fragment)) || {}).id
+            || defaultList;
+        populate(listId);
+    }
+
     // Load the catalogue of films into the catalogue variable.
     const calatlogueRequest = new XMLHttpRequest();
     calatlogueRequest.open("GET", `catalogue.json?v=${cacheVersion}`, true);
@@ -164,12 +172,7 @@ $(document).ready(() => {
     calatlogueRequest.onload = () => {
         if (calatlogueRequest.status === 200) {
             catalogue = calatlogueRequest.response;
-
-            // Check the fragment for specific list, or use the default list.
-            let listId = ["horror", "alphabetical", "rating"].find(listId => listId == fragment)
-                || (catalogue.find(list => list.id == fragment || list.films.includes(fragment)) || {}).id
-                || defaultList;
-            populate(listId);
+            display(window.location.hash.replace("#", ""));
         }
     };
 
@@ -370,7 +373,7 @@ $(document).ready(() => {
                 }
 
                 // Scroll to the film, if it was in the fragment.
-                if (fragment == film.id) {
+                if (window.location.hash.replace("#", "") == film.id) {
                     card[0].scrollIntoView();
                 }
 
