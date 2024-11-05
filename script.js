@@ -19,9 +19,7 @@ $(document).ready(() => {
         "noResults": "no search results 👻",
         "horror": "💀 all horror",
         "horrorDescription": "All horror film reviews on this site in order of my personal rating, from best to worst. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
-        "alphabetical": "🔎 all films A-Z",
-        "alphabeticalDescription": "All film reviews on this site in alphabetical order, in case you want to search for one.",
-        "rating": "👍 all films",
+        "rating": "🎬 all films",
         "ratingDescription": "All film reviews on this site in order of my personal rating, from best to worst.",
         "spoilers": "spoilers...",
         "average": "average"
@@ -129,15 +127,6 @@ $(document).ready(() => {
         });
     };
 
-    const sortAlphabetical = (films) => {
-        return films
-            .sort((a, b) =>
-                a.sortTitle < b.sortTitle
-                    ? -1
-                    : 1
-            );
-    };
-
     const sortRating = (films) => {
         return films
             .sort((a, b) =>
@@ -148,6 +137,10 @@ $(document).ready(() => {
                         : 1);
     };
 
+    // Display a page.
+    // If the hash is empty, display the index page.
+    // If the hash is populated, display films as search results.
+    // Special searches are: rating, horror, or a specific list ID.
     const display = async (hash) => {
         $(".class-body-text").remove();
         $(".class-film-card").remove();
@@ -175,7 +168,7 @@ $(document).ready(() => {
                                 .addClass("class-film-card")
                                 .addClass("class-shadow-small")
                                 .html(strings.rating)
-                                .on("click", () => display("alphabetical"))
+                                .on("click", () => display("rating"))
                         )
                         .append(
                             $("<div>")
@@ -191,11 +184,7 @@ $(document).ready(() => {
             // Search for movies and display them.
             let films = [];
 
-            if (hash == "alphabetical") {
-                // Show all movies ordered A-Z.
-                films = sortAlphabetical(catalogueFilms);
-                description = strings.alphabeticalDescription;
-            } else if (hash == "rating") {
+            if (hash == "rating") {
                 // Show all movies ordered by rating.
                 films = sortRating(catalogueFilms);
                 description = strings.ratingDescription;
@@ -214,9 +203,9 @@ $(document).ready(() => {
                     description = catalogueList.description;
                 } else {
                     // Search on film title, ordered A-Z.
-                    films = sortAlphabetical(catalogueFilms
+                    films = sortRating(catalogueFilms
                         .filter(film => film.id.includes(hash) || film.title.includes(hash)));
-                    description = films.lenth == 0
+                    description = films.length == 0
                         ? strings.noResults
                         : ""
                 }
@@ -303,17 +292,19 @@ $(document).ready(() => {
                 }
             });
 
-            // Add the average rating for whatever is displayed, at the bottom of the page.
-            const ratings = films.map(film => film.rating).filter(rating => rating != undefined);
-            $("body")
-                .append(
-                    $("<div>")
-                        .addClass("class-body-text")
-                        .append(
-                            $("<div>")
-                                .attr("id", "id-average")
-                                .html(`${strings.average}: ${(ratings.reduce((total, rating) => total + rating, 0) / ratings.length).toFixed(1)}`)
-                        ));
+            if (filmsms.length > 0) {
+                // Add the average rating for whatever is displayed, at the bottom of the page.
+                const ratings = films.map(film => film.rating).filter(rating => rating != undefined);
+                $("body")
+                    .append(
+                        $("<div>")
+                            .addClass("class-body-text")
+                            .append(
+                                $("<div>")
+                                    .attr("id", "id-average")
+                                    .html(`${strings.average}: ${(ratings.reduce((total, rating) => total + rating, 0) / ratings.length).toFixed(1)}`)
+                            ));
+            }
         }
     };
 });
