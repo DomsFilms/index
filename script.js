@@ -25,6 +25,7 @@ $(document).ready(() => {
         "horrorDescription": "All horror film reviews on this site in order of my personal rating, from best to worst. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
         "all": "🎬 all films",
         "allDescription": "All film reviews on this site in order of my personal rating, from best to worst.",
+        "recommendation": "recommendation of the week",
         "spoilers": "spoilers...",
         "average": "average"
     };
@@ -136,6 +137,9 @@ $(document).ready(() => {
             // Load all films in the background.
             await Promise.all(catalogueFilms.map(film => loadFilm(film)));
             catalogueLoaded = true;
+
+            // The index page is probably displayed without this right now, so add it.
+            displayRecommendedFilm();
 
             // Load a specific list, or search result if it was supplied.
             const hash = window.location.hash.replace("#", "");
@@ -341,8 +345,8 @@ $(document).ready(() => {
                 .addClass("class-removable")
                 .addClass("class-break")
         ];
-        // Load the film of the week here, only if all films have loaded.
-        // also trigger film of the week rendering on film list loading completion.
+        
+        displayRecommendedFilm();
 
         return content;
     };
@@ -409,7 +413,7 @@ $(document).ready(() => {
         return card;
     };
 
-    window.displayRecommendedFilm = () => {
+    const displayRecommendedFilm = () => {
         if ($("#id-recommendation").length == 0
             && $(".class-index").length > 0
             && catalogueLoaded) {
@@ -436,10 +440,20 @@ $(document).ready(() => {
             // Now we can % by the total number of films that we want to select from.
             const weekNumber = (date.getTime() / 1000) % 7919 % films.length;
 
-            $(".class-index")
+            $(".class-break")
                 .last()
                 .after(
+                    $("<div>")
+                    .attr("id", "id-recommendation")
+                    .addClass("class-body-text")
+                    .addClass("class-index")
+                    .addClass("class-removable")
+                    .html(strings.recommendation)
+                )
+                .after(
                     displayFilm(films[weekNumber])
+                    .addClass("class-recommendation")
+                    .addClass("class-index")
                 );
         }
     };

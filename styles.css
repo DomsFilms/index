@@ -103,6 +103,10 @@ input {
     text-align: center;
 }
 
+#id-recommendation {
+    margin-top: 5rem;
+}
+
 /* Some mobile specific bodges. */
 
 @media (max-width: 1000px) {
