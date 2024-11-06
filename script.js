@@ -206,7 +206,7 @@ $(document).ready(() => {
                             catalogue
                                 .filter(list => list.id != defaultList.id)
                                 .forEach((list, index) => {
-                                    button.after(
+                                    button.before(
                                         $("<button>")
                                             .addClass("class-removable")
                                             .addClass("class-index")
