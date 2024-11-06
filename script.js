@@ -173,7 +173,7 @@ $(document).ready(() => {
                         : 1);
     };
 
-    const sortdate = (films) => {
+    const sortDate = (films) => {
         const parseDate = (dateString) => {
             const parts = dateString.split("/");
             return new Date(parseInt(parts[2], 10),
@@ -421,15 +421,25 @@ $(document).ready(() => {
                            Render the film.
                            So, do we load all films? It makes the site load a bit slower, but makes the first impression be of a nice film that's worth seeing.
                    */
+            // Get the time of the start of the week, Monday.
             const date = new Date();
-            date.setDate(date.getDate() - (day === 0 ? 6 : day - 1));
+            date.setDate(date.getDate() - (date.getDay() === 0 ? 6 : date.getDay() - 1));
             date.setHours(0, 0, 0, 0);
-            const weekNumber = date.getTime() % 7919 % catalogueFilms.length;
+
+            // Only consider films rated 7 and up.
+            // Because this is sorted by date ascending, adding new films won't change the weekly recommendation.
+            const films = sortDate(catalogueFilms.filter(film => film.rating >= 7));
+
+            // The date has the ms value set to 0, to be consistent, but this makes the total time in ms end in loads of 0s.
+            // So divide by 1000, then do % 7919, the 1000th prime, to get number that won't end in 0s.
+            // If all weeks resulted in a number with similar digits, it could maybe cause repetition?
+            // Now we can % by the total number of films that we want to select from.
+            const weekNumber = (date.getTime() / 1000) % 7919 % films.length;
 
             $(".class-index")
                 .last()
                 .after(
-                    displayFilm(sortDate(catalogueFilms)[weekNumber])
+                    displayFilm(films[weekNumber])
                 );
         }
     };
