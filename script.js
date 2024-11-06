@@ -205,6 +205,7 @@ $(document).ready(() => {
             // This will make buttons seem unresponsive while loading, but hopefully it will only be the first 2 seconds upon arrival.
             $("body")
                 .append(displayIndex());
+            displayRecommendedFilm();
 
         } else {
             // Search for movies and display them.
@@ -277,69 +278,63 @@ $(document).ready(() => {
         }
     };
 
-    const displayIndex = () => {
-        const content = [
-            $("<button>")
-                .attr("id", "id-latest")
-                .addClass("class-removable")
-                .addClass("class-index")
-                .addClass("class-index-wide")
-                .addClass("class-shadow")
-                .html(defaultList.title)
-                .css("background-image", defaultList.image)
-                .on("click", () => display(defaultList.id)),
-            $("<div>")
-                .addClass("class-removable")
-                .addClass("class-break"),
-            $("<button>")
-                .attr("id", "id-all")
-                .addClass("class-removable")
-                .addClass("class-index")
-                .addClass("class-shadow")
-                .html(strings.all)
-                .on("click", () => display("all")),
-            $("<button>")
-                .attr("id", "id-horror")
-                .addClass("class-removable")
-                .addClass("class-index")
-                .addClass("class-shadow")
-                .html(strings.horror)
-                .on("click", () => display("horror")),
-            $("<div>")
-                .addClass("class-removable")
-                .addClass("class-break"),
-            $("<button>")
-                .attr("id", "id-old")
-                .addClass("class-removable")
-                .addClass("class-index")
-                .addClass("class-shadow")
-                .html(strings.olderLists)
-                .on("click", () => {
-                    // Hopefully the catalogue has loaded by now.
-                    const button = $("#id-old");
-                    catalogue
-                        .filter(list => list.id != defaultList.id)
-                        .forEach((list, index) => {
-                            button.before(
-                                $("<button>")
-                                    .addClass("class-removable")
-                                    .addClass("class-index")
-                                    .addClass("class-shadow")
-                                    .html(list.title)
-                                    .on("click", () => display(list.id))
-                            );
-                        });
-                    button.remove();
-                }),
-            $("<div>")
-                .addClass("class-removable")
-                .addClass("class-break")
-        ];
-
-        displayRecommendedFilm();
-
-        return content;
-    };
+    const displayIndex = () => [
+        $("<button>")
+            .attr("id", "id-latest")
+            .addClass("class-removable")
+            .addClass("class-index")
+            .addClass("class-index-wide")
+            .addClass("class-shadow")
+            .html(defaultList.title)
+            .css("background-image", defaultList.image)
+            .on("click", () => display(defaultList.id)),
+        $("<div>")
+            .addClass("class-removable")
+            .addClass("class-break"),
+        $("<button>")
+            .attr("id", "id-all")
+            .addClass("class-removable")
+            .addClass("class-index")
+            .addClass("class-shadow")
+            .html(strings.all)
+            .on("click", () => display("all")),
+        $("<button>")
+            .attr("id", "id-horror")
+            .addClass("class-removable")
+            .addClass("class-index")
+            .addClass("class-shadow")
+            .html(strings.horror)
+            .on("click", () => display("horror")),
+        $("<div>")
+            .addClass("class-removable")
+            .addClass("class-break"),
+        $("<button>")
+            .attr("id", "id-old")
+            .addClass("class-removable")
+            .addClass("class-index")
+            .addClass("class-shadow")
+            .html(strings.olderLists)
+            .on("click", () => {
+                // Hopefully the catalogue has loaded by now.
+                const button = $("#id-old");
+                catalogue
+                    .filter(list => list.id != defaultList.id)
+                    .forEach((list, index) => {
+                        button.before(
+                            $("<button>")
+                                .addClass("class-removable")
+                                .addClass("class-index")
+                                .addClass("class-shadow")
+                                .html(list.title)
+                                .on("click", () => display(list.id))
+                        );
+                    });
+                button.remove();
+            }),
+        $("<div>")
+            .addClass("class-removable")
+            .addClass("class-break")
+    ];
 
     const displayFilm = (film) => {
         const card = $("<div>")
