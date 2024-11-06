@@ -164,7 +164,7 @@ $(document).ready(() => {
     };
 
     const sortRating = (films) => {
-        return films
+        return structuredClone(films)
             .sort((a, b) =>
                 a.rating != b.rating
                     ? b.rating - a.rating
@@ -183,7 +183,7 @@ $(document).ready(() => {
                 parseInt(parts[1], 10) - 1,
                 parseInt(parts[0], 10));
         };
-        return films
+        return structuredClone(films)
             .sort((a, b) =>
                 a.date != b.date
                     ? parseDate(a.date) - parseDate(b.date)
