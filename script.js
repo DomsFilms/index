@@ -422,18 +422,17 @@ $(document).ready(() => {
             // Now we can % by the total number of films that we want to select from.
             const weekNumber = (date.getTime() / 1000) % 7919 % films.length;
 
+            // These don't have the index class because I don't want them to be shrunk into small widths.
             $(".class-break")
                 .last()
                 .after([
                     $("<div>")
                         .attr("id", "id-recommendation")
                         .addClass("class-body-text")
-                        .addClass("class-index")
                         .addClass("class-removable")
                         .html(strings.recommendation),
                     displayFilm(films[weekNumber])
                         .addClass("class-recommendation")
-                        .addClass("class-index")
                 ]);
         }
     };
