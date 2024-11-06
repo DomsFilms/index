@@ -183,7 +183,7 @@ $(document).ready(() => {
         return films
             .sort((a, b) =>
                 a.date != b.date
-                    ? parseDate(b.date) - parseDate(a.date)
+                    ? parseDate(a.date) - parseDate(b.date)
                     : a.sortTitle < b.sortTitle
                         ? -1
                         : 1);
