@@ -33,6 +33,11 @@ $(document).ready(() => {
     const titleSortRegex = /(^The\s)|(^A\s)/i;
     const idSortRegex = /(^the)|(^a)/i
 
+    // Store the catalogue here, after loading it once while the page loads.
+    let catalogue = [];
+    let catalogueFilms = [];
+    let catalogueLoaded = false;
+
     // Set the theme, currently supports "dark" and "light".
     // Save in local storage so it doesn't reset on refresh.
     const setTheme = (theme) => {
@@ -130,6 +135,7 @@ $(document).ready(() => {
 
             // Load all films in the background.
             await Promise.all(catalogueFilms.map(film => loadFilm(film)));
+            catalogueLoaded = true;
 
             // Load a specific list, or search result if it was supplied.
             const hash = window.location.hash.replace("#", "");
@@ -139,9 +145,6 @@ $(document).ready(() => {
         }
     };
 
-    // Store the catalogue here, after loading it once while the page loads.
-    let catalogue = [];
-    let catalogueFilms = [];
     calatlogueRequest.send();
 
     // Load a film from the server, and assign its properties to the parameter object.
@@ -170,6 +173,22 @@ $(document).ready(() => {
                         : 1);
     };
 
+    const sortdate = (films) => {
+        const parseDate = (dateString) => {
+            const parts = dateString.split("/");
+            return new Date(parseInt(parts[2], 10),
+                parseInt(parts[1], 10) - 1,
+                parseInt(parts[0], 10));
+        };
+        return films
+            .sort((a, b) =>
+                a.date != b.date
+                    ? parseDate(b.date) - parseDate(a.date)
+                    : a.sortTitle < b.sortTitle
+                        ? -1
+                        : 1);
+    };
+
     // Display a page.
     // If the hash is empty, display the index page.
     // If the hash is populated, display films as search results.
@@ -181,7 +200,9 @@ $(document).ready(() => {
             window.location.hash = hash;
         }
 
-        if (hash == "") {
+        if (hash == "" || !catalogueLoaded) {
+            // Also display the index page if the catalogue hasn't been loaded yet.
+            // This will make buttons seem unresponsive while loading, but hopefully it will only be the first 2 seconds upon arrival.
             $("body")
                 .append(displayIndex());
 
@@ -323,15 +344,6 @@ $(document).ready(() => {
         // Load the film of the week here, only if all films have loaded.
         // also trigger film of the week rendering on film list loading completion.
 
-        /* To add film of the week:
-                Calculate start of the week, by taking the day-of-week number away from the date in days.
-                Calculate a unique number based on this, by adding the year, month, and week start day as a string and parsing as int.
-                Calculate the remainder of this number divided by the total films with 7 or more. (This requires loading all films initially, alternative is recommending totally randomly)
-                Load the fiom if it's not already loaded.
-                Render the film.
-                So, do we load all films? It makes the site load a bit slower, but makes the first impression be of a nice film that's worth seeing.
-        */
-
         return content;
     };
 
@@ -397,12 +409,37 @@ $(document).ready(() => {
         return card;
     };
 
+    window.displayRecommendedFilm = () => {
+        if ($("#id-recommendation").length == 0
+            && $(".class-index").length > 0
+            && catalogueLoaded) {
+            /* To add film of the week:
+                           Calculate start of the week, by taking the day-of-week number away from the date in days.
+                           Calculate a unique number based on this, by adding the year, month, and week start day as a string and parsing as int.
+                           Calculate the remainder of this number divided by the total films with 7 or more. (This requires loading all films initially, alternative is recommending totally randomly)
+                           Load the fiom if it's not already loaded.
+                           Render the film.
+                           So, do we load all films? It makes the site load a bit slower, but makes the first impression be of a nice film that's worth seeing.
+                   */
+            const date = new Date();
+            date.setDate(date.getDate() - (day === 0 ? 6 : day - 1));
+            date.setHours(0, 0, 0, 0);
+            const weekNumber = date.getTime() % 7919 % catalogueFilms.length;
+
+            $(".class-index")
+                .last()
+                .after(
+                    displayFilm(sortDate(catalogueFilms)[weekNumber])
+                );
+        }
+    };
+
     // This helps the back and forwards buttons work.
     // I don't think this works, but it would be nice if it did.
     $("body").onhashchange = () => display(window.location.hash.replace("#", ""));
 
     // If no films have been loaded yet (they are on the way), start by displaying the index page.
-    if (!catalogueFilms.some(film => !!film.review)) {
+    if (!catalogueLoaded) {
         display("", true);
     }
 });
