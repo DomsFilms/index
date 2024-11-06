@@ -175,6 +175,9 @@ $(document).ready(() => {
 
     const sortDate = (films) => {
         const parseDate = (dateString) => {
+            if (date.length > 10) {
+                return 0;
+            }
             const parts = dateString.split("/");
             return new Date(parseInt(parts[2], 10),
                 parseInt(parts[1], 10) - 1,
