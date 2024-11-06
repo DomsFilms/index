@@ -174,11 +174,12 @@ $(document).ready(() => {
     // If the hash is empty, display the index page.
     // If the hash is populated, display films as search results.
     // Special searches are: rating, horror, or a specific list ID.
-    const display = async (hash) => {
+    const display = async (hash, keepHash) => {
         $(".class-removable").remove();
 
-        window.location.hash = hash;
-        let description = null;
+        if (!keepHash) {
+            window.location.hash = hash;
+        }
 
         if (hash == "") {
             $("body")
@@ -187,6 +188,7 @@ $(document).ready(() => {
         } else {
             // Search for movies and display them.
             let films = [];
+            let description = null;
 
             if (hash == "all") {
                 // Show all movies ordered by rating.
@@ -401,6 +403,6 @@ $(document).ready(() => {
 
     // If no films have been loaded yet (they are on the way), start by displaying the index page.
     if (!catalogueFilms.some(film => !!film.review)) {
-        display("");
+        display("", true);
     }
 });
