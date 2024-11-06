@@ -345,7 +345,7 @@ $(document).ready(() => {
                 .addClass("class-removable")
                 .addClass("class-break")
         ];
-        
+
         displayRecommendedFilm();
 
         return content;
@@ -444,17 +444,16 @@ $(document).ready(() => {
                 .last()
                 .after(
                     $("<div>")
-                    .attr("id", "id-recommendation")
-                    .addClass("class-body-text")
-                    .addClass("class-index")
-                    .addClass("class-removable")
-                    .html(strings.recommendation)
-                )
-                .after(
-                    displayFilm(films[weekNumber])
-                    .addClass("class-recommendation")
-                    .addClass("class-index")
-                );
+                        .attr("id", "id-recommendation")
+                        .addClass("class-body-text")
+                        .addClass("class-index")
+                        .addClass("class-removable")
+                        .html(strings.recommendation)
+                        .after(
+                            displayFilm(films[weekNumber])
+                                .addClass("class-recommendation")
+                                .addClass("class-index")
+                        ));
         }
     };
 
