@@ -22,8 +22,8 @@ $(document).ready(() => {
         "olderLists": "📆 older lists",
         "horror": "💀 all horror",
         "horrorDescription": "All horror film reviews on this site in order of my personal rating, from best to worst. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
-        "rating": "🎬 all films",
-        "ratingDescription": "All film reviews on this site in order of my personal rating, from best to worst.",
+        "all": "🎬 all films",
+        "allDescription": "All film reviews on this site in order of my personal rating, from best to worst.",
         "spoilers": "spoilers...",
         "average": "average"
     };
@@ -175,82 +175,17 @@ $(document).ready(() => {
         let description = null;
 
         if (hash == "") {
-            // If the hash is empty, show the index page.
             $("body")
-                .append(
-                    $("<button>")
-                        .attr("id", "id-latest")
-                        .addClass("class-removable")
-                        .addClass("class-index")
-                        .addClass("class-index-wide")
-                        .addClass("class-shadow")
-                        .html(catalogue.find(list => list.id == defaultList.id).title)
-                        .css("background-image", defaultList.image)
-                        .on("click", () => display(defaultList.id))
-                )
-                .append(
-                    $("<div>")
-                        .addClass("class-removable")
-                        .addClass("class-break")
-                )
-                .append(
-                    $("<button>")
-                        .attr("id", "id-old")
-                        .addClass("class-removable")
-                        .addClass("class-index")
-                        .addClass("class-index-wide")
-                        .addClass("class-shadow")
-                        .html(strings.olderLists)
-                        .on("click", () => {
-                            const button = $("#id-old");
-                            catalogue
-                                .filter(list => list.id != defaultList.id)
-                                .forEach((list, index) => {
-                                    button.before(
-                                        $("<button>")
-                                            .addClass("class-removable")
-                                            .addClass("class-index")
-                                            .addClass("class-index-wide")
-                                            .addClass("class-shadow")
-                                            .html(list.title)
-                                            .on("click", () => display(list.id))
-                                    );
-                                });
-                            button.remove();
-                        })
-                )
-                .append(
-                    $("<div>")
-                        .addClass("class-removable")
-                        .addClass("class-break")
-                )
-                .append(
-                    $("<button>")
-                        .attr("id", "id-rating")
-                        .addClass("class-removable")
-                        .addClass("class-index")
-                        .addClass("class-shadow")
-                        .html(strings.rating)
-                        .on("click", () => display("rating"))
-                )
-                .append(
-                    $("<button>")
-                        .attr("id", "id-horror")
-                        .addClass("class-removable")
-                        .addClass("class-index")
-                        .addClass("class-shadow")
-                        .html(strings.horror)
-                        .on("click", () => display("horror"))
-                );
+                .append(displayIndex());
 
         } else {
             // Search for movies and display them.
             let films = [];
 
-            if (hash == "rating") {
+            if (hash == "all") {
                 // Show all movies ordered by rating.
                 films = sortRating(catalogueFilms);
-                description = strings.ratingDescription;
+                description = strings.allDescription;
             } else if (hash == "horror") {
                 // Show horror films ordered by rating.
                 films = sortRating(catalogueFilms
@@ -293,69 +228,8 @@ $(document).ready(() => {
             films = films.filter(film => !!film.review);
 
             films.forEach((film, index) => {
-
-                //Add the film card and render the elements.
                 $("body")
-                    .append(
-                        $("<div>")
-                            .attr("id", `id-film-${film.id}`)
-                            .addClass("class-film-card class-shadow")
-                            .addClass("class-removable")
-                            .append($("<div>")
-                                .addClass("class-film-bar")
-                                .append(
-                                    $("<div>")
-                                        .addClass("class-film-title class-font-large")
-                                        .html(film.title)
-                                )
-                                .append(
-                                    $("<div>")
-                                        .addClass(`class-rating-large class-font-large class-rating-${film.rating}`)
-                                        .html(film.rating)
-                                )
-                            )
-                            .append(
-                                $("<div>")
-                                    .addClass("class-film-review")
-                                    .html(film.review
-                                        // Render the spoiler tags over placeholders, if they exist.
-                                        .replace("#s", `<details><summary>${strings.spoilers}</summary>`)
-                                        .replace("#d", "</details>")
-                                    )
-                            )
-                            .append(
-                                $("<div>")
-                                    .addClass("class-film-summary class-font-small")
-                                    .html(`released: ${film.year}, watched: ${film.date} ${film.seen ? "(seen before)" : "(first time)"}`)
-                            ).append($("<div>")
-                                .addClass("class-film-bar")
-                                .append(
-                                    $("<div>")
-                                        .addClass("class-film-word class-font-small")
-                                        .html((film.word || "").toLowerCase())
-                                )
-                            )
-                    );
-
-                // Render the properties for this film.
-                film.properties.forEach((property, index) => {
-                    if (film[property] !== undefined) {
-                        $(`#id-film-${film.id}`)
-                            .find(".class-film-word")
-                            .after(
-                                $("<div>")
-                                    .addClass(`class-rating-small class-rating-${film[property]} class-font-small`)
-                                    .html(`${property}: ${film[property]}`)
-                            )
-                    }
-                });
-
-                // If the film has a style property, and it hasn't been added already, and add a style element to the page head.
-                if (film.style != undefined && $(`style:contains("/* ${film.id} /*")`).length == 0) {
-                    $("head")
-                        .append($("<style>")
-                            .html(`/* ${film.id} */ ${film.style}`));
-                }
+                    .append(displayFilm(film));
             });
 
             // Add the average rating for whatever is displayed, at the bottom of the page.
@@ -373,5 +247,148 @@ $(document).ready(() => {
                             ));
             }
         }
+    };
+
+    const displayIndex = () => {
+        const content =
+            $("<button>")
+                .attr("id", "id-latest")
+                .addClass("class-removable")
+                .addClass("class-index")
+                .addClass("class-index-wide")
+                .addClass("class-shadow")
+                .html(catalogue.find(list => list.id == defaultList.id).title)
+                .css("background-image", defaultList.image)
+                .on("click", () => display(defaultList.id))
+                .append(
+                    $("<div>")
+                        .addClass("class-removable")
+                        .addClass("class-break")
+                )
+                .append(
+                    $("<button>")
+                        .attr("id", "id-all")
+                        .addClass("class-removable")
+                        .addClass("class-index")
+                        .addClass("class-shadow")
+                        .html(strings.all)
+                        .on("click", () => display("all"))
+                )
+                .append(
+                    $("<button>")
+                        .attr("id", "id-horror")
+                        .addClass("class-removable")
+                        .addClass("class-index")
+                        .addClass("class-shadow")
+                        .html(strings.horror)
+                        .on("click", () => display("horror"))
+                )
+                .append(
+                    $("<div>")
+                        .addClass("class-removable")
+                        .addClass("class-break")
+                )
+                .append(
+                    $("<button>")
+                        .attr("id", "id-old")
+                        .addClass("class-removable")
+                        .addClass("class-index")
+                        .addClass("class-shadow")
+                        .html(strings.olderLists)
+                        .on("click", () => {
+                            const button = $("#id-old");
+                            catalogue
+                                .filter(list => list.id != defaultList.id)
+                                .forEach((list, index) => {
+                                    button.before(
+                                        $("<button>")
+                                            .addClass("class-removable")
+                                            .addClass("class-index")
+                                            .addClass("class-shadow")
+                                            .html(list.title)
+                                            .on("click", () => display(list.id))
+                                    );
+                                });
+                            button.remove();
+                        })
+                )
+                .append(
+                    $("<div>")
+                        .addClass("class-removable")
+                        .addClass("class-break")
+                );
+
+        /* To add film of the week:
+                Calculate start of the week, by taking the day-of-week number away from the date in days.
+                Calculate a unique number based on this, by adding the year, month, and week start day as a string and parsing as int.
+                Calculate the remainder of this number divided by the total films with 7 or more. (This requires loading all films initially, alternative is recommending totally randomly)
+                Load the fiom if it's not already loaded.
+                Render the film.
+                So, do we load all films? It makes the site load a bit slower, but makes the first impression be of a nice film that's worth seeing.
+        */
+
+        return content;
+    };
+
+    const displayFilm = (film) => {
+        const card = $("<div>")
+            .attr("id", `id-film-${film.id}`)
+            .addClass("class-film-card class-shadow")
+            .addClass("class-removable")
+            .append($("<div>")
+                .addClass("class-film-bar")
+                .append(
+                    $("<div>")
+                        .addClass("class-film-title class-font-large")
+                        .html(film.title)
+                )
+                .append(
+                    $("<div>")
+                        .addClass(`class-rating-large class-font-large class-rating-${film.rating}`)
+                        .html(film.rating)
+                )
+            )
+            .append(
+                $("<div>")
+                    .addClass("class-film-review")
+                    .html(film.review
+                        // Render the spoiler tags over placeholders, if they exist.
+                        .replace("#s", `<details><summary>${strings.spoilers}</summary>`)
+                        .replace("#d", "</details>")
+                    )
+            )
+            .append(
+                $("<div>")
+                    .addClass("class-film-summary class-font-small")
+                    .html(`released: ${film.year}, watched: ${film.date} ${film.seen ? "(seen before)" : "(first time)"}`)
+            ).append($("<div>")
+                .addClass("class-film-bar")
+                .append(
+                    $("<div>")
+                        .addClass("class-film-word class-font-small")
+                        .html((film.word || "").toLowerCase())
+                )
+            );
+
+        // Render the properties for this film.
+        film.properties.forEach((property, index) => {
+            if (film[property] !== undefined) {
+                card.find(".class-film-word")
+                    .after(
+                        $("<div>")
+                            .addClass(`class-rating-small class-rating-${film[property]} class-font-small`)
+                            .html(`${property}: ${film[property]}`)
+                    )
+            }
+        });
+
+        // If the film has a style property, and it hasn't been added already, and add a style element to the page head.
+        if (film.style != undefined && $(`style:contains("/* ${film.id} /*")`).length == 0) {
+            $("head")
+                .append($("<style>")
+                    .html(`/* ${film.id} */ ${film.style}`));
+        }
+
+        return card;
     };
 });
