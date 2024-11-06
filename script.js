@@ -260,12 +260,12 @@ $(document).ready(() => {
                 .html(catalogue.find(list => list.id == defaultList.id).title)
                 .css("background-image", defaultList.image)
                 .on("click", () => display(defaultList.id))
-                .append(
+                .after(
                     $("<div>")
                         .addClass("class-removable")
                         .addClass("class-break")
                 )
-                .append(
+                .after(
                     $("<button>")
                         .attr("id", "id-all")
                         .addClass("class-removable")
@@ -274,7 +274,7 @@ $(document).ready(() => {
                         .html(strings.all)
                         .on("click", () => display("all"))
                 )
-                .append(
+                .after(
                     $("<button>")
                         .attr("id", "id-horror")
                         .addClass("class-removable")
@@ -283,12 +283,12 @@ $(document).ready(() => {
                         .html(strings.horror)
                         .on("click", () => display("horror"))
                 )
-                .append(
+                .after(
                     $("<div>")
                         .addClass("class-removable")
                         .addClass("class-break")
                 )
-                .append(
+                .after(
                     $("<button>")
                         .attr("id", "id-old")
                         .addClass("class-removable")
@@ -312,7 +312,7 @@ $(document).ready(() => {
                             button.remove();
                         })
                 )
-                .append(
+                .after(
                     $("<div>")
                         .addClass("class-removable")
                         .addClass("class-break")
