@@ -5,6 +5,7 @@ $(document).ready(() => {
 
     const defaultList = {
         "image": "url(\"films/horror2024/image.jpg\")",
+        "title": "2024 horror marathon",
         "id": "horror2024"
     };
 
@@ -109,7 +110,7 @@ $(document).ready(() => {
     const calatlogueRequest = new XMLHttpRequest();
     calatlogueRequest.open("GET", `catalogue.json?v=${cacheVersion}`, true);
     calatlogueRequest.responseType = "json";
-    calatlogueRequest.onload = () => {
+    calatlogueRequest.onload = async () => {
         if (calatlogueRequest.status === 200) {
             catalogue = calatlogueRequest.response;
             catalogueFilms = catalogue
@@ -126,12 +127,17 @@ $(document).ready(() => {
                         };
                     }))
                 .flat();
-            display(window.location.hash.replace("#", ""));
+
+            // Load all films in the background.
+            await Promise.all(catalogueFilms.map(film => loadFilm(film)));
+
+            // Load a specific list, or search result if it was supplied.
+            const hash = window.location.hash.replace("#", "");
+            if (!!hash) {
+                display(hash);
+            }
         }
     };
-
-    // This helps the back and forwards buttons work.
-    $("body").onhashchange = () => display(window.location.hash.replace("#", ""));
 
     // Store the catalogue here, after loading it once while the page loads.
     let catalogue = [];
@@ -223,8 +229,7 @@ $(document).ready(() => {
                         )
                 );
 
-            // Wait and load all the required films, if they have review data.
-            await Promise.all(films.map(film => loadFilm(film)));
+            // Don't render films that haven't been loaded (yet).
             films = films.filter(film => !!film.review);
 
             films.forEach((film, index) => {
@@ -250,73 +255,71 @@ $(document).ready(() => {
     };
 
     const displayIndex = () => {
-        const content =
+        const content = [
             $("<button>")
                 .attr("id", "id-latest")
                 .addClass("class-removable")
                 .addClass("class-index")
                 .addClass("class-index-wide")
                 .addClass("class-shadow")
-                .html(catalogue.find(list => list.id == defaultList.id).title)
+                .html(defaultList.title)
                 .css("background-image", defaultList.image)
                 .on("click", () => display(defaultList.id))
-                .after(
-                    $("<div>")
-                        .addClass("class-removable")
-                        .addClass("class-break")
-                )
-                .after(
-                    $("<button>")
-                        .attr("id", "id-all")
-                        .addClass("class-removable")
-                        .addClass("class-index")
-                        .addClass("class-shadow")
-                        .html(strings.all)
-                        .on("click", () => display("all"))
-                )
-                .after(
-                    $("<button>")
-                        .attr("id", "id-horror")
-                        .addClass("class-removable")
-                        .addClass("class-index")
-                        .addClass("class-shadow")
-                        .html(strings.horror)
-                        .on("click", () => display("horror"))
-                )
-                .after(
-                    $("<div>")
-                        .addClass("class-removable")
-                        .addClass("class-break")
-                )
-                .after(
-                    $("<button>")
-                        .attr("id", "id-old")
-                        .addClass("class-removable")
-                        .addClass("class-index")
-                        .addClass("class-shadow")
-                        .html(strings.olderLists)
-                        .on("click", () => {
-                            const button = $("#id-old");
-                            catalogue
-                                .filter(list => list.id != defaultList.id)
-                                .forEach((list, index) => {
-                                    button.before(
-                                        $("<button>")
-                                            .addClass("class-removable")
-                                            .addClass("class-index")
-                                            .addClass("class-shadow")
-                                            .html(list.title)
-                                            .on("click", () => display(list.id))
-                                    );
-                                });
-                            button.remove();
-                        })
-                )
-                .after(
-                    $("<div>")
-                        .addClass("class-removable")
-                        .addClass("class-break")
-                );
+            ,
+            $("<div>")
+                .addClass("class-removable")
+                .addClass("class-break")
+            ,
+            $("<button>")
+                .attr("id", "id-all")
+                .addClass("class-removable")
+                .addClass("class-index")
+                .addClass("class-shadow")
+                .html(strings.all)
+                .on("click", () => display("all"))
+            ,
+            $("<button>")
+                .attr("id", "id-horror")
+                .addClass("class-removable")
+                .addClass("class-index")
+                .addClass("class-shadow")
+                .html(strings.horror)
+                .on("click", () => display("horror"))
+            ,
+            $("<div>")
+                .addClass("class-removable")
+                .addClass("class-break")
+            ,
+            $("<button>")
+                .attr("id", "id-old")
+                .addClass("class-removable")
+                .addClass("class-index")
+                .addClass("class-shadow")
+                .html(strings.olderLists)
+                .on("click", () => {
+                    // Hopefully the catalogue has loaded by now.
+                    const button = $("#id-old");
+                    catalogue
+                        .filter(list => list.id != defaultList.id)
+                        .forEach((list, index) => {
+                            button.before(
+                                $("<button>")
+                                    .addClass("class-removable")
+                                    .addClass("class-index")
+                                    .addClass("class-shadow")
+                                    .html(list.title)
+                                    .on("click", () => display(list.id))
+                            );
+                        });
+                    button.remove();
+                })
+            ,
+            $("<div>")
+                .addClass("class-removable")
+                .addClass("class-break")
+        ];
+        // Load the film of the week here, only if all films have loaded.
+        // also trigger film of the week rendering on film list loading completion.
 
         /* To add film of the week:
                 Calculate start of the week, by taking the day-of-week number away from the date in days.
@@ -391,4 +394,13 @@ $(document).ready(() => {
 
         return card;
     };
+
+    // This helps the back and forwards buttons work.
+    // I don't think this works, but it would be nice if it did.
+    $("body").onhashchange = () => display(window.location.hash.replace("#", ""));
+
+    // If no films have been loaded yet (they are on the way), start by displaying the index page.
+    if (!catalogueFilms.some(film => !!film.review)) {
+        display("");
+    }
 });
