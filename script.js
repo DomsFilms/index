@@ -19,6 +19,7 @@ $(document).ready(() => {
         "lightButton": "🌔 theme",
         "search": "search...",
         "noResults": "no search results 👻",
+        "olderLists": "📆 older lists",
         "horror": "💀 all horror",
         "horrorDescription": "All horror film reviews on this site in order of my personal rating, from best to worst. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
         "rating": "🎬 all films",
@@ -181,10 +182,42 @@ $(document).ready(() => {
                         .attr("id", "id-latest")
                         .addClass("class-removable")
                         .addClass("class-index")
+                        .addClass("class-index-wide")
                         .addClass("class-shadow")
                         .html(catalogue.find(list => list.id == defaultList.id).title)
                         .css("background-image", defaultList.image)
                         .on("click", () => display(defaultList.id))
+                )
+                .append(
+                    $("<div>")
+                        .addClass("class-removable")
+                        .addClass("class-break")
+                )
+                .append(
+                    $("<button>")
+                        .attr("id", "id-old")
+                        .addClass("class-removable")
+                        .addClass("class-index")
+                        .addClass("class-index-wide")
+                        .addClass("class-shadow")
+                        .html(strings.olderLists)
+                        .on("click", () => {
+                            const button = $("#id-old");
+                            catalogue
+                                .filter(list => list.id != defaultList.id)
+                                .forEach((list, index) => {
+                                    button.after(
+                                        $("<button>")
+                                            .addClass("class-removable")
+                                            .addClass("class-index")
+                                            .addClass("class-index-wide")
+                                            .addClass("class-shadow")
+                                            .html(list.title)
+                                            .on("click", () => display(list.id))
+                                    );
+                                });
+                            button.remove();
+                        })
                 )
                 .append(
                     $("<div>")
