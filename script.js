@@ -340,7 +340,7 @@ $(document).ready(() => {
                 // Render the properties for this film.
                 film.properties.forEach((property, index) => {
                     if (film[property] !== undefined) {
-                        $(`id-film-${film.id}`)
+                        $(`#id-film-${film.id}`)
                             .find(".class-film-word")
                             .after(
                                 $("<div>")
