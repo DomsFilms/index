@@ -68,38 +68,34 @@ $(document).ready(() => {
     $("body")
         .append($("<div>")
             .attr("id", "id-controls")
-            .append($("<button>")
-                .attr("id", "id-home")
-                .addClass("class-shadow")
-                .addClass("class-font-small")
-                .html(strings.indexButton)
-                .on("click", () => display(""))
-            )
-            .append($("<button>")
-                .attr("id", "id-theme-toggle")
-                .addClass("class-shadow")
-                .addClass("class-font-small")
-                .html(strings.darkButton)
-                .on("click", () => {
-                    const body = $("body");
-                    if (body.hasClass("class-theme-light")) {
-                        setTheme("dark");
-                    } else {
-                        setTheme("light");
-                    }
-                })
-            )
-            .append(
+            .append([
+                $("<button>")
+                    .attr("id", "id-home")
+                    .addClass("class-shadow")
+                    .addClass("class-font-small")
+                    .html(strings.indexButton)
+                    .on("click", () => display("")),
+                $("<button>")
+                    .attr("id", "id-theme-toggle")
+                    .addClass("class-shadow")
+                    .addClass("class-font-small")
+                    .html(strings.darkButton)
+                    .on("click", () => {
+                        const body = $("body");
+                        if (body.hasClass("class-theme-light")) {
+                            setTheme("dark");
+                        } else {
+                            setTheme("light");
+                        }
+                    }),
                 $("<div>")
-                    .addClass("class-break")
-            )
-            .append(
+                    .addClass("class-break"),
                 $("<input>")
                     .attr("type", "text")
                     .attr("placeholder", "search...")
                     .attr("id", "id-search")
                     .addClass("class-shadow")
-            )
+            ])
         );
 
     // Add a debounced search function to the search box.
@@ -291,32 +287,27 @@ $(document).ready(() => {
                 .addClass("class-shadow")
                 .html(defaultList.title)
                 .css("background-image", defaultList.image)
-                .on("click", () => display(defaultList.id))
-            ,
+                .on("click", () => display(defaultList.id)),
             $("<div>")
                 .addClass("class-removable")
-                .addClass("class-break")
-            ,
+                .addClass("class-break"),
             $("<button>")
                 .attr("id", "id-all")
                 .addClass("class-removable")
                 .addClass("class-index")
                 .addClass("class-shadow")
                 .html(strings.all)
-                .on("click", () => display("all"))
-            ,
+                .on("click", () => display("all")),
             $("<button>")
                 .attr("id", "id-horror")
                 .addClass("class-removable")
                 .addClass("class-index")
                 .addClass("class-shadow")
                 .html(strings.horror)
-                .on("click", () => display("horror"))
-            ,
+                .on("click", () => display("horror")),
             $("<div>")
                 .addClass("class-removable")
-                .addClass("class-break")
-            ,
+                .addClass("class-break"),
             $("<button>")
                 .attr("id", "id-old")
                 .addClass("class-removable")
@@ -339,8 +330,7 @@ $(document).ready(() => {
                             );
                         });
                     button.remove();
-                })
-            ,
+                }),
             $("<div>")
                 .addClass("class-removable")
                 .addClass("class-break")
@@ -356,40 +346,37 @@ $(document).ready(() => {
             .attr("id", `id-film-${film.id}`)
             .addClass("class-film-card class-shadow")
             .addClass("class-removable")
-            .append($("<div>")
-                .addClass("class-film-bar")
-                .append(
-                    $("<div>")
-                        .addClass("class-film-title class-font-large")
-                        .html(film.title)
-                )
-                .append(
-                    $("<div>")
-                        .addClass(`class-rating-large class-font-large class-rating-${film.rating}`)
-                        .html(film.rating)
-                )
-            )
-            .append(
+            .append([
+                $("<div>")
+                    .addClass("class-film-bar")
+                    .append(
+                        $("<div>")
+                            .addClass("class-film-title class-font-large")
+                            .html(film.title)
+                    )
+                    .append(
+                        $("<div>")
+                            .addClass(`class-rating-large class-font-large class-rating-${film.rating}`)
+                            .html(film.rating)
+                    ),
                 $("<div>")
                     .addClass("class-film-review")
                     .html(film.review
                         // Render the spoiler tags over placeholders, if they exist.
                         .replace("#s", `<details><summary>${strings.spoilers}</summary>`)
                         .replace("#d", "</details>")
-                    )
-            )
-            .append(
+                    ),
                 $("<div>")
                     .addClass("class-film-summary class-font-small")
-                    .html(`released: ${film.year}, watched: ${film.date} ${film.seen ? "(seen before)" : "(first time)"}`)
-            ).append($("<div>")
-                .addClass("class-film-bar")
-                .append(
-                    $("<div>")
-                        .addClass("class-film-word class-font-small")
-                        .html((film.word || "").toLowerCase())
-                )
-            );
+                    .html(`released: ${film.year}, watched: ${film.date} ${film.seen ? "(seen before)" : "(first time)"}`),
+                $("<div>")
+                    .addClass("class-film-bar")
+                    .append(
+                        $("<div>")
+                            .addClass("class-film-word class-font-small")
+                            .html((film.word || "").toLowerCase())
+                    )
+            ]);
 
         // Render the properties for this film.
         film.properties.forEach((property, index) => {
@@ -442,18 +429,17 @@ $(document).ready(() => {
 
             $(".class-break")
                 .last()
-                .after(
+                .after([
                     $("<div>")
                         .attr("id", "id-recommendation")
                         .addClass("class-body-text")
                         .addClass("class-index")
                         .addClass("class-removable")
-                        .html(strings.recommendation)
-                        .after(
-                            displayFilm(films[weekNumber])
-                                .addClass("class-recommendation")
-                                .addClass("class-index")
-                        ));
+                        .html(strings.recommendation),
+                    displayFilm(films[weekNumber])
+                        .addClass("class-recommendation")
+                        .addClass("class-index")
+                ]);
         }
     };
 
