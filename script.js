@@ -218,7 +218,7 @@ $(document).ready(() => {
             } else if (hash == "horror") {
                 // Show horror films ordered by rating.
                 films = sortRating(catalogueFilms
-                    .filter(film => film.list.includes("horror")));
+                    .filter(film => film.list.includes("horror") || !!film.horror));
                 description = strings.horrorDescription;
             } else {
                 const catalogueList = catalogue
