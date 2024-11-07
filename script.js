@@ -255,22 +255,25 @@ $(document).ready(() => {
             // Don't render films that haven't been loaded (yet).
             films = films.filter(film => !!film.review);
 
+            // Masonry grid container.
             $("body").append(
                 $("<div>")
                     .attr("id", "id-grid")
                     .addClass("class-removable")
-                    .masonry({
-                        itemSelector: '.class-film-card',
-                        gutter: 12,
-                        horizontalOrder: true,
-                        fitWidth: true
-                    })
             );
 
             films.forEach((film, index) => {
                 $("#id-grid")
                     .append(displayFilm(film));
             });
+
+            // Apply masonry.
+            $("#id-grid").masonry({
+                itemSelector: '.class-film-card',
+                gutter: 12,
+                horizontalOrder: true,
+                fitWidth: true
+            })
 
             // Add the average rating for whatever is displayed, at the bottom of the page.
             const ratings = films.map(film => film.rating).filter(rating => rating != undefined);
