@@ -255,8 +255,20 @@ $(document).ready(() => {
             // Don't render films that haven't been loaded (yet).
             films = films.filter(film => !!film.review);
 
+            $("body").append(
+                $("<div>")
+                    .attr("id", "id-grid")
+                    .addClass("class-removable")
+                    .masonry({
+                        itemSelector: '.class-film-card',
+                        gutter: 12,
+                        horizontalOrder: true,
+                        fitWidth: true
+                    })
+            );
+
             films.forEach((film, index) => {
-                $("body")
+                $("#id-grid")
                     .append(displayFilm(film));
             });
 
