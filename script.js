@@ -1,6 +1,3 @@
-// TODO:
-// Add older lists in dropdown, they have no images.
-
 $(document).ready(() => {
 
     const defaultList = {
@@ -20,7 +17,6 @@ $(document).ready(() => {
         "lightButton": "🌔 theme",
         "search": "search...",
         "noResults": "no search results 👻",
-        "olderLists": "📆 older lists",
         "horror": "💀 all horror",
         "horrorDescription": "All horror film reviews on this site in order of my personal rating, from best to worst. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
         "all": "🎬 all films",
@@ -310,32 +306,6 @@ $(document).ready(() => {
             .on("click", () => display("horror")),
         $("<div>")
             .addClass("class-removable")
-            .addClass("class-break"),
-        $("<button>")
-            .attr("id", "id-old")
-            .addClass("class-removable")
-            .addClass("class-index")
-            .addClass("class-shadow")
-            .html(strings.olderLists)
-            .on("click", () => {
-                // Hopefully the catalogue has loaded by now.
-                const button = $("#id-old");
-                catalogue
-                    .filter(list => list.id != defaultList.id)
-                    .forEach((list, index) => {
-                        button.before(
-                            $("<button>")
-                                .addClass("class-removable")
-                                .addClass("class-index")
-                                .addClass("class-shadow")
-                                .html(list.title)
-                                .on("click", () => display(list.id))
-                        );
-                    });
-                button.remove();
-            }),
-        $("<div>")
-            .addClass("class-removable")
             .addClass("class-break")
     ];
 
@@ -360,7 +330,7 @@ $(document).ready(() => {
                 $("<div>")
                     .addClass("class-film-review")
                     .html(film.review
-                        // Render the spoiler tags over placeholders, if they exist.
+                        // Render the spoiler tags over markup, if they exist.
                         .replace("#s", `<details><summary>${strings.spoilers}</summary>`)
                         .replace("#d", "</details>")
                     ),
