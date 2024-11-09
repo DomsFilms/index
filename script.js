@@ -255,27 +255,37 @@ $(document).ready(() => {
             // Don't render films that haven't been loaded (yet).
             films = films.filter(film => !!film.review);
 
-            // Grid container.
-            $("body").append(
-                $("<div>")
-                    .attr("id", "id-grid")
-                    .addClass("class-removable")
-            );
-
-            films.forEach((film, index) => {
-                $("#id-grid")
-                    .append(displayFilm(film));
-            });
-
-            // Apply masonry.
             if (window.innerWidth > 1000) {
-                $("#id-grid").masonry({
-                    itemSelector: '.class-film-card',
-                    gutter: 12,
-                    horizontalOrder: true,
-                    fitWidth: true
+                // Masonry container.
+                $("body").append(
+                    $("<div>")
+                        .attr("id", "id-grid")
+                        .addClass("class-removable")
+                );
+
+                films.forEach((film, index) => {
+                    $("#id-grid")
+                        .append(displayFilm(film));
+                });
+
+                // Apply masonry.
+                if (window.innerWidth > 1000) {
+                    $("#id-grid").masonry({
+                        itemSelector: '.class-film-card',
+                        gutter: 12,
+                        horizontalOrder: true,
+                        fitWidth: true
+                    });
+                }
+            } else {
+                films.forEach((film, index) => {
+                    // Just stick them in the flex body.
+                    $("body")
+                        .append(displayFilm(film));
                 });
             }
+
+
 
             // Add the average rating for whatever is displayed, at the bottom of the page.
             const ratings = films.map(film => film.rating).filter(rating => rating != undefined);
