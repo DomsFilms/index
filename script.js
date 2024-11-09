@@ -268,7 +268,7 @@ $(document).ready(() => {
             });
 
             // Apply masonry.
-            if (window.innerWidth <= 1000) {
+            if (window.innerWidth > 1000) {
                 $("#id-grid").masonry({
                     itemSelector: '.class-film-card',
                     gutter: 12,
