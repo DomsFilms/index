@@ -407,21 +407,13 @@ $(document).ready(() => {
             return;
         }
 
-        /* To add film of the week:
-                       Calculate start of the week, by taking the day-of-week number away from the date in days.
-                       Calculate a unique number based on this, by adding the year, month, and week start day as a string and parsing as int.
-                       Calculate the remainder of this number divided by the total films with 7 or more. (This requires loading all films initially, alternative is recommending totally randomly)
-                       Load the fiom if it's not already loaded.
-                       Render the film.
-                       So, do we load all films? It makes the site load a bit slower, but makes the first impression be of a nice film that's worth seeing.
-               */
         // Get the time of the start of the week, Monday.
         const date = new Date();
         date.setDate(date.getDate() - (date.getDay() === 0 ? 6 : date.getDay() - 1));
         date.setHours(0, 0, 0, 0);
 
         // Only consider films rated 7 and up.
-        // Because this is sorted by date ascending, adding new films won't change the weekly recommendation.
+        // Don't include films added this week, or they will change the recommendation.
         const films = sortDate(catalogueFilms
             .filter(film => film.rating >= 7 && parseDate(film.date) < date));
 
