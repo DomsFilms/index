@@ -160,7 +160,7 @@ $(document).ready(() => {
     };
 
     const parseDate = (dateString) => {
-        if (dateString > 10) {
+        if (dateString.length > 10) {
             return 0;
         }
         const parts = dateString.split("/");
