@@ -159,6 +159,16 @@ $(document).ready(() => {
         });
     };
 
+    const parseDate = (dateString) => {
+        if (dateString > 10) {
+            return 0;
+        }
+        const parts = dateString.split("/");
+        return new Date(parseInt(parts[2], 10),
+            parseInt(parts[1], 10) - 1,
+            parseInt(parts[0], 10));
+    };
+
     const sortRating = (films) => {
         return structuredClone(films)
             .sort((a, b) =>
@@ -170,22 +180,13 @@ $(document).ready(() => {
     };
 
     const sortDate = (films) => {
-        const parseDate = (dateString) => {
-            if (date.length > 10) {
-                return 0;
-            }
-            const parts = dateString.split("/");
-            return new Date(parseInt(parts[2], 10),
-                parseInt(parts[1], 10) - 1,
-                parseInt(parts[0], 10));
-        };
-        return structuredClone(films)
+        structuredClone(films)
             .sort((a, b) =>
                 a.date != b.date
                     ? parseDate(a.date) - parseDate(b.date)
                     : a.sortTitle < b.sortTitle
                         ? -1
-                        : 1);
+                        : 1)
     };
 
     // Display a page.
@@ -396,45 +397,48 @@ $(document).ready(() => {
     };
 
     const displayRecommendedFilm = () => {
-        if ($("#id-recommendation").length == 0
-            && $(".class-index").length > 0
-            && catalogueLoaded) {
-            /* To add film of the week:
-                           Calculate start of the week, by taking the day-of-week number away from the date in days.
-                           Calculate a unique number based on this, by adding the year, month, and week start day as a string and parsing as int.
-                           Calculate the remainder of this number divided by the total films with 7 or more. (This requires loading all films initially, alternative is recommending totally randomly)
-                           Load the fiom if it's not already loaded.
-                           Render the film.
-                           So, do we load all films? It makes the site load a bit slower, but makes the first impression be of a nice film that's worth seeing.
-                   */
-            // Get the time of the start of the week, Monday.
-            const date = new Date();
-            date.setDate(date.getDate() - (date.getDay() === 0 ? 6 : date.getDay() - 1));
-            date.setHours(0, 0, 0, 0);
-
-            // Only consider films rated 7 and up.
-            // Because this is sorted by date ascending, adding new films won't change the weekly recommendation.
-            const films = sortDate(catalogueFilms.filter(film => film.rating >= 7));
-
-            // The date has the ms value set to 0, to be consistent, but this makes the total time in ms end in loads of 0s.
-            // So divide by 1000, then do % 7919, the 1000th prime, to get number that won't end in 0s.
-            // If all weeks resulted in a number with similar digits, it could maybe cause repetition?
-            // Now we can % by the total number of films that we want to select from.
-            const weekNumber = (date.getTime() / 1000) % 7919 % films.length;
-
-            // These don't have the index class because I don't want them to be shrunk into small widths.
-            $(".class-break")
-                .last()
-                .after([
-                    $("<div>")
-                        .attr("id", "id-recommendation")
-                        .addClass("class-body-text")
-                        .addClass("class-removable")
-                        .html(strings.recommendation),
-                    displayFilm(films[weekNumber])
-                        .addClass("class-recommendation")
-                ]);
+        if ($("#id-recommendation").length > 0
+            || $(".class-index").length == 0
+            || !catalogueLoaded) {
+            return;
         }
+
+        /* To add film of the week:
+                       Calculate start of the week, by taking the day-of-week number away from the date in days.
+                       Calculate a unique number based on this, by adding the year, month, and week start day as a string and parsing as int.
+                       Calculate the remainder of this number divided by the total films with 7 or more. (This requires loading all films initially, alternative is recommending totally randomly)
+                       Load the fiom if it's not already loaded.
+                       Render the film.
+                       So, do we load all films? It makes the site load a bit slower, but makes the first impression be of a nice film that's worth seeing.
+               */
+        // Get the time of the start of the week, Monday.
+        const date = new Date();
+        date.setDate(date.getDate() - (date.getDay() === 0 ? 6 : date.getDay() - 1));
+        date.setHours(0, 0, 0, 0);
+
+        // Only consider films rated 7 and up.
+        // Because this is sorted by date ascending, adding new films won't change the weekly recommendation.
+        const films = sortDate(catalogueFilms
+            .filter(film => film.rating >= 7 && parseDate(film.date) < date));
+
+        // The date has the ms value set to 0, to be consistent, but this makes the total time in ms end in loads of 0s.
+        // So divide by 1000, then do % 7919, the 1000th prime, to get number that won't end in 0s.
+        // If all weeks resulted in a number with similar digits, it could maybe cause repetition?
+        // Now we can % by the total number of films that we want to select from.
+        const weekNumber = (date.getTime() / 1000) % 7919 % films.length;
+
+        // These don't have the index class because I don't want them to be shrunk into small widths.
+        $(".class-break")
+            .last()
+            .after([
+                $("<div>")
+                    .attr("id", "id-recommendation")
+                    .addClass("class-body-text")
+                    .addClass("class-removable")
+                    .html(strings.recommendation),
+                displayFilm(films[weekNumber])
+                    .addClass("class-recommendation")
+            ]);
     };
 
     // This helps the back and forwards buttons work.
