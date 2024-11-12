@@ -115,19 +115,23 @@ $(document).ready(() => {
                 .map(list => list.films
                     .map(film => {
                         return {
-                            "id": film.id,
-                            "title": film.title,
+                            "id": film,
                             "properties": list.properties,
                             "list": list.id,
-                            "sortTitle": titleSortRegex.test(film.title)
-                                ? film.id.replace(idSortRegex, "")
-                                : film.id
                         };
                     }))
                 .flat();
 
             // Load all films in the background.
             await Promise.all(catalogueFilms.map(film => loadFilm(film)));
+
+            // Calculate the titles for sorting.
+            catalogueFilms.forEach((film, index) => {
+                film.sortTitle = titleSortRegex.test(film.title)
+                    ? film.id.replace(idSortRegex, "")
+                    : film.id
+            });
+
             catalogueLoaded = true;
 
             // The index page is probably displayed without this right now, so add it.
