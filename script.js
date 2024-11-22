@@ -413,9 +413,9 @@ $(document).ready(() => {
         date.setHours(0, 0, 0, 0);
 
         // Only consider films rated 7 and up.
-        // Don't include films added this week, or they will change the recommendation.
+        // Don't include films watched after a cut-off point, or the recommendation will change mid-week when new reviews are added.
         const films = sortDate(catalogueFilms
-            .filter(film => film.rating >= 7 && parseDate(film.date) < date));
+            .filter(film => film.rating >= 7 && parseDate(film.date) < date - 604800000));
 
         // The date has the ms value set to 0, to be consistent, but this makes the total time in ms end in loads of 0s.
         // So divide by 1000, then do % 7919, the 1000th prime, to get number that won't end in 0s.
