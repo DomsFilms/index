@@ -413,7 +413,8 @@ $(document).ready(() => {
         date.setHours(0, 0, 0, 0);
 
         // Only consider films rated 7 and up.
-        // Don't include films watched after a cut-off point, or the recommendation will change mid-week when new reviews are added.
+        // Only consider films watched before the start of the previous week, or the recommendation will change mid-week when new reviews are added.
+        // 604800000 is one week in milliseconds. This gives me a window to review recently watched films, but not too long to prevent laziness.
         const films = sortDate(catalogueFilms
             .filter(film => film.rating >= 7 && parseDate(film.date) < date - 604800000));
 
