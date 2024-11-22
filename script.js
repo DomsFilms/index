@@ -173,6 +173,14 @@ $(document).ready(() => {
             parseInt(parts[0], 10));
     };
 
+    const sortTitle = (films) => {
+        return structuredClone(films)
+            .sort((a, b) =>
+                a.sortTitle < b.sortTitle
+                    ? -1
+                    : 1);
+    };
+
     const sortRating = (films) => {
         return structuredClone(films)
             .sort((a, b) =>
@@ -199,6 +207,7 @@ $(document).ready(() => {
     // Special searches are: rating, horror, or a specific list ID.
     const display = async (hash, keepHash) => {
         $(".class-removable").remove();
+        hash = hash.toLowerCase();
 
         if (!keepHash) {
             window.location.hash = hash;
@@ -215,6 +224,8 @@ $(document).ready(() => {
             // Search for movies and display them.
             let films = [];
             let description = null;
+            const catalogueList = catalogue
+                .find(list => list.id == hash);
 
             if (hash == "all") {
                 // Show all movies ordered by rating.
@@ -225,22 +236,18 @@ $(document).ready(() => {
                 films = sortRating(catalogueFilms
                     .filter(film => film.list.includes("horror") || !!film.horror));
                 description = strings.horrorDescription;
+            } else if (!!catalogueList) {
+                // Show all films from one list, ordered as per the list.
+                films = catalogueFilms
+                    .filter(film => film.list == catalogueList.id);
+                description = catalogueList.description;
             } else {
-                const catalogueList = catalogue
-                    .find(list => list.id == hash);
-                if (!!catalogueList) {
-                    // Show all films from one list, ordered as per the list.
-                    films = catalogueFilms
-                        .filter(film => film.list == catalogueList.id);
-                    description = catalogueList.description;
-                } else {
-                    // Search on film title, ordered A-Z.
-                    films = sortRating(catalogueFilms
-                        .filter(film => film.id.includes(hash) || film.title.includes(hash)));
-                    description = films.length == 0
-                        ? strings.noResults
-                        : ""
-                }
+                // Search on film title, ordered A-Z.
+                films = sortTitle(catalogueFilms
+                    .filter(film => film.id.includes(hash) || film.title.includes(hash)));
+                description = films.length == 0
+                    ? strings.noResults
+                    : ""
             }
 
             // Render the description at the top of the page.
