@@ -244,7 +244,7 @@ $(document).ready(() => {
             } else {
                 // Search on film title, ordered A-Z.
                 films = sortTitle(catalogueFilms
-                    .filter(film => film.id.includes(hash) || film.title.includes(hash)));
+                    .filter(film => film.id.toLowerCase().includes(hash) || film.title.toLowerCase().includes(hash)));
                 description = films.length == 0
                     ? strings.noResults
                     : ""
