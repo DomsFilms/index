@@ -140,6 +140,7 @@ $(document).ready(() => {
             // Load a specific list, or search result if it was supplied.
             const hash = window.location.hash.replace("#", "");
             if (!!hash) {
+								$("#id-search").val(hash);
                 display(hash);
             }
         }
