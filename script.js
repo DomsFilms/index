@@ -17,10 +17,10 @@ $(document).ready(() => {
         "lightButton": "🌔 theme",
         "search": "search...",
         "noResults": "no search results 👻",
-        "horror": "💀 all horror",
-        "horrorDescription": "All horror film reviews on this site in order of my personal rating, from best to worst. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
-        "all": "🎬 all films",
-        "allDescription": "All film reviews on this site in order of my personal rating, from best to worst.",
+        "latest": "📆 all films (latest)",
+        "latestDescription": "All film reviews on this site in order of recency.",
+        "ranked": "👍 all films (ranked)",
+        "rankedDescription": "All film reviews on this site in order of my personal rating, from best to worst.",
         "recommendation": "recommendation of the week",
         "spoilers": "spoilers...",
         "average": "average"
@@ -140,7 +140,7 @@ $(document).ready(() => {
             // Load a specific list, or search result if it was supplied.
             const hash = window.location.hash.replace("#", "");
             if (!!hash) {
-								$("#id-search").val(hash);
+                $("#id-search").val(hash);
                 display(hash);
             }
         }
@@ -192,20 +192,24 @@ $(document).ready(() => {
                         : 1);
     };
 
-    const sortDate = (films) => {
+    const sortDate = (films, latest) => {
+        const modifier = latest
+            ? -1
+            : 1;
         return structuredClone(films)
             .sort((a, b) =>
-                a.date != b.date
+                modifier *
+                (a.date != b.date
                     ? parseDate(a.date) - parseDate(b.date)
                     : a.sortTitle < b.sortTitle
                         ? -1
-                        : 1);
+                        : 1));
     };
 
     // Display a page.
     // If the hash is empty, display the index page.
     // If the hash is populated, display films as search results.
-    // Special searches are: rating, horror, or a specific list ID.
+    // Special searches are: ranked, latest, or a specific list ID.
     const display = async (hash, keepHash) => {
         $(".class-removable").remove();
         hash = hash.toLowerCase();
@@ -222,21 +226,20 @@ $(document).ready(() => {
             displayRecommendedFilm();
 
         } else {
-            // Search for movies and display them.
+            // Search for films and display them.
             let films = [];
             let description = null;
             const catalogueList = catalogue
                 .find(list => list.id == hash);
 
-            if (hash == "all") {
-                // Show all movies ordered by rating.
+            if (hash == "ranked") {
+                // Show all films ordered by rating.
                 films = sortRating(catalogueFilms);
-                description = strings.allDescription;
-            } else if (hash == "horror") {
-                // Show horror films ordered by rating.
-                films = sortRating(catalogueFilms
-                    .filter(film => film.list.includes("horror") || !!film.horror));
-                description = strings.horrorDescription;
+                description = strings.rankedDescription;
+            } else if (hash == "latest") {
+                // Show all films ordered by recency.
+                films = sortDate(catalogueFilms, true);
+                description = strings.latestDescription;
             } else if (!!catalogueList) {
                 // Show all films from one list, ordered as per the list.
                 films = catalogueFilms
@@ -331,19 +334,19 @@ $(document).ready(() => {
             .addClass("class-removable")
             .addClass("class-break"),
         $("<button>")
-            .attr("id", "id-all")
+            .attr("id", "id-latest")
             .addClass("class-removable")
             .addClass("class-index")
             .addClass("class-shadow")
-            .html(strings.all)
-            .on("click", () => display("all")),
+            .html(strings.latest)
+            .on("click", () => display("latest")),
         $("<button>")
-            .attr("id", "id-horror")
+            .attr("id", "id-ranked")
             .addClass("class-removable")
             .addClass("class-index")
             .addClass("class-shadow")
-            .html(strings.horror)
-            .on("click", () => display("horror")),
+            .html(strings.ranked)
+            .on("click", () => display("ranked")),
         $("<div>")
             .addClass("class-removable")
             .addClass("class-break")
@@ -424,7 +427,8 @@ $(document).ready(() => {
         // Only consider films watched before the start of the previous week, or the recommendation will change mid-week when new reviews are added.
         // 604800000 is one week in milliseconds. This gives me a window to review recently watched films, but not too long to prevent laziness.
         const films = sortDate(catalogueFilms
-            .filter(film => film.rating >= 7 && parseDate(film.date) < date - 604800000));
+            .filter(film => film.rating >= 7 && parseDate(film.date) < date - 604800000),
+            false);
 
         // The date has the ms value set to 0, to be consistent, but this makes the total time in ms end in loads of 0s.
         // So divide by 1000, then do % 7919, the 1000th prime, to get number that won't end in 0s.
