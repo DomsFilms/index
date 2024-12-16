@@ -322,7 +322,7 @@ $(document).ready(() => {
 
     const displayIndex = () => [
         $("<button>")
-            .attr("id", "id-latest")
+            .attr("id", "id-current")
             .addClass("class-removable")
             .addClass("class-index")
             .addClass("class-index-wide")

@@ -63,7 +63,7 @@ input {
     width: 30rem;
 }
 
-#id-latest {
+#id-current {
     height: 10rem;
     display: flex;
     flex-direction: column;
