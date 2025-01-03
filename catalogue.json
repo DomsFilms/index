@@ -1,5 +1,18 @@
 [
     {
+        "id": "allhorror2025",
+        "title": "2025 horror reviews",
+        "description": "I'm reviewing all the horror films I see throughout the year, to slowly build this list. There will probably be a separate list for the 5th traditional October marathon, when the time comes.",
+        "properties": [
+            "grotesque",
+            "shock",
+            "suspense"
+        ],
+        "films": [
+            "thegreasystrangler2016"
+        ]
+    },
+    {
         "id": "horror2024",
         "title": "2024 horror marathon",
         "description": "For the fourth year running I'm watching at least one horror movie each day of October and rating them from 0 to 10. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
