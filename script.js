@@ -399,14 +399,14 @@ $(document).ready(() => {
                         )
                         .addClass("class-film-tags")
                 );
-            (film.tags || []).forEach((tag, index) => {
-
+            (film.tags).forEach((tag, index) => {
                 card.find(".class-film-tags")
                     .append(
                         $("<div>")
+                            .addClass("class-film-tag")
+                            .html(tag)
                     );
-            }
-            );
+            });
         }
 
         // Render the spoilers for this film.

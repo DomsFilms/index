@@ -8,5 +8,9 @@
     "word": "Greasy",
     "suspense": 6,
     "shock": 2,
-    "grotesque": 7
+    "grotesque": 7,
+    "tags": [
+        "test",
+        "test2"
+    ]
 }
