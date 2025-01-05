@@ -1,5 +1,20 @@
 [
     {
+        "id": "vampires2025",
+        "title": "2025 vampire marathon",
+        "description": "I'm playing a vampire video game and just saw <i>Nosferatu</i>, and am so excited about vampires right now, that I want to review as many vampire movies as I can. 🦇🦇🦇",
+        "properties": [
+            "flamboyant",
+            "pious",
+            "seedy"
+        ],
+        "tagsIcon": "🧛 ",
+        "tagsSummary": "mythos...",
+        "films": [
+            "nosferatu2024"
+        ]
+    },
+    {
         "id": "allhorror2025",
         "title": "2025 horror reviews",
         "description": "I'm reviewing all the horror films I see throughout the year, to slowly build this list. There will probably be a separate list for the 5th traditional October marathon, when the time comes.",

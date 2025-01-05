@@ -22,8 +22,10 @@ $(document).ready(() => {
         "ranked": "👍 all films (ranked)",
         "rankedDescription": "All film reviews on this site in order of my personal rating, from best to worst.",
         "recommendation": "recommendation of the week",
-        "spoilers": "spoilers...",
-        "tags": "tags...",
+        "spoilersIcon": "❓ ",
+        "spoilersSummary": "spoilers...",
+        "tagsIcon": "🏷️ ",
+        "tagsSummary": "tags...",
         "average": "average"
     };
 
@@ -119,8 +121,10 @@ $(document).ready(() => {
                             "id": film,
                             "properties": list.properties,
                             "list": list.id,
-                            "tagsSummary": list.tagsSummary || strings.tags,
-                            "spoilersSummary": list.spoilersSummary || strings.spoilers,
+                            "spoilersIcon": list.spoilersIcon || strings.spoilersIcon,
+                            "spoilersSummary": list.spoilersSummary || strings.spoilersSummary,
+                            "tagsIcon": list.tagsIcon || strings.tagsIcon,
+                            "tagsSummary": list.tagsSummary || strings.tagsSummary,
                         };
                     }))
                 .flat();
@@ -396,6 +400,7 @@ $(document).ready(() => {
                         .append(
                             $("<summary>")
                                 .html(film.tagsSummary)
+                                .css({"list-style-type": film.tagsIcon})
                         )
                         .addClass("class-film-tags")
                 );
@@ -419,6 +424,7 @@ $(document).ready(() => {
                         .prepend(
                             $("<summary>")
                                 .html(film.spoilersSummary)
+                                .css({"list-style-type": film.spoilersIcon})
                         )
                 );
         }

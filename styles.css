@@ -182,15 +182,8 @@ input {
     font-style: italic;
 }
 
-.class-film-summary {
+.class-film-summary, summary {
     margin-bottom: 0.5rem;
-}
-
-/* Spoilers. */
-
-summary {
-    margin-bottom: 0.5rem;
-    list-style-type: "❓ ";
 }
 
 /* Ratings colour grade. */
