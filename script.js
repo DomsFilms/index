@@ -119,8 +119,8 @@ $(document).ready(() => {
                             "id": film,
                             "properties": list.properties,
                             "list": list.id,
-                            "tagsSummary": list.tagsSummary || strings.spoilers,
-                            "spoilersSummary": list.spoilersSummary || strings.tags,
+                            "tagsSummary": list.tagsSummary || strings.tags,
+                            "spoilersSummary": list.spoilersSummary || strings.spoilers,
                         };
                     }))
                 .flat();
