@@ -376,13 +376,6 @@ $(document).ready(() => {
                 $("<div>")
                     .addClass("class-film-review")
                     .html(film.review),
-                $("<details>")
-                    .append(
-                        $("<summary>")
-                        .html(film.spoilersSummary)
-                    )
-                    .addClass("class-film-spoilers")
-                    .html(film.spoilers),
                 $("<div>")
                     .addClass("class-film-summary class-font-small")
                     .html(`released: ${film.year}, watched: ${film.date} ${film.seen ? "(seen before)" : "(first time)"}`),
@@ -395,6 +388,41 @@ $(document).ready(() => {
                     )
             ]);
 
+        // Render the tags for this film.
+        if (!!film.tags) {
+            card.find(".class-film-review")
+                .after(
+                    $("<details>")
+                        .append(
+                            $("<summary>")
+                                .html(film.tagsSummary)
+                        )
+                        .addClass("class-film-tags")
+                );
+            (film.tags || []).forEach((tag, index) => {
+
+                card.find(".class-film-tags")
+                    .append(
+                        $("<div>")
+                    );
+            }
+            );
+        }
+
+        // Render the spoilers for this film.
+        if (!!film.spoilers) {
+            card.find(".class-film-review")
+                .after(
+                    $("<details>")
+                        .addClass("class-film-spoilers")
+                        .html(film.spoilers)
+                        .prepend(
+                            $("<summary>")
+                                .html(film.spoilersSummary)
+                        )
+                );
+        }
+
         // Render the properties for this film.
         film.properties.forEach((property, index) => {
             if (film[property] !== undefined) {
@@ -403,7 +431,7 @@ $(document).ready(() => {
                         $("<div>")
                             .addClass(`class-rating-small class-rating-${film[property]} class-font-small`)
                             .html(`${property}: ${film[property]}`)
-                    )
+                    );
             }
         });
 

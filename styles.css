@@ -156,7 +156,7 @@ input {
     text-align: center;
 }
 
-.class-rating-small {
+.class-rating-small, .class-tags-small {
     border-radius: 0.2rem;
     width: auto;
     height: 1.2em;
@@ -182,7 +182,7 @@ input {
     margin-bottom: 0.5rem;
 }
 
-/* Spoilers tags. */
+/* Spoilers. */
 
 summary {
     margin-bottom: 0.5rem;
@@ -250,7 +250,8 @@ summary {
 .class-theme-dark .class-film-unwatched .class-film-title,
 .class-theme-dark .class-film-unwatched .class-rating-large,
 .class-theme-dark .class-film-unwatched .class-rating-small,
-.class-theme-dark .class-film-unwatched .class-film-review {
+.class-theme-dark .class-film-unwatched .class-film-review,
+.class-theme-dark .class-tags-small {
     background-color: #202020;
     color: #ffffffB0;
     transition: background-color 0.5s, color 0.5s;
@@ -286,7 +287,8 @@ summary {
 .class-theme-light .class-film-unwatched .class-film-title,
 .class-theme-light .class-film-unwatched .class-rating-large,
 .class-theme-light .class-film-unwatched .class-rating-small,
-.class-theme-light .class-film-unwatched .class-film-review {
+.class-theme-light .class-film-unwatched .class-film-review,
+.class-theme-light .class-tags-small {
     background-color: #d0d0d0;
     color: #000000f7;
     transition: background-color 0.5s, color 0.5s;
