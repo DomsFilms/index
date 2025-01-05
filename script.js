@@ -1,9 +1,9 @@
 $(document).ready(() => {
 
     const defaultList = {
-        "image": "url(\"films/allhorror2025/image.jpg\")",
-        "title": "2025 horror reviews",
-        "id": "allhorror2025"
+        "image": "url(\"films/vampires2025/image.jpg\")",
+        "title": "2025 vampire marathon",
+        "id": "vampires2025"
     };
 
     // Change the cache parameter every day, so data is cached but automatically downloaded the next day.
