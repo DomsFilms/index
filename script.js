@@ -400,7 +400,7 @@ $(document).ready(() => {
                         .append(
                             $("<summary>")
                                 .html(film.tagsSummary)
-                                .css({"list-style-type": film.tagsIcon})
+                                .css({"list-style-type": `\"${film.tagsIcon}\"`})
                         )
                         .addClass("class-film-tags")
                 );
@@ -424,7 +424,7 @@ $(document).ready(() => {
                         .prepend(
                             $("<summary>")
                                 .html(film.spoilersSummary)
-                                .css({"list-style-type": film.spoilersIcon})
+                                .css({"list-style-type": `\"${film.spoilersIcon}\"`})
                         )
                 );
         }
