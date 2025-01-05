@@ -23,6 +23,7 @@ $(document).ready(() => {
         "rankedDescription": "All film reviews on this site in order of my personal rating, from best to worst.",
         "recommendation": "recommendation of the week",
         "spoilers": "spoilers...",
+        "tags": "tags...",
         "average": "average"
     };
 
@@ -118,6 +119,8 @@ $(document).ready(() => {
                             "id": film,
                             "properties": list.properties,
                             "list": list.id,
+                            "tagsSummary": list.tagsSummary || strings.spoilers,
+                            "spoilersSummary": list.spoilersSummary || strings.tags,
                         };
                     }))
                 .flat();
@@ -372,11 +375,14 @@ $(document).ready(() => {
                     ),
                 $("<div>")
                     .addClass("class-film-review")
-                    .html(film.review
-                        // Render the spoiler tags over markup, if they exist.
-                        .replace("#s", `<details><summary>${strings.spoilers}</summary>`)
-                        .replace("#d", "</details>")
-                    ),
+                    .html(film.review),
+                $("<details>")
+                    .append(
+                        $("<summary>")
+                        .html(film.spoilersSummary)
+                    )
+                    .addClass("class-film-spoilers")
+                    .html(film.spoilers),
                 $("<div>")
                     .addClass("class-film-summary class-font-small")
                     .html(`released: ${film.year}, watched: ${film.date} ${film.seen ? "(seen before)" : "(first time)"}`),

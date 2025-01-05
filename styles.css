@@ -164,7 +164,7 @@ input {
     text-align: center;
 }
 
-.class-film-review {
+.class-film-review, details {
     margin: 0.5rem 0 0.5rem 0;
 }
 
@@ -183,10 +183,6 @@ input {
 }
 
 /* Spoilers tags. */
-
-details {
-    margin-top: 0.5rem;
-}
 
 summary {
     margin-bottom: 0.5rem;
