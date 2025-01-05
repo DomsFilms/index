@@ -402,8 +402,8 @@ $(document).ready(() => {
             (film.tags).forEach((tag, index) => {
                 card.find(".class-film-tags")
                     .append(
-                        $("<div>")
-                            .addClass("class-film-tag")
+                        $("<span>")
+                            .addClass("class-tag class-font-small")
                             .html(tag)
                     );
             });
