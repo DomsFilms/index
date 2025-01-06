@@ -145,7 +145,7 @@ $(document).ready(() => {
             displayRecommendedFilm();
 
             // Load a specific list, or search result if it was supplied.
-            const hash = window.location.hash.replace("#", "");
+            const hash = decodeURIComponent(window.location.hash).replace("#", "");
             if (!!hash) {
                 $("#id-search").val(hash);
                 display(hash);
@@ -496,7 +496,7 @@ $(document).ready(() => {
 
     // This helps the back and forwards buttons work.
     // I don't think this works, but it would be nice if it did.
-    $("body").onhashchange = () => display(window.location.hash.replace("#", ""));
+    $("body").onhashchange = () => display(decodeURIComponent(window.location.hash).replace("#", ""));
 
     // If no films have been loaded yet (they are on the way), start by displaying the index page.
     if (!catalogueLoaded) {
