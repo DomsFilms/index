@@ -409,7 +409,7 @@ $(document).ready(() => {
                         .addClass("class-film-tags")
                 );
             (film.tags).forEach((tag, index) => {
-                card.find(".class-film-tags")
+                card.find(".class-tag-container")
                     .append(
                         $("<div>")
                             .addClass("class-tag")
