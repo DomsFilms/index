@@ -28,6 +28,11 @@ body {
     height: 0;
 }
 
+.class-tag-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 /* Control buttons. */
 
 #id-controls {
@@ -112,10 +117,6 @@ input {
 
     .class-film-title {
         font-weight: bold !important;
-    }
-
-    .class-font-small {
-        font-size: 2vw !important;
     }
 
     .class-film-card {

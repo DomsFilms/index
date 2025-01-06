@@ -402,13 +402,17 @@ $(document).ready(() => {
                                 .html(film.tagsSummary)
                                 .css({"list-style-type": `\"${film.tagsIcon}\"`})
                         )
+                        .append(
+                            $("<div>")
+                            .addClass("class-tag-container class-font-small")
+                        )
                         .addClass("class-film-tags")
                 );
             (film.tags).forEach((tag, index) => {
                 card.find(".class-film-tags")
                     .append(
-                        $("<span>")
-                            .addClass("class-tag class-font-small")
+                        $("<div>")
+                            .addClass("class-tag")
                             .html(tag)
                     );
             });
