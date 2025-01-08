@@ -258,7 +258,8 @@ $(document).ready(() => {
                     .filter(film => film.id.toLowerCase().includes(hash) || film.title.toLowerCase().includes(hash)));
                 description = films.length == 0
                     ? strings.noResults
-                    : ""
+                    : "";
+                $("#id-search").val(hash);
             }
 
             // Render the description at the top of the page.
