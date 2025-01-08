@@ -365,13 +365,23 @@ $(document).ready(() => {
 
         // Replace movie titles with links if there exists reviews for them.
         let review = film.review;
-        const regex = /{([^}]+)}/g;
+        let regex = /{([^}]+)}/g;
         let match;
         while ((match = regex.exec(film.review)) !== null) {
             if (catalogueFilms.some(result => result.title == match[1])) {
                 review = review.replace(match[0], `<i><u onclick="display('${match[1]}')">${match[1]}</u></i>`);
             } else {
                 review = review.replace(match[0], `<i>${match[1]}</i>`);
+            }
+        }
+
+        let spoilers = film.spoilers;
+        regex = /{([^}]+)}/g; // This is done to reset the regex object, which is stateful.
+        while ((match = regex.exec(film.spoilers)) !== null) {
+            if (catalogueFilms.some(result => result.title == match[1])) {
+                spoilers = spoilers.replace(match[0], `<i><u onclick="display('${match[1]}')">${match[1]}</u></i>`);
+            } else {
+                spoilers = spoilers.replace(match[0], `<i>${match[1]}</i>`);
             }
         }
 
@@ -439,7 +449,7 @@ $(document).ready(() => {
                 .after(
                     $("<details>")
                         .addClass("class-film-spoilers")
-                        .html(film.spoilers)
+                        .html(spoilers)
                         .prepend(
                             $("<summary>")
                                 .html(film.spoilersSummary)
