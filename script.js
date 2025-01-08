@@ -367,7 +367,7 @@ $(document).ready(() => {
         let match;
         while ((match = regex.exec(film.review)) !== null) {
             if (catalogueFilms.some(result => result.title == match[1])) {
-                review = review.replace(match[0], `<u onclick="display(${match[1]})">${match[1]}</u>`);
+                review = review.replace(match[0], `<u onclick="display('${match[1]}')">${match[1]}</u>`);
             } else {
                 review = review.replace(match[0], match[1]);
             }
