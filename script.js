@@ -363,10 +363,11 @@ $(document).ready(() => {
 
         // Replace movie titles with links if there exists reviews for them.
         let review = film.review;
+        const regex = /{([^}]+)}/g;
         let match;
-        while ((match = /{([^}]+)}/g.exec(film.review)) !== null) {
+        while ((match = regex.exec(film.review)) !== null) {
             if (catalogueFilms.some(result => result.title == match[1])) {
-                review == review.replace(match[0], `<a href="https://domsfilms.github.io/index/#${encodeURIComponent(match[1])}">${match[1]}</a>`);
+                review = review.replace(match[0], `<a href="https://domsfilms.github.io/index/#${encodeURIComponent(match[1])}">${match[1]}</a>`);
             } else {
                 review = review.replace(match[0], match[1]);
             }
