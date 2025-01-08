@@ -217,7 +217,7 @@ $(document).ready(() => {
     // If the hash is empty, display the index page.
     // If the hash is populated, display films as search results.
     // Special searches are: ranked, latest, or a specific list ID.
-    const display = async (hash, keepHash) => {
+    window.display = async (hash, keepHash) => {
         $(".class-removable").remove();
         hash = hash.toLowerCase();
 
@@ -367,7 +367,7 @@ $(document).ready(() => {
         let match;
         while ((match = regex.exec(film.review)) !== null) {
             if (catalogueFilms.some(result => result.title == match[1])) {
-                review = review.replace(match[0], `<a href="https://domsfilms.github.io/index/#${encodeURIComponent(match[1])}">${match[1]}</a>`);
+                review = review.replace(match[0], `<u onclick="display(${match[1]})">${match[1]}</u>`);
             } else {
                 review = review.replace(match[0], match[1]);
             }
