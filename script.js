@@ -231,6 +231,7 @@ $(document).ready(() => {
             $("body")
                 .append(displayIndex());
             displayRecommendedFilm();
+            $("#id-search").val("");
 
         } else {
             // Search for films and display them.
@@ -368,9 +369,9 @@ $(document).ready(() => {
         let match;
         while ((match = regex.exec(film.review)) !== null) {
             if (catalogueFilms.some(result => result.title == match[1])) {
-                review = review.replace(match[0], `<u onclick="display('${match[1]}')">${match[1]}</u>`);
+                review = review.replace(match[0], `<i><u onclick="display('${match[1]}')">${match[1]}</u></i>`);
             } else {
-                review = review.replace(match[0], match[1]);
+                review = review.replace(match[0], `<i>${match[1]}</i>`);
             }
         }
 
