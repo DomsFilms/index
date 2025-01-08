@@ -360,6 +360,18 @@ $(document).ready(() => {
     ];
 
     const displayFilm = (film) => {
+
+        // Replace movie titles with links if there exists reviews for them.
+        let review = film.review;
+        let match;
+        while ((match = /{([^}]+)}/g.exec(film.review)) !== null) {
+            if (catalogueFilms.some(result => result.title == match[1])) {
+                review == review.replace(match[0], `<a href="https://domsfilms.github.io/index/#${encodeURIComponent(match[1])}">${match[1]}</a>`);
+            } else {
+                review = review.replace(match[0], match[1]);
+            }
+        }
+
         const card = $("<div>")
             .attr("id", `id-film-${film.id}`)
             .addClass("class-film-card class-shadow")
@@ -379,7 +391,7 @@ $(document).ready(() => {
                     ),
                 $("<div>")
                     .addClass("class-film-review")
-                    .html(film.review),
+                    .html(review),
                 $("<div>")
                     .addClass("class-film-summary class-font-small")
                     .html(`released: ${film.year}, watched: ${film.date} ${film.seen ? "(seen before)" : "(first time)"}`),
@@ -400,11 +412,11 @@ $(document).ready(() => {
                         .append(
                             $("<summary>")
                                 .html(film.tagsSummary)
-                                .css({"list-style-type": `\"${film.tagsIcon}\"`})
+                                .css({ "list-style-type": `\"${film.tagsIcon}\"` })
                         )
                         .append(
                             $("<div>")
-                            .addClass("class-tag-container class-font-small")
+                                .addClass("class-tag-container class-font-small")
                         )
                         .addClass("class-film-tags")
                 );
@@ -428,7 +440,7 @@ $(document).ready(() => {
                         .prepend(
                             $("<summary>")
                                 .html(film.spoilersSummary)
-                                .css({"list-style-type": `\"${film.spoilersIcon}\"`})
+                                .css({ "list-style-type": `\"${film.spoilersIcon}\"` })
                         )
                 );
         }
