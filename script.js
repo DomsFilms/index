@@ -438,7 +438,7 @@ $(document).ready(() => {
                     .append(
                         $("<div>")
                             .addClass("class-tag")
-                            .html(tag)
+                            .html(tag.toLowerCase())
                     );
             });
         }
