@@ -293,15 +293,13 @@ $(document).ready(() => {
                         .append(displayFilm(film));
                 });
 
-                // Apply masonry.
-                if (window.innerWidth > 1000) {
-                    $("#id-grid").masonry({
-                        itemSelector: '.class-film-card',
-                        gutter: 12,
-                        horizontalOrder: true,
-                        fitWidth: true
+                applyMasonry();
+                $("details")
+                    .on('toggle', () => {
+                        // Re-apply because the height of the film will have changed.
+                        applyMasonry();
                     });
-                }
+
             } else {
                 films.forEach((film, index) => {
                     // Just stick them in the flex body.
@@ -328,6 +326,18 @@ $(document).ready(() => {
             }
         }
     };
+
+    // Apply/re-apply the Masonry layout, so the films look nice on larger screens.
+    const applyMasonry = () => {
+        if (window.innerWidth > 1000) {
+            $("#id-grid").masonry({
+                itemSelector: '.class-film-card',
+                gutter: 12,
+                horizontalOrder: true,
+                fitWidth: true
+            });
+        }
+    }
 
     const displayIndex = () => [
         $("<button>")
