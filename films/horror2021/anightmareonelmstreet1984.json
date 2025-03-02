@@ -1,11 +1,11 @@
 {
-    "date": "21/10/2021",
-    "title": "A Nightmare on Elm Street",
-    "year": 1984,
-    "seen": false,
-    "review": "Johnny Depp is unrecognisably youthful in this, his first film. Unfortunately there is little in the way of plot, some atrocious acting, and a kind of lame soundtrack. It's redeemed by some really fun practical effects and it's kind of scary for a teen's slasher. I'm glad I saw it but I can't imagine watching any of its many sequels.",
-    "rating": 7,
-    "suspense": 5,
-    "shock": 3,
-    "grotesque": 8
+	"date": "21/10/2021",
+	"title": "A Nightmare on Elm Street",
+	"year": 1984,
+	"seen": false,
+	"review": "Johnny Depp is unrecognisably youthful in this, his first film. Unfortunately there is little in the way of plot, some atrocious acting, and a kind of lame soundtrack. It's redeemed by some really fun practical effects and it's kind of scary for a teen's slasher. I'm glad I saw it but I can't imagine watching any of its many sequels.",
+	"rating": 7,
+	"suspense": 5,
+	"shock": 3,
+	"grotesque": 8
 }
