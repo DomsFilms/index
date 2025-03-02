@@ -1,14 +1,14 @@
 {
-    "date": "25/10/2024",
-    "title": "V/H/S/85",
-    "year": 2023,
-    "seen": false,
-    "review": "This one is full of 80s attitude, fashion, and recreational activities. One segment has a particularly psychological aspect to the gore, relating to how it would feel to survive being horribly mutilated after the pain has subsided. I will look forward to each year's new {V/H/S} now. This one doesn't have anything super memorable, but they're all decent enough, and sometimes an anthology without any weak points can seem great.",
-    "spoilers": "I loved having a callback to an earlier segment. I was expecting it because of the cliffhanger it initially ends on, but I was still excited when it happened.",
-    "rating": 7,
-    "word": "Reliable",
-    "suspense": 4,
-    "shock": 3,
-    "grotesque": 7,
-    "style": "@font-face {font-family: \"font-vhs\"; src: url(\"films/horror2024/vhs.woff2\");} #id-film-vhs852023 .class-film-title {font-family: 'font-vhs', 'Roboto', sans-serif; text-transform: uppercase;}"
+	"date": "25/10/2024",
+	"title": "V/H/S/85",
+	"year": 2023,
+	"seen": false,
+	"review": "This one is full of 80s attitude, fashion, and recreational activities. One segment has a particularly psychological aspect to the gore, relating to how it would feel to survive being horribly mutilated after the pain has subsided. I will look forward to each year's new {V/H/S} now. This one doesn't have anything super memorable, but they're all decent enough, and sometimes an anthology without any weak points can seem great.",
+	"spoilers": "I loved having a callback to an earlier segment. I was expecting it because of the cliffhanger it initially ends on, but I was still excited when it happened.",
+	"rating": 7,
+	"word": "Reliable",
+	"suspense": 4,
+	"shock": 3,
+	"grotesque": 7,
+	"style": "@font-face {font-family: \"font-vhs\"; src: url(\"films/horror2024/vhs.woff2\");} #id-film-vhs852023 .class-film-title {font-family: 'font-vhs', 'Roboto', sans-serif; text-transform: uppercase;}"
 }
