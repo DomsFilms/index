@@ -1,12 +1,12 @@
 {
-    "date": "04/10/2023",
-    "title": "The Strangers",
-    "year": 2008,
-    "seen": false,
-    "review": "This is a simple film designed to be creepy and scary without any complexity. It's successful in that regard, but is totally forgettable otherwise. The best part is the serious drama at the start, and the worst part is the completely dull ending. Unfortunately it relies on the same type of jump scare repeatedly, with different loud sounds. It was funny to see Glen in it.",
-    "rating": 6,
-    "word": "Plain",
-    "suspense": 8,
-    "shock": 7,
-    "grotesque": 5
+	"date": "04/10/2023",
+	"title": "The Strangers",
+	"year": 2008,
+	"seen": false,
+	"review": "This is a simple film designed to be creepy and scary without any complexity. It's successful in that regard, but is totally forgettable otherwise. The best part is the serious drama at the start, and the worst part is the completely dull ending. Unfortunately it relies on the same type of jump scare repeatedly, with different loud sounds. It was funny to see Glen in it.",
+	"rating": 6,
+	"word": "Plain",
+	"suspense": 8,
+	"shock": 7,
+	"grotesque": 5
 }
