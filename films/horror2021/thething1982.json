@@ -1,11 +1,11 @@
 {
-    "date": "05/10/2021",
-    "title": "The Thing",
-    "year": 1982,
-    "seen": true,
-    "review": "A fantastic film. I think of this film as being very similar to {Alien}, due to its time of release, it's tone and it's premise of being locked in with the monster. I prefer {Alien} but this isn't far behind. The soundtrack is great. The setting is unique. It's so tense and unpredictable. There is a great episode of {The X-Files} (S01E08) also based on Who Goes There? which is just like this.",
-    "rating": 10,
-    "suspense": 10,
-    "shock": 4,
-    "grotesque": 8
+	"date": "05/10/2021",
+	"title": "The Thing",
+	"year": 1982,
+	"seen": true,
+	"review": "A fantastic film. I think of this film as being very similar to {Alien}, due to its time of release, it's tone and it's premise of being locked in with the monster. I prefer {Alien} but this isn't far behind. The soundtrack is great. The setting is unique. It's so tense and unpredictable. There is a great episode of {The X-Files} (S01E08) also based on Who Goes There? which is just like this.",
+	"rating": 10,
+	"suspense": 10,
+	"shock": 4,
+	"grotesque": 8
 }
