@@ -172,6 +172,10 @@ details {
 	margin: 0.5rem 0 0.5rem 0;
 }
 
+.class-film-review i u {
+	cursor: pointer;
+}
+
 .class-film-unwatched .class-film-review {
 	width: 100%;
 	height: 7rem;
