@@ -1,6 +1,6 @@
 $(document).ready(() => {
 
-	const defaultLists = [
+	const currentLists = [
 		{
 			"image": "url(\"films/vampires2025/image.jpg\")",
 			"title": "2025 vampire marathon",
@@ -12,6 +12,8 @@ $(document).ready(() => {
 			"id": "vampires2025"
 		},
 	];
+	let currentSlide = 0;
+	let autoSlide = true;
 
 	// Change the cache parameter every day, so data is cached but automatically downloaded the next day.
 	// During periods where I'm not editing existing reviews, I should reduce this to be monthly. 
@@ -346,35 +348,6 @@ $(document).ready(() => {
 		}
 	}
 
-	/*
-	$("<button>")
-			.attr("id", "id-current")
-			.addClass("class-removable")
-			.addClass("class-index")
-			.addClass("class-index-wide")
-			.addClass("class-shadow")
-			.html(defaultList.title)
-			.css("background-image", defaultList.image)
-			.on("click", () => display(defaultList.id)),
-	*/
-	/*
-	<div class="slider">
-  
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-
-  <div class="slides">
-	<button id="id-current" class="class-removable class-index class-index-wide class-shadow" style="background-image: url(&quot;films/vampires2025/image.jpg&quot;);">2025 vampire marathon</button>
-	<button id="id-current" class="class-removable class-index class-index-wide class-shadow" style="background-image: url(&quot;films/vampires2025/image.jpg&quot;);">2025 vampire marathon</button>
-    
-    
-    
-  </div>
-</div>
-	*/
 	const displayIndex = () => {
 		let current = $("<div>")
 			.attr("id", "id-current")
@@ -385,15 +358,18 @@ $(document).ready(() => {
 					.attr("id", "id-current-slides")
 			);
 
-		defaultLists.forEach((list, index) => {
+		currentLists.forEach((list, index) => {
 			current
 				.prepend(
 					$("<div>")
+						.attr("id", `id-current-dot-${index}`)
 						.addClass("class-current-dot")
+						.on("click", () => $(`#id-current-slide-${index}`).scrollIntoView(false))
 				)
 				.find("#id-current-slides")
 				.append(
 					$("<button>")
+						.attr("id", `id-current-slide-${index}`)
 						.addClass("class-index")
 						.addClass("class-index-wide")
 						.addClass("class-shadow")
@@ -585,6 +561,17 @@ $(document).ready(() => {
 					.addClass("class-recommendation")
 			]);
 	};
+
+	// Start the interval for auto-scrolling the default lists.
+	setInterval(() => {
+		if (autoSlide) {
+			currentSlide++;
+			if (currentSlide >= currentLists.length) {
+				currentSlide = 0;
+			}
+			$(`#id-current-slide-${currentSlide}`).scrollIntoView(false);
+		}
+	}, 5000);
 
 	// This helps the back and forwards buttons work.
 	// I don't think this works, but it would be nice if it did.
