@@ -364,7 +364,7 @@ $(document).ready(() => {
 					$("<div>")
 						.attr("id", `id-current-dot-${index}`)
 						.addClass("class-current-dot")
-						.on("click", () => $(`#id-current-slide-${index}`).scrollIntoView(false))
+						.on("click", () => $(`#id-current-slide-${index}`)[0].scrollIntoView(false))
 				)
 				.find("#id-current-slides")
 				.append(
@@ -569,7 +569,7 @@ $(document).ready(() => {
 			if (currentSlide >= currentLists.length) {
 				currentSlide = 0;
 			}
-			$(`#id-current-slide-${currentSlide}`).scrollIntoView(false);
+			$(`#id-current-slide-${currentSlide}`)[0].scrollIntoView(false);
 		}
 	}, 5000);
 
