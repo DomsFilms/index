@@ -376,12 +376,12 @@ $(document).ready(() => {
 </div>
 	*/
 	const displayIndex = () => {
-		let current = ("<div>")
+		let current = $("<div>")
 			.attr("id", "id-current")
 			.addClass("class-removable")
 			.addClass("slider")
 			.append(
-				("<div>")
+				$("<div>")
 					.attr("id", "id-current-slides")
 			);
 
