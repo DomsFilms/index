@@ -1,10 +1,17 @@
 $(document).ready(() => {
 
-	const defaultList = {
-		"image": "url(\"films/vampires2025/image.jpg\")",
-		"title": "2025 vampire marathon",
-		"id": "vampires2025"
-	};
+	const defaultLists = [
+		{
+			"image": "url(\"films/vampires2025/image.jpg\")",
+			"title": "2025 vampire marathon",
+			"id": "vampires2025"
+		},
+		{
+			"image": "url(\"films/vampires2025/image.jpg\")",
+			"title": "2025 vampire marathon (test)",
+			"id": "vampires2025"
+		},
+	];
 
 	// Change the cache parameter every day, so data is cached but automatically downloaded the next day.
 	// During periods where I'm not editing existing reviews, I should reduce this to be monthly. 
@@ -339,8 +346,8 @@ $(document).ready(() => {
 		}
 	}
 
-	const displayIndex = () => [
-		$("<button>")
+	/*
+	$("<button>")
 			.attr("id", "id-current")
 			.addClass("class-removable")
 			.addClass("class-index")
@@ -349,27 +356,77 @@ $(document).ready(() => {
 			.html(defaultList.title)
 			.css("background-image", defaultList.image)
 			.on("click", () => display(defaultList.id)),
-		$("<div>")
+	*/
+	/*
+	<div class="slider">
+  
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+
+  <div class="slides">
+	<button id="id-current" class="class-removable class-index class-index-wide class-shadow" style="background-image: url(&quot;films/vampires2025/image.jpg&quot;);">2025 vampire marathon</button>
+	<button id="id-current" class="class-removable class-index class-index-wide class-shadow" style="background-image: url(&quot;films/vampires2025/image.jpg&quot;);">2025 vampire marathon</button>
+    
+    
+    
+  </div>
+</div>
+	*/
+	const displayIndex = () => {
+		let current = ("<div>")
+			.attr("id", "id-current")
 			.addClass("class-removable")
-			.addClass("class-break"),
-		$("<button>")
-			.attr("id", "id-latest")
-			.addClass("class-removable")
-			.addClass("class-index")
-			.addClass("class-shadow")
-			.html(strings.latest)
-			.on("click", () => display("latest")),
-		$("<button>")
-			.attr("id", "id-ranked")
-			.addClass("class-removable")
-			.addClass("class-index")
-			.addClass("class-shadow")
-			.html(strings.ranked)
-			.on("click", () => display("ranked")),
-		$("<div>")
-			.addClass("class-removable")
-			.addClass("class-break")
-	];
+			.addClass("slider")
+			.append(
+				("<div>")
+					.attr("id", "id-current-slides")
+			);
+
+		defaultLists.forEach((list, index) => {
+			current
+				.prepend(
+					$("<div>")
+						.addClass("class-current-dot")
+				)
+				.find("#id-current-slides")
+				.append(
+					$("<button>")
+						.addClass("class-index")
+						.addClass("class-index-wide")
+						.addClass("class-shadow")
+						.html(list.title)
+						.css("background-image", list.image)
+						.on("click", () => display(list.id))
+				);
+		});
+
+		return [
+			current,
+			$("<div>")
+				.addClass("class-removable")
+				.addClass("class-break"),
+			$("<button>")
+				.attr("id", "id-latest")
+				.addClass("class-removable")
+				.addClass("class-index")
+				.addClass("class-shadow")
+				.html(strings.latest)
+				.on("click", () => display("latest")),
+			$("<button>")
+				.attr("id", "id-ranked")
+				.addClass("class-removable")
+				.addClass("class-index")
+				.addClass("class-shadow")
+				.html(strings.ranked)
+				.on("click", () => display("ranked")),
+			$("<div>")
+				.addClass("class-removable")
+				.addClass("class-break")
+		];
+	};
 
 	const displayFilm = (film) => {
 
