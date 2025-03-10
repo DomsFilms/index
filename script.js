@@ -2,15 +2,15 @@ $(document).ready(() => {
 
 	const currentLists = [
 		{
-			"image": "url(\"films/vampires2025/image.jpg\")",
-			"title": "2025 vampire marathon",
-			"id": "vampires2025"
+			"image": "url(\"films/friday2025/image.jpg\")",
+			"title": "2025 Friday the 13th marathon",
+			"id": "friday2025"
 		},
 		{
 			"image": "url(\"films/vampires2025/image.jpg\")",
-			"title": "2025 vampire marathon (test)",
+			"title": "2025 vampire marathon",
 			"id": "vampires2025"
-		},
+		}
 	];
 	let currentSlide = 0;
 	let autoSlide = true;
@@ -360,13 +360,17 @@ $(document).ready(() => {
 
 		currentLists.forEach((list, index) => {
 			current
-				.prepend(
+				.append(
 					$("<div>")
 						.attr("id", `id-current-dot-${index}`)
 						.addClass("class-current-dot")
-						.on("click", () => $(`#id-current-slide-${index}`)[0].scrollIntoView(false))
+						.on("click", () => {
+							autoSlide = false;
+							$(`#id-current-slide-${index}`)[0].scrollIntoView(false);
+						})
 				)
 				.find("#id-current-slides")
+				.appendTo(current)
 				.append(
 					$("<button>")
 						.attr("id", `id-current-slide-${index}`)

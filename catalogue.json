@@ -1,5 +1,19 @@
 [
 	{
+		"id": "friday2025",
+		"title": "2025 Friday the 13th marathon",
+		"description": "I've never seen any of these, so I thought I'd watch them all.",
+		"properties": [
+			"grotesque",
+			"shock",
+			"suspense"
+		],
+		"films": [
+			"fridaythe13th1980",
+			"fridaythe13thpart21981"
+		]
+	},
+	{
 		"id": "vampires2025",
 		"title": "2025 vampire marathon",
 		"description": "I'm playing a vampire video game and just saw <i>Nosferatu</i>, and am so excited about vampires right now that I want to review as many vampire movies as I can. 🦇🦇🦇",
