@@ -364,6 +364,7 @@ $(document).ready(() => {
 					$("<div>")
 						.attr("id", `id-current-dot-${index}`)
 						.addClass("class-current-dot")
+						.addClass("class-shadow")
 						.on("click", () => {
 							autoSlide = false;
 							$(`#id-current-slide-${index}`)[0].scrollIntoView(false);
