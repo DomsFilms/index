@@ -385,6 +385,7 @@ $(document).ready(() => {
 						.addClass("class-shadow")
 						.html(list.title)
 						.css("background-image", list.image)
+						.on("scroll", () => autoSlide = false)
 						.on("click", () => display(list.id))
 				);
 		});
