@@ -10,6 +10,11 @@ $(document).ready(() => {
 			"image": "url(\"films/vampires2025/image.jpg\")",
 			"title": "2025 vampire marathon",
 			"id": "vampires2025"
+		},
+		{
+			"image": "url(\"films/allhorror2025/image.jpg\")",
+			"title": "All Other 2025 horror reviews",
+			"id": "allhorror2025"
 		}
 	];
 	let currentSlide = 0;
