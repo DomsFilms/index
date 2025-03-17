@@ -17,7 +17,7 @@ $(document).ready(() => {
 			"id": "allhorror2025"
 		}
 	];
-	let currentSlide = 0;
+	let currentSlideId = 0;
 	let autoSlide = true;
 
 	// Change the cache parameter every day, so data is cached but automatically downloaded the next day.
@@ -147,7 +147,7 @@ $(document).ready(() => {
 			await Promise.all(catalogueFilms.map(film => loadFilm(film)));
 
 			// Calculate the titles for sorting.
-			catalogueFilms.forEach((film, index) => {
+			catalogueFilms.forEach((film, id) => {
 				film.sortTitle = titleSortRegex.test(film.title)
 					? film.id.replace(idSortRegex, "")
 					: film.id
@@ -302,7 +302,7 @@ $(document).ready(() => {
 						.addClass("class-removable")
 				);
 
-				films.forEach((film, index) => {
+				films.forEach((film, id) => {
 					$("#id-grid")
 						.append(displayFilm(film));
 				});
@@ -315,7 +315,7 @@ $(document).ready(() => {
 					});
 
 			} else {
-				films.forEach((film, index) => {
+				films.forEach((film, id) => {
 					// Just stick them in the flex body.
 					$("body")
 						.append(displayFilm(film));
@@ -363,32 +363,34 @@ $(document).ready(() => {
 					.attr("id", "id-current-slides")
 			);
 
-		currentLists.forEach((list, index) => {
+		currentLists.forEach((list, id) => {
 			current
 				.append(
 					$("<div>")
-						.attr("id", `id-current-dot-${index}`)
+						.attr("id", `id-current-dot-${id}`)
 						.addClass("class-current-dot")
 						.addClass("class-shadow")
 						.on("click", () => {
 							autoSlide = false;
-							$(`#id-current-slide-${index}`)[0].scrollIntoView(false);
+							$(`#id-current-slide-${id}`)[0].scrollIntoView(false);
 						})
 				)
 				.find("#id-current-slides")
 				.appendTo(current)
 				.append(
 					$("<button>")
-						.attr("id", `id-current-slide-${index}`)
+						.attr("id", `id-current-slide-${id}`)
 						.addClass("class-index")
 						.addClass("class-index-wide")
 						.addClass("class-shadow")
 						.html(list.title)
 						.css("background-image", list.image)
-						.on("scroll", () => autoSlide = false)
 						.on("click", () => display(list.id))
 				);
 		});
+
+		currentSlideId = 0;
+		autoSlide = true;
 
 		return [
 			current,
@@ -487,7 +489,7 @@ $(document).ready(() => {
 						)
 						.addClass("class-film-tags")
 				);
-			(film.tags).forEach((tag, index) => {
+			(film.tags).forEach((tag, id) => {
 				card.find(".class-tag-container")
 					.append(
 						$("<div>")
@@ -513,7 +515,7 @@ $(document).ready(() => {
 		}
 
 		// Render the properties for this film.
-		film.properties.forEach((property, index) => {
+		film.properties.forEach((property, id) => {
 			if (film[property] !== undefined) {
 				card.find(".class-film-word")
 					.after(
@@ -576,11 +578,17 @@ $(document).ready(() => {
 	// Start the interval for auto-scrolling the default lists.
 	setInterval(() => {
 		if (autoSlide) {
-			currentSlide++;
-			if (currentSlide >= currentLists.length) {
-				currentSlide = 0;
+			const slides = $("#id-current-slides")[0];
+			const currentSlide = $(`#id-current-slide-${currentSlideId}`)[0];
+			if (slides && currentSlide && slides.getBoundingClientRect().x != currentSlide.getBoundingClientRect().x) {
+				autoSlide = false;
+				return;
 			}
-			$(`#id-current-slide-${currentSlide}`)[0].scrollIntoView(false);
+			currentSlideId++;
+			if (currentSlideId >= currentLists.length) {
+				currentSlideId = 0;
+			}
+			currentSlide && currentSlide.scrollIntoView(false);
 		}
 	}, 5000);
 
