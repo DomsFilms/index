@@ -581,7 +581,7 @@ $(document).ready(() => {
 			const slides = $("#id-current-slides")[0];
 			let currentSlide = $(`#id-current-slide-${currentSlideId}`)[0];
 			// If the current slide is not in view, it must have been interacted with by the user, so stop scrolling.
-			if (slides && currentSlide && slides.getBoundingClientRect().x != currentSlide.getBoundingClientRect().x) {
+			if (slides && currentSlide && Math.abs(slides.getBoundingClientRect().x - currentSlide.getBoundingClientRect().x < 50)) {
 				autoSlide = false;
 				return;
 			}
