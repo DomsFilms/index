@@ -579,7 +579,8 @@ $(document).ready(() => {
 	setInterval(() => {
 		if (autoSlide) {
 			const slides = $("#id-current-slides")[0];
-			const currentSlide = $(`#id-current-slide-${currentSlideId}`)[0];
+			let currentSlide = $(`#id-current-slide-${currentSlideId}`)[0];
+			// If the current slide is not in view, it must have been interacted with by the user, so stop scrolling.
 			if (slides && currentSlide && slides.getBoundingClientRect().x != currentSlide.getBoundingClientRect().x) {
 				autoSlide = false;
 				return;
@@ -588,6 +589,7 @@ $(document).ready(() => {
 			if (currentSlideId >= currentLists.length) {
 				currentSlideId = 0;
 			}
+			currentSlide = $(`#id-current-slide-${currentSlideId}`)[0];
 			currentSlide && currentSlide.scrollIntoView(false);
 		}
 	}, 5000);
