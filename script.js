@@ -7,6 +7,11 @@ $(document).ready(() => {
 			"id": "friday2025"
 		},
 		{
+			"image": "url(\"films/thebigpicture2025/image.jpg\")",
+			"title": "The Big Picture 25 for 25 project",
+			"id": "thebigpicture2025"
+		},
+		{
 			"image": "url(\"films/vampires2025/image.jpg\")",
 			"title": "2025 vampire marathon",
 			"id": "vampires2025"
