@@ -45,6 +45,11 @@ $(document).ready(() => {
 		"spoilersSummary": "spoilers...",
 		"tagsIcon": "🏷️ ",
 		"tagsSummary": "tags...",
+		"released": "released: ",
+		"watched": "watched: ",
+		"seenBefore": "(seen before)",
+		"firstTime": "(first time)",
+		"listAttribution": "collection: ",
 		"average": "average"
 	};
 
@@ -139,7 +144,8 @@ $(document).ready(() => {
 						return {
 							"id": film,
 							"properties": list.properties,
-							"list": list.id,
+							"listId": list.id,
+							"listTitle": list.title,
 							"spoilersIcon": list.spoilersIcon || strings.spoilersIcon,
 							"spoilersSummary": list.spoilersSummary || strings.spoilersSummary,
 							"tagsIcon": list.tagsIcon || strings.tagsIcon,
@@ -178,7 +184,7 @@ $(document).ready(() => {
 	const loadFilm = (film) => {
 		return new Promise((resolve) => {
 			const filmRequest = new XMLHttpRequest();
-			filmRequest.open("GET", `films/${film.list}/${film.id}.json?v=${cacheVersion}`, true);
+			filmRequest.open("GET", `films/${film.listId}/${film.id}.json?v=${cacheVersion}`, true);
 			filmRequest.responseType = "json";
 			filmRequest.onload = () => {
 				if (filmRequest.status === 200 && !!filmRequest.response.review) {
@@ -253,6 +259,7 @@ $(document).ready(() => {
 			$("#id-search").val("");
 
 		} else {
+			// TODO: Here is a good place to render a loading screen if the catalogue has not fully loaded.
 			// Search for films and display them.
 			let films = [];
 			let description = null;
@@ -270,7 +277,7 @@ $(document).ready(() => {
 			} else if (!!catalogueList) {
 				// Show all films from one list, ordered as per the list.
 				films = catalogueFilms
-					.filter(film => film.list == catalogueList.id);
+					.filter(film => film.listId == catalogueList.id);
 				description = catalogueList.description;
 			} else {
 				// Search on film title, ordered A-Z.
@@ -468,7 +475,10 @@ $(document).ready(() => {
 					.html(review),
 				$("<div>")
 					.addClass("class-film-summary class-font-small")
-					.html(`released: ${film.year}, watched: ${film.date} ${film.seen ? "(seen before)" : "(first time)"}`),
+					.html(`${strings.released}${film.year}, ${strings.watched}${film.date} ${film.seen ? strings.seenBefore : strings.firstTime}`),
+				$("<div>")
+					.addClass("class-film-summary class-font-small")
+					.html(`${strings.listAttribution}<u onclick="display('${film.listId}')">${film.listTitle}</u>`),
 				$("<div>")
 					.addClass("class-film-bar")
 					.append(
@@ -544,7 +554,7 @@ $(document).ready(() => {
 	const displayRecommendedFilm = () => {
 		if ($("#id-recommendation").length > 0
 			|| $(".class-index").length == 0
-			|| !catalogueLoaded) {
+			|| !catalogueLoaded) { // TODO: Here is a good place to render a loading element if the catalogue has not fully loaded.
 			return;
 		}
 
