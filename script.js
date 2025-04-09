@@ -531,11 +531,12 @@ $(document).ready(() => {
 
 		// Render the properties for this film.
 		film.properties.forEach((property, id) => {
+			regex = /^(10|\d)$/i;
 			if (film[property] !== undefined) {
 				card.find(".class-film-word")
 					.after(
 						$("<div>")
-							.addClass(`class-rating-small class-rating-${film[property]} class-font-small`)
+							.addClass(`class-rating-small ${regex.test(film[property]) ? "class-rating-" + film[property] : "class-rating-null"} class-font-small`)
 							.html(`${property}: ${film[property]}`)
 					);
 			}

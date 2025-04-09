@@ -226,6 +226,10 @@ summary {
 	min-width: 1.4em;
 }
 
+.class-rating-null {
+	background-color: #808080;
+}
+
 /* The carousel of buttons for the currently active lists. */
 
 #id-current {
