@@ -47,7 +47,9 @@ $(document).ready(() => {
 		"tagsSummary": "tags...",
 		"released": "released: ",
 		"watched": "watched: ",
+		"played": "played: ",
 		"seenBefore": "(seen before)",
+		"playedBefore": "(played before)",
 		"firstTime": "(first time)",
 		"listAttribution": "collection: ",
 		"average": "average"
@@ -453,6 +455,15 @@ $(document).ready(() => {
 			}
 		}
 
+		let verb = strings.watched;
+		let verbBefore = strings.seenBefore;
+		switch (film.media) { // The default is obviously film, but this property might exist as an override.
+			case "game":
+				verb = strings.played;
+				verbBefore = strings.playedBefore;
+				break;
+		}
+
 		const card = $("<div>")
 			.attr("id", `id-film-${film.id}`)
 			.addClass("class-film-card class-shadow")
@@ -475,7 +486,7 @@ $(document).ready(() => {
 					.html(review),
 				$("<div>")
 					.addClass("class-film-summary class-font-small")
-					.html(`${strings.released}${film.year}, ${strings.watched}${film.date} ${film.seen ? strings.seenBefore : strings.firstTime}`),
+					.html(`${strings.released}${film.year}, ${verb}${film.date} ${film.before ? verbBefore : strings.firstTime}`),
 				$("<div>")
 					.addClass("class-film-summary class-font-small")
 					.html(`${strings.listAttribution}<u onclick="display('${film.listId}')">${film.listTitle}</u>`),
