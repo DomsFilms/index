@@ -28,7 +28,8 @@ $(document).ready(() => {
 	// Change the cache parameter every day, so data is cached but automatically downloaded the next day.
 	// During periods where I'm not editing existing reviews, I should reduce this to be monthly. 
 	const date = new Date();
-	const cacheVersion = date.getFullYear().toString() + date.getMonth().toString() + date.getDate().toString();
+	const cacheVersion = date.getFullYear().toString() + date.getMonth().toString();// + date.getDate().toString();
+	const cacheCatalogue = false;
 
 	const strings = {
 		"indexButton": "🏠 home",
@@ -135,7 +136,7 @@ $(document).ready(() => {
 
 	// Load the catalogue of films into the catalogue variable.
 	const calatlogueRequest = new XMLHttpRequest();
-	calatlogueRequest.open("GET", `catalogue.json?v=${cacheVersion}`, true);
+	calatlogueRequest.open("GET", `catalogue.json${cacheCatalogue ? "?v=" + cacheVersion : ""}`, true);
 	calatlogueRequest.responseType = "json";
 	calatlogueRequest.onload = async () => {
 		if (calatlogueRequest.status === 200) {
