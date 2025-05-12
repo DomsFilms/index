@@ -582,7 +582,7 @@ $(document).ready(() => {
 		// Only consider films watched before the start of the previous week, or the recommendation will change mid-week when new reviews are added.
 		// 1360800000 is two weeks in milliseconds. This gives me a window to review recently watched films, but not too long to prevent laziness.
 		const films = sortDate(catalogueFilms
-			.filter(film => film.rating >= 7 && parseDate(film.date) < 1745708400),//date - 1360800000),
+			.filter(film => film.rating >= 7 && parseDate(film.date) < date - 1360800000),
 			false);
 
 		// The date has the ms value set to 0, to be consistent, but this makes the total time in ms end in loads of 0s.
