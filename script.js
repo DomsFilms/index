@@ -255,7 +255,7 @@ $(document).ready(() => {
 
 		if (hash == "" || !catalogueLoaded) {
 			// Also display the index page if the catalogue hasn't been loaded yet.
-			// This will make buttons seem unresponsive while loading, but hopefully it will only be the first 2 seconds upon arrival.
+			// This will make buttons seem unresponsive while loading, but hopefully it will only be the first two seconds upon arrival.
 			$("body")
 				.append(displayIndex());
 			displayRecommendedFilm();
