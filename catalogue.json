@@ -1,5 +1,20 @@
 [
 	{
+		"id": "horror2025",
+		"title": "2025 horror marathon",
+		"description": "For the fifth year running I'm watching at least one horror movie each day of October and rating them from 0 to 10. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
+		"properties": [
+			"grotesque",
+			"shock",
+			"suspense"
+		],
+		"films": [
+			"creaturefromtheblacklagoon1954",
+			"ravenous1999",
+			"urotsukidoji1989"
+		]
+	},
+	{
 		"id": "thebigpicture2025",
 		"title": "The Big Picture 25 for 25 project",
 		"description": "My favourite movie podcast, The Big Picture, is counting down their 25 favourites of the century so far. Every two weeks they'll dedicate an episode to a film, and reach their favourite at the end of the year. I'll watch and review each one. (The list is subjectively chosen by the hosts, and their only rule is to pick no more than one film per director.)",

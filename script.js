@@ -2,9 +2,9 @@ $(document).ready(() => {
 
 	const currentLists = [
 		{
-			"image": "url(\"films/friday2025/image.jpg\")",
-			"title": "2025 Friday the 13th marathon",
-			"id": "friday2025"
+			"image": "url(\"films/horror2025/image.jpg\")",
+			"title": "2025 horror marathon",
+			"id": "horror2025"
 		},
 		{
 			"image": "url(\"films/thebigpicture2025/image.jpg\")",
@@ -12,9 +12,9 @@ $(document).ready(() => {
 			"id": "thebigpicture2025"
 		},
 		{
-			"image": "url(\"films/vampires2025/image.jpg\")",
-			"title": "2025 vampire marathon",
-			"id": "vampires2025"
+			"image": "url(\"films/friday2025/image.jpg\")",
+			"title": "2025 Friday the 13th marathon",
+			"id": "friday2025"
 		},
 		{
 			"image": "url(\"films/allhorror2025/image.jpg\")",
