@@ -25,11 +25,11 @@ $(document).ready(() => {
 	let currentSlideId = 0;
 	let autoSlide = true;
 
-	// Change the cache parameter every day, so data is cached but automatically downloaded the next day.
-	// During periods where I'm not editing existing reviews, I should reduce this to be monthly. 
+	// Reviews are cached in the browser monthly, to prevent them being transferred constantly.
+	// The catalogue is cached hourly, so that new reviews show up faster.
 	const date = new Date();
-	const cacheVersion = date.getFullYear().toString() + date.getMonth().toString();// + date.getDate().toString();
-	const cacheCatalogue = false;
+	const longCacheVersion = date.getFullYear().toString() + date.getMonth().toString();
+	const shortCacheVersion = longCacheVersion + date.getDate().toString() + date.getHours().toString();
 
 	const strings = {
 		"indexButton": "🏠 home",
@@ -136,7 +136,7 @@ $(document).ready(() => {
 
 	// Load the catalogue of films into the catalogue variable.
 	const calatlogueRequest = new XMLHttpRequest();
-	calatlogueRequest.open("GET", `catalogue.json${cacheCatalogue ? "?v=" + cacheVersion : ""}`, true);
+	calatlogueRequest.open("GET", `catalogue.json?v=${shortCacheVersion}`, true);
 	calatlogueRequest.responseType = "json";
 	calatlogueRequest.onload = async () => {
 		if (calatlogueRequest.status === 200) {
@@ -187,7 +187,7 @@ $(document).ready(() => {
 	const loadFilm = (film) => {
 		return new Promise((resolve) => {
 			const filmRequest = new XMLHttpRequest();
-			filmRequest.open("GET", `films/${film.listId}/${film.id}.json?v=${cacheVersion}`, true);
+			filmRequest.open("GET", `films/${film.listId}/${film.id}.json?v=${longCacheVersion}`, true);
 			filmRequest.responseType = "json";
 			filmRequest.onload = () => {
 				if (filmRequest.status === 200 && !!filmRequest.response.review) {
