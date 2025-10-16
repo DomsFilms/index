@@ -28,7 +28,7 @@ $(document).ready(() => {
 	// Reviews are cached in the browser monthly, to prevent them being transferred constantly.
 	// The catalogue is cached hourly, so that new reviews show up faster.
 	const date = new Date();
-	const longCacheVersion = date.getFullYear().toString() + date.getMonth().toString();
+	const longCacheVersion = date.getFullYear().toString() + date.getMonth().toString() + "b";
 	const shortCacheVersion = longCacheVersion + date.getDate().toString() + date.getHours().toString();
 
 	const strings = {
@@ -241,6 +241,12 @@ $(document).ready(() => {
 						: 1));
 	};
 
+	const searchMatch = (film, hash) =>
+		hash.split(" ").every(word => film.id.toLowerCase().includes(word)
+			|| film.title.toLowerCase().includes(word)
+			|| (film.subtitle || "").toLowerCase().includes(word)
+			|| (film.search || "").toLowerCase().includes(word));
+
 	// Display a page.
 	// If the hash is empty, display the index page.
 	// If the hash is populated, display films as search results.
@@ -285,9 +291,7 @@ $(document).ready(() => {
 			} else {
 				// Search on film title, ordered A-Z.
 				films = sortTitle(catalogueFilms
-					.filter(film => film.id.toLowerCase().includes(hash)
-						|| film.title.toLowerCase().includes(hash)
-						|| (film.search || "").toLowerCase().includes(hash)));
+					.filter(film => searchMatch(film, hash)));
 				description = films.length == 0
 					? strings.noResults
 					: "";
@@ -458,12 +462,16 @@ $(document).ready(() => {
 			}
 		}
 
-		let verb = strings.watched;
-		let verbBefore = strings.seenBefore;
+		let verb = "";
+		let verbBefore = "";
 		switch (film.media) { // The default is obviously film, but this property might exist as an override.
 			case "game":
 				verb = strings.played;
 				verbBefore = strings.playedBefore;
+				break;
+			default:
+				verb = strings.watched;
+				verbBefore = strings.seenBefore;
 				break;
 		}
 
@@ -478,6 +486,13 @@ $(document).ready(() => {
 						$("<div>")
 							.addClass("class-film-title class-font-large")
 							.html(film.title)
+							.append(
+								!!film.subtitle
+									? $("<span>")
+										.addClass("class-font-small")
+										.html(film.subtitle)
+									: null
+							)
 					)
 					.append(
 						$("<div>")
