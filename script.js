@@ -28,8 +28,8 @@ $(document).ready(() => {
 	// Reviews are cached in the browser monthly, to prevent them being transferred constantly.
 	// The catalogue is cached hourly, so that new reviews show up faster.
 	const date = new Date();
-	const longCacheVersion = date.getFullYear().toString() + date.getMonth().toString() + "b";
-	const shortCacheVersion = longCacheVersion + date.getDate().toString() + date.getHours().toString();
+	const longCacheVersion = date.getFullYear().toString() + date.getMonth().toString();
+	const shortCacheVersion = longCacheVersion + date.getDate().toString();// + date.getHours().toString();
 
 	const strings = {
 		"indexButton": "🏠 home",
