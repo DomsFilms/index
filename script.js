@@ -441,26 +441,22 @@ $(document).ready(() => {
 	const displayFilm = (film) => {
 
 		// Replace movie titles with links if there exists reviews for them.
-		let review = film.review;
-		let regex = /{([^}]+)}/g;
-		let match;
-		while ((match = regex.exec(film.review)) !== null) {
-			if (catalogueFilms.some(result => result.title == match[1])) {
-				review = review.replace(match[0], `<i><u onclick="display('${match[1]}')">${match[1]}</u></i>`);
-			} else {
-				review = review.replace(match[0], `<i>${match[1]}</i>`);
+		const replace = (text) => {
+			let result = text;
+			let regex = /{([^}]+)}/g;
+			let match;
+			while ((match = regex.exec(text)) !== null) {
+				if (catalogueFilms.some(result => result.title == match[1])) {
+					result = result.replace(match[0], `<i><u onclick="display('${match[1].replace(/[^a-zA-Z0-9\s]/g, "")}')">${match[1]}</u></i>`);
+				} else {
+					result = result.replace(match[0], `<i>${match[1]}</i>`);
+				}
 			}
-		}
+			return result;
+		};
 
-		let spoilers = film.spoilers;
-		regex = /{([^}]+)}/g; // This is done to reset the regex object, which is stateful.
-		while ((match = regex.exec(film.spoilers)) !== null) {
-			if (catalogueFilms.some(result => result.title == match[1])) {
-				spoilers = spoilers.replace(match[0], `<i><u onclick="display('${match[1]}')">${match[1]}</u></i>`);
-			} else {
-				spoilers = spoilers.replace(match[0], `<i>${match[1]}</i>`);
-			}
-		}
+		let review = replace(film.review);
+		let spoilers = replace(film.spoilers);
 
 		let verb = "";
 		let verbBefore = "";
