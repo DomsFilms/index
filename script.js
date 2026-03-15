@@ -2,6 +2,11 @@ $(document).ready(() => {
 
 	const currentLists = [
 		{
+			"image": "url(\"films/allhorror2026/image.jpg\")",
+			"title": "All 2026 horror reviews",
+			"id": "allhorror2026"
+		},
+		{
 			"image": "url(\"films/horror2025/image.jpg\")",
 			"title": "2025 horror marathon",
 			"id": "horror2025"
@@ -15,11 +20,6 @@ $(document).ready(() => {
 			"image": "url(\"films/friday2025/image.jpg\")",
 			"title": "2025 Friday the 13th marathon",
 			"id": "friday2025"
-		},
-		{
-			"image": "url(\"films/allhorror2025/image.jpg\")",
-			"title": "All Other 2025 horror reviews",
-			"id": "allhorror2025"
 		}
 	];
 	let currentSlideId = 0;

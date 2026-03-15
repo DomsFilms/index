@@ -1,5 +1,27 @@
 [
 	{
+		"id": "allhorror2026",
+		"title": "2026 off-season horror",
+		"description": "I'm reviewing all the horror films I see throughout the year, to slowly build this list. There will be a separate list for the 6th traditional October marathon, when the time comes.",
+		"properties": [
+			"grotesque",
+			"shock",
+			"suspense"
+		],
+		"films": [
+			"dontlooknow1973",
+			"residentevil32020",
+			"28yearslaterthebonetemple2026",
+			"alpha2025",
+			"antrum2018",
+			"kingdomofthespiders1977",
+			"moloch2022",
+			"arachnophobia1990",
+			"misery1990",
+			"residentevil42023"
+		]
+	},
+	{
 		"id": "horror2025",
 		"title": "2025 horror marathon",
 		"description": "For the fifth year running I'm watching at least one horror movie each day of October and rating them from 0 to 10. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
