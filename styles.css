@@ -150,6 +150,12 @@ input {
 	text-align: center;
 }
 
+.class-rating-large .class-rating-icon {
+	position: relative;
+	top: -1em;
+	height: 0;
+}
+
 .class-rating-small,
 .class-tag {
 	border-radius: 0.2rem;
@@ -228,12 +234,6 @@ summary {
 .class-rating-10 {
 	background-color: #B7E1CD;
 	min-width: 1.4em;
-}
-
-.class-rating-crown {
-	position: relative;
-	top: -1em;
-	height: 0;
 }
 
 .class-rating-null {

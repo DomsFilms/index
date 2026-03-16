@@ -54,7 +54,8 @@ $(document).ready(() => {
 		"firstTime": "(first time)",
 		"listAttribution": "collection: ",
 		"average": "average",
-		"crownIcon": "👑"
+		"crownIcon": "👑",
+		"poopIcon": "💩"
 	};
 
 	// If the title matches the title regex, remove the matching id regex, to manipulate the id for sorting based on the title.
@@ -518,8 +519,16 @@ $(document).ready(() => {
 		card.find(".class-rating-10")
 			.prepend(
 				$("<div>")
-					.addClass("class-rating-crown")
+					.addClass("class-rating-icon class-font-small")
 					.html(strings.crownIcon)
+			);
+
+		// Add a little poop on top of 0/10s.
+		card.find(".class-rating-0")
+			.prepend(
+				$("<div>")
+					.addClass("class-rating-icon class-font-small")
+					.html(strings.poopIcon)
 			);
 
 		// Render the tags for this film.
