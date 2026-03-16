@@ -53,7 +53,8 @@ $(document).ready(() => {
 		"playedBefore": "(played before)",
 		"firstTime": "(first time)",
 		"listAttribution": "collection: ",
-		"average": "average"
+		"average": "average",
+		"crownIcon": "👑"
 	};
 
 	// If the title matches the title regex, remove the matching id regex, to manipulate the id for sorting based on the title.
@@ -512,6 +513,14 @@ $(document).ready(() => {
 							.html((film.word || "").toLowerCase())
 					)
 			]);
+
+		// Add a little crown on top of 10/10s.
+		card.find(".class-rating-10")
+			.prepend(
+				$("<div>")
+					.addClass("class-rating-crown")
+					.html(strings.crownIcon)
+			);
 
 		// Render the tags for this film.
 		if (!!film.tags) {

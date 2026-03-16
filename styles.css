@@ -230,6 +230,12 @@ summary {
 	min-width: 1.4em;
 }
 
+.class-rating-crown {
+	position: relative;
+	top: -1em;
+	height: 0;
+}
+
 .class-rating-null {
 	background-color: #808080;
 }
