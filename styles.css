@@ -306,7 +306,8 @@ summary {
 }
 
 .class-theme-dark,
-.class-theme-dark #id-loading .class-theme-dark .class-film-unwatched .class-film-title,
+.class-theme-dark #id-loading,
+.class-theme-dark .class-film-unwatched .class-film-title,
 .class-theme-dark .class-film-unwatched .class-rating-large,
 .class-theme-dark .class-film-unwatched .class-rating-small,
 .class-theme-dark .class-film-unwatched .class-film-review,
@@ -344,7 +345,8 @@ summary {
 }
 
 .class-theme-light,
-.class-theme-light #id-loading .class-theme-light .class-film-unwatched .class-film-title,
+.class-theme-light #id-loading,
+.class-theme-light .class-film-unwatched .class-film-title,
 .class-theme-light .class-film-unwatched .class-rating-large,
 .class-theme-light .class-film-unwatched .class-rating-small,
 .class-theme-light .class-film-unwatched .class-film-review,
