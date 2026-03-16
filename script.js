@@ -170,6 +170,8 @@ $(document).ready(() => {
 			});
 
 			catalogueLoaded = true;
+			$("#id-loading")
+				.remove();
 
 			// The index page is probably displayed without this right now, so add it.
 			displayRecommendedFilm();
