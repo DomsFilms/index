@@ -306,7 +306,6 @@ summary {
 }
 
 .class-theme-dark,
-.class-theme-dark #id-loading,
 .class-theme-dark .class-film-unwatched .class-film-title,
 .class-theme-dark .class-film-unwatched .class-rating-large,
 .class-theme-dark .class-film-unwatched .class-rating-small,
@@ -315,6 +314,11 @@ summary {
 	background-color: #202020;
 	color: #ffffffB0;
 	transition: background-color 0.5s, color 0.5s;
+}
+
+.class-theme-dark #id-loading {
+	background-color: #202020;
+	color: #ffffffB0;
 }
 
 .class-theme-dark .class-film-review a {
@@ -345,7 +349,6 @@ summary {
 }
 
 .class-theme-light,
-.class-theme-light #id-loading,
 .class-theme-light .class-film-unwatched .class-film-title,
 .class-theme-light .class-film-unwatched .class-rating-large,
 .class-theme-light .class-film-unwatched .class-rating-small,
@@ -354,6 +357,11 @@ summary {
 	background-color: #d0d0d0;
 	color: #000000f7;
 	transition: background-color 0.5s, color 0.5s;
+}
+
+.class-theme-light #id-loading {
+	background-color: #d0d0d0;
+	color: #000000f7;
 }
 
 .class-theme-light .class-film-summary,
