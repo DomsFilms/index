@@ -54,7 +54,8 @@ input {
 	font-size: 1rem;
 }
 
-#id-controls button {
+#id-controls button,
+#id-loading button {
 	border-radius: 0.5rem;
 	font-family: 'Roboto', sans-serif;
 	padding: 0.3rem 0.4rem 0.3rem 0.4rem;
@@ -305,7 +306,7 @@ summary {
 }
 
 .class-theme-dark,
-.class-theme-dark .class-film-unwatched .class-film-title,
+.class-theme-dark #id-loading .class-theme-dark .class-film-unwatched .class-film-title,
 .class-theme-dark .class-film-unwatched .class-rating-large,
 .class-theme-dark .class-film-unwatched .class-rating-small,
 .class-theme-dark .class-film-unwatched .class-film-review,
@@ -331,11 +332,6 @@ summary {
 	transition: color 0.5s;
 }
 
-.class-theme-dark #id-loading {
-	background-color: #202020;
-	color: #ffffffB0;
-}
-
 /* Light theme. */
 
 .class-theme-light .class-film-card,
@@ -348,7 +344,7 @@ summary {
 }
 
 .class-theme-light,
-.class-theme-light .class-film-unwatched .class-film-title,
+.class-theme-light #id-loading .class-theme-light .class-film-unwatched .class-film-title,
 .class-theme-light .class-film-unwatched .class-rating-large,
 .class-theme-light .class-film-unwatched .class-rating-small,
 .class-theme-light .class-film-unwatched .class-film-review,
@@ -362,9 +358,4 @@ summary {
 .class-theme-light summary {
 	color: #0000007e;
 	transition: color 0.5s;
-}
-
-.class-theme-light #id-loading {
-	background-color: #d0d0d0;
-	color: #000000f7;
 }
