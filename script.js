@@ -251,6 +251,21 @@ $(document).ready(() => {
 			|| (film.subtitle || "").toLowerCase().includes(word)
 			|| (film.search || "").toLowerCase().includes(word));
 
+	// Replace movie titles with links if there exists reviews for them.
+	const replace = (text) => {
+		let result = text;
+		let regex = /{([^}]+)}/g;
+		let match;
+		while ((match = regex.exec(text)) !== null) {
+			if (catalogueFilms.some(result => result.title == match[1])) {
+				result = result.replace(match[0], `<i><u onclick="display('${match[1].replace(/[^a-zA-Z0-9\s]/g, "")}')">${match[1]}</u></i>`);
+			} else {
+				result = result.replace(match[0], `<i>${match[1]}</i>`);
+			}
+		}
+		return result;
+	};
+
 	// Display a page.
 	// If the hash is empty, display the index page.
 	// If the hash is populated, display films as search results.
@@ -265,14 +280,13 @@ $(document).ready(() => {
 
 		if (hash == "" || !catalogueLoaded) {
 			// Also display the index page if the catalogue hasn't been loaded yet.
-			// This will make buttons seem unresponsive while loading, but hopefully it will only be the first two seconds upon arrival.
+			// The loading overlay will still exist and hide the partially loaded content anyway.
 			$("body")
 				.append(displayIndex());
 			displayRecommendedFilm();
 			$("#id-search").val("");
 
 		} else {
-			// TODO: Here is a good place to render a loading screen if the catalogue has not fully loaded.
 			// Search for films and display them.
 			let films = [];
 			let description = null;
@@ -291,7 +305,7 @@ $(document).ready(() => {
 				// Show all films from one list, ordered as per the list.
 				films = catalogueFilms
 					.filter(film => film.listId == catalogueList.id);
-				description = catalogueList.description;
+				description = replace(catalogueList.description);
 			} else {
 				// Search on film title, ordered A-Z.
 				films = sortTitle(catalogueFilms
@@ -346,8 +360,6 @@ $(document).ready(() => {
 						.append(displayFilm(film));
 				});
 			}
-
-
 
 			// Add the average rating for whatever is displayed, at the bottom of the page.
 			const ratings = films.map(film => film.rating).filter(rating => rating != undefined);
@@ -443,22 +455,6 @@ $(document).ready(() => {
 	};
 
 	const displayFilm = (film) => {
-
-		// Replace movie titles with links if there exists reviews for them.
-		const replace = (text) => {
-			let result = text;
-			let regex = /{([^}]+)}/g;
-			let match;
-			while ((match = regex.exec(text)) !== null) {
-				if (catalogueFilms.some(result => result.title == match[1])) {
-					result = result.replace(match[0], `<i><u onclick="display('${match[1].replace(/[^a-zA-Z0-9\s]/g, "")}')">${match[1]}</u></i>`);
-				} else {
-					result = result.replace(match[0], `<i>${match[1]}</i>`);
-				}
-			}
-			return result;
-		};
-
 		let review = replace(film.review);
 		let spoilers = replace(film.spoilers);
 
@@ -600,7 +596,7 @@ $(document).ready(() => {
 	const displayRecommendedFilm = () => {
 		if ($("#id-recommendation").length > 0
 			|| $(".class-index").length == 0
-			|| !catalogueLoaded) { // TODO: Here is a good place to render a loading element if the catalogue has not fully loaded.
+			|| !catalogueLoaded) {
 			return;
 		}
 
@@ -660,6 +656,7 @@ $(document).ready(() => {
 	$("body").onhashchange = () => display(decodeURIComponent(window.location.hash).replace("#", ""));
 
 	// If no films have been loaded yet (they are on the way), start by displaying the index page.
+	// The loading overlay will still exist and hide the partially loaded content anyway.
 	if (!catalogueLoaded) {
 		display("", true);
 	}
