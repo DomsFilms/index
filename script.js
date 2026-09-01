@@ -26,10 +26,10 @@ $(document).ready(() => {
 	let autoSlide = true;
 
 	// Reviews are cached in the browser monthly, to prevent them being transferred constantly.
-	// The catalogue is cached hourly, so that new reviews show up faster.
+	// The catalogue is cached daily, so that new reviews show up faster.
 	const date = new Date();
-	const longCacheVersion = date.getFullYear().toString() + date.getMonth().toString();
-	const shortCacheVersion = longCacheVersion + date.getDate().toString();// + date.getHours().toString();
+	const longCacheVersion = date.getFullYear().toString() + date.getMonth().toString(); // + date.getDate().toString(); // For marathons.
+	const shortCacheVersion = longCacheVersion + date.getDate().toString();// + date.getHours().toString(); // For marathons.
 
 	const strings = {
 		"indexButton": "🏠 home",
@@ -606,14 +606,14 @@ $(document).ready(() => {
 		date.setHours(0, 0, 0, 0);
 
 		// Only consider films rated 7 and up.
-		// Only consider films watched before the start of the previous week, or the recommendation will change mid-week when new reviews are added.
-		// 2419200000 is four weeks in milliseconds. This gives me a window to review recently watched films, but not too long to prevent laziness.
+		// Only consider films watched more than four weeks ago, or the recommendation will change mid-week when new reviews are added.
+		// 2419200000 is four weeks in milliseconds.
 		const films = sortDate(catalogueFilms
 			.filter(film => film.rating >= 7 && parseDate(film.date) < date - 2419200000),
 			false);
 
 		// The date has the ms value set to 0, to be consistent, but this makes the total time in ms end in loads of 0s.
-		// So divide by 1000, then do % 7919, the 1000th prime, to get number that won't end in 0s.
+		// So divide by 1000, then do % 7919, the 1000th prime, to get a number that won't end in 0s.
 		// If all weeks resulted in a number with similar digits, it could maybe cause repetition?
 		// Now we can % by the total number of films that we want to select from.
 		const weekNumber = (date.getTime() / 1000) % 7919 % films.length;
