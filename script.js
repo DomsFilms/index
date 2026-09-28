@@ -28,8 +28,8 @@ $(document).ready(() => {
 	// Reviews are cached in the browser monthly, to prevent them being transferred constantly.
 	// The catalogue is cached daily, so that new reviews show up faster.
 	const date = new Date();
-	const longCacheVersion = date.getFullYear().toString() + date.getMonth().toString(); // + date.getDate().toString(); // For marathons.
-	const shortCacheVersion = longCacheVersion + date.getDate().toString();// + date.getHours().toString(); // For marathons.
+	const longCacheVersion = date.getFullYear().toString() + date.getMonth().toString() + date.getDate().toString(); // For marathons.
+	const shortCacheVersion = longCacheVersion + date.getDate().toString() + date.getHours().toString(); // For marathons.
 
 	const strings = {
 		"indexButton": "🏠 home",
