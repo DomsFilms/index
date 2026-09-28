@@ -1,5 +1,25 @@
 [
 	{
+		"id": "horror2026",
+		"title": "2026 horror marathon",
+		"description": "For the sixth year running I'm watching at least one horror movie each day of October and rating them from 0 to 10. I also rate them on three fundamental traits of horror: suspense, shock and grotesque.",
+		"properties": [
+			"grotesque",
+			"shock",
+			"suspense"
+		],
+		"films": [
+			"residentevil2026",
+			"ichithekiller2001",
+			"itends2025",
+			"critters1986",
+			"spring2014",
+			"redstate2011",
+			"anythingforjackson2020",
+			"critters21988"
+		]
+	},
+	{
 		"id": "allhorror2026",
 		"title": "2026 off-season horror",
 		"description": "I'm reviewing all the horror films I see throughout the year, to slowly build this list. There will be a separate list for the 6th traditional October marathon, when the time comes.",
@@ -38,6 +58,7 @@
 			"digitalvideoeditingwithadobepremiereprotherealworldguidetosetupandworkflow2020",
 			"exit82025",
 			"hokum2026",
+			"leecroninsthemummy2026",
 			"popcorn1991",
 			"intheearth2021"
 		]

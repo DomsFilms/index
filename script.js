@@ -2,14 +2,14 @@ $(document).ready(() => {
 
 	const currentLists = [
 		{
+			"image": "url(\"films/horror2026/image.jpg\")",
+			"title": "2026 horror marathon",
+			"id": "horror2026"
+		},
+		{
 			"image": "url(\"films/allhorror2026/image.jpg\")",
 			"title": "All 2026 horror reviews",
 			"id": "allhorror2026"
-		},
-		{
-			"image": "url(\"films/horror2025/image.jpg\")",
-			"title": "2025 horror marathon",
-			"id": "horror2025"
 		},
 		{
 			"image": "url(\"films/thebigpicture2025/image.jpg\")",
