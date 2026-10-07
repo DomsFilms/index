@@ -9,5 +9,5 @@
 	"suspense": 3,
 	"shock": 2,
 	"grotesque": 6,
-	"style": "@font-face {font-family: \"font-vhs\"; src: url(\"films/horror2024/vhs.woff2\");} #id-film-vhs22013 .class-film-title {font-family: 'font-vhs', 'Roboto', sans-serif; text-transform: uppercase;}"
+	"style": "@font-face {font-family: \"font-vhs\"; src: url(\"films/horror2024/vhs.woff2\");} #id-film-vhsviral2014 .class-film-title {font-family: 'font-vhs', 'Roboto', sans-serif; text-transform: uppercase;}"
 }
