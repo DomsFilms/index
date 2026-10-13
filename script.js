@@ -8,13 +8,18 @@ $(document).ready(() => {
 		},
 		{
 			"image": "url(\"films/allhorror2026/image.jpg\")",
-			"title": "All 2026 horror reviews",
+			"title": "All other 2026 horror reviews",
 			"id": "allhorror2026"
 		},
-		{
+		/*{
 			"image": "url(\"films/thebigpicture2025/image.jpg\")",
 			"title": "The Big Picture 25 for 25 project",
 			"id": "thebigpicture2025"
+		},*/
+		{
+			"image": "url(\"films/vampires2025/image.jpg\")",
+			"title": "2025 vampire marathon",
+			"id": "vampires2025"
 		},
 		{
 			"image": "url(\"films/friday2025/image.jpg\")",

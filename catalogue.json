@@ -29,7 +29,15 @@
 			"starveacre2023",
 			"pandorum2009",
 			"godtoldmeto1976",
-			"vhsviral2014"
+			"vhsviral2014",
+			"brideoffrankenstein1935",
+			"murderparty2007",
+			"vhsmixtape2026",
+			"trollhunter2010",
+			"thelure2015",
+			"deadend2003",
+			"glorious2022",
+			"asabovesobelow2014"
 		]
 	},
 	{
@@ -620,7 +628,7 @@
 	{
 		"id": "favourites",
 		"title": "old favourites",
-		"description": "After watching and writing about a bunch of mediocre horror movies, I just want to watch something that I already know I love, and I'll write about it only if I feel like it. I'll rate their appeal for rewatching as someone who already knows the ending. It's fun and rewarding to write about movies I'm passionate about, rather than always dunking on low budget slasher horrors.",
+		"description": "After watching and writing about a bunch of mediocre horror movies, I just want to watch something that I already know I love, and I'll write about it only if I feel like it. I'll rate their appeal for rewatching as someone who already knows the ending. It's fun and rewarding to write about movies I'm passionate about, rather than always dunking on low-budget slasher horrors.",
 		"properties": [
 			"rewatchability"
 		],
