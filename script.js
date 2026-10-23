@@ -252,7 +252,7 @@ $(document).ready(() => {
 
 	const searchMatch = (film, hash) =>
 		hash.split(" ").every(word => film.id.toLowerCase().includes(word)
-			|| film.title.toLowerCase().includes(word)
+			|| (film.title || "").toLowerCase().includes(word) // I haven't caught the error yet, but sometimes films don't load.
 			|| (film.subtitle || "").toLowerCase().includes(word)
 			|| (film.search || "").toLowerCase().includes(word));
 
